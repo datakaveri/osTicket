@@ -142,11 +142,11 @@ $tickets->values(
 <form action="tickets.php" method="get" id="ticketSearchForm">
     <input type="hidden" name="a"  value="search">
     <input type="text" name="keywords" size="30" value="<?php echo Format::htmlchars($settings['keywords']); ?>">
-    <input type="submit" value="<?php echo __('Search');?>">
+    <input type="submit" style="background-color: #28a745; color:#fff; border: none" value="<?php echo __('Search'); ?>">
 <div class="pull-right">
     <?php echo __('Help Topic'); ?>:
     <select name="topic_id" class="nowarn" onchange="javascript: this.form.submit(); ">
-        <option value="">&mdash; <?php echo __('All Help Topics');?> &mdash;</option>
+        <option value=""> <?php echo __('All Help Topics');?> </option>
 <?php
 foreach (Topic::getHelpTopics(true) as $id=>$name) {
         $count = $thisclient->getNumTopicTickets($id, $org_tickets);
@@ -170,7 +170,7 @@ foreach (Topic::getHelpTopics(true) as $id=>$name) {
 </div>
 
 
-<h1 style="margin:10px 0">
+<h1 style="padding:10px 1rem">
     <a href="<?php echo Http::refresh_url(); ?>"
         ><i class="refresh icon-refresh"></i>
     <?php echo __('Tickets'); ?>
@@ -200,15 +200,15 @@ if ($closedTickets) {?>
     </small>
 </div>
 </h1>
-<table id="ticketTable" width="800" border="0" cellspacing="0" cellpadding="0">
-    <caption><?php echo $showing; ?></caption>
+<table style="font-family: 'Inter', 'Helvetica Neue', 'Segoe UI', sans-serif;" id="ticketTable" width="800" border="0" cellspacing="0" cellpadding="0" style="color: #000">
+    <!-- <caption><?php echo $showing; ?></caption> -->
     <thead>
-        <tr>
+        <tr  >
             <th nowrap>
-                <a href="tickets.php?sort=ID&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Ticket ID')); ?>"><?php echo __('Ticket #');?>&nbsp;<i class="icon-sort"></i></a>
+                <a   href="tickets.php?sort=ID&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Ticket ID')); ?>"><?php echo __('Ticket');?>&nbsp;<i class="icon-sort"></i></a>
             </th>
             <th width="120">
-                <a href="tickets.php?sort=date&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Date')); ?>"><?php echo __('Create Date');?>&nbsp;<i class="icon-sort"></i></a>
+                <a  href="tickets.php?sort=date&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Date')); ?>"><?php echo __('Create Date');?>&nbsp;<i class="icon-sort"></i></a>
             </th>
             <th width="100">
                 <a href="tickets.php?sort=status&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Status')); ?>"><?php echo __('Status');?>&nbsp;<i class="icon-sort"></i></a>
@@ -246,7 +246,9 @@ if ($closedTickets) {?>
             ?>
             <tr id="<?php echo $T['ticket_id']; ?>">
                 <td>
-                <a class="Icon <?php echo strtolower($T['source']); ?>Ticket" title="<?php echo $T['user__default_email__address']; ?>"
+                <a 
+                style="color:black; text-decoration:underline"
+                class="Icon <?php echo strtolower($T['source']); ?>Ticket" title="<?php echo $T['user__default_email__address']; ?>"
                     href="tickets.php?id=<?php echo $T['ticket_id']; ?>"><?php echo $ticketNumber; ?></a>
                 </td>
                 <td><?php echo Format::date($T['created']); ?></td>
@@ -255,7 +257,7 @@ if ($closedTickets) {?>
                   <?php if ($isCollab) {?>
                     <div style="max-height: 1.2em; max-width: 320px;" class="link truncate" href="tickets.php?id=<?php echo $T['ticket_id']; ?>"><i class="icon-group"></i> <?php echo $subject; ?></div>
                   <?php } else {?>
-                    <div style="max-height: 1.2em; max-width: 320px;" class="link truncate" href="tickets.php?id=<?php echo $T['ticket_id']; ?>"><?php echo $subject; ?></div>
+                    <div style="max-height: 1.2em; max-width: 320px;color:black; text-decoration:underline" class="link truncate" href="tickets.php?id=<?php echo $T['ticket_id']; ?>"><?php echo $subject; ?></div>
                     <?php } ?>
                 </td>
                 <td><span class="truncate"><?php echo $dept; ?></span></td>
@@ -271,6 +273,6 @@ if ($closedTickets) {?>
 </table>
 <?php
 if ($total) {
-    echo '<div>&nbsp;'.__('Page').':'.$pageNav->getPageLinks().'&nbsp;</div>';
+    echo '<div class="pagination-container">&nbsp;'.__('Page').':'.$pageNav->getPageLinks().'&nbsp;</div>';
 }
 ?>

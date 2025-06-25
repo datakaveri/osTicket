@@ -70,7 +70,7 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
 </tr>
 <?php } else { ?>
 <tr>
-    <td width="180">
+    <td style=" padding-right: 10px; vertical-align: middle; white-space: nowrap;">
         <?php echo __('Create a Password'); ?>:
     </td>
     <td>
@@ -78,8 +78,9 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
         &nbsp;<span class="error">&nbsp;<?php echo $errors['passwd1']; ?></span>
     </td>
 </tr>
+
 <tr>
-    <td width="180">
+    <td style=" padding-right: 10px; vertical-align: middle; white-space: nowrap;">
         <?php echo __('Confirm New Password'); ?>:
     </td>
     <td>
@@ -91,9 +92,29 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
 </tbody>
 </table>
 <hr>
-<p style="text-align: center;">
-    <input type="submit" value="<?php echo __('Register'); ?>"/>
-    <input type="button" value="<?php echo __('Cancel'); ?>" onclick="javascript:
+<p style="text-align: center; margin: 0">
+<!-- <input type="submit" value="<?php echo __('Register'); ?>" style="color: black !important;" /> -->
+ <button
+value="<?php echo __('Register'); ?>"
+type="submit"
+style="   
+    display: inline-block;
+    border: 1px solid #ccc;
+    color: #fff;
+    padding: 8px 20px;
+    font-size: 14px;
+    border-radius: 999px;
+    text-transform: capitalize;
+    background-color: #00a651;
+    cursor:pointer;
+"
+ >
+Register
+ </button>
+    <input style="
+    padding: 8px 20px;
+    
+    " type="button" value="<?php echo __('Cancel'); ?>" onclick="javascript:
         window.location.href='index.php';"/>
 </p>
 </form>

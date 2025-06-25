@@ -24,43 +24,42 @@ else
     <div><strong><?php echo Format::htmlchars($errors['login']); ?></strong></div>
     <div>
         <label for="email"><?php echo __('Email Address'); ?>:
-        <input id="email" placeholder="<?php echo __('e.g. john.doe@osticket.com'); ?>" type="text"
+        <input  
+        style="  
+    font-family: Helvetica Neue, sans-serif;
+    color: #000;
+    padding: 0.5rem;
+    border-radius: 999px;
+   "
+        id="email" placeholder="<?php echo __('e.g. john.doe@osticket.com'); ?>" type="text"
             name="lemail" size="30" value="<?php echo $email; ?>" class="nowarn"></label>
     </div>
     <div>
         <label for="ticketno"><?php echo __('Ticket Number'); ?>:
-        <input id="ticketno" type="text" name="lticket" placeholder="<?php echo __('e.g. 051243'); ?>"
+        <input 
+         style="  
+    font-family: Helvetica Neue, sans-serif;
+    color: #000;
+    padding: 0.5rem;
+    border-radius: 999px;
+   "
+        id="ticketno" type="text" name="lticket" placeholder="<?php echo __('e.g. 051243'); ?>"
             size="30" value="<?php echo $ticketid; ?>" class="nowarn"></label>
     </div>
     <p>
-        <input class="btn" type="submit" value="<?php echo $button; ?>">
+        <input class="btn" type="submit" 
+            style="background-color: #00a651; color: white; border: none; padding: 10px 20px; border-radius: 999px; cursor: pointer;"
+        value="<?php echo $button; ?>">
     </p>
     </div>
-    <div class="instructions">
-<?php if ($cfg && $cfg->getClientRegistrationMode() !== 'disabled') { ?>
-        <?php echo __('Have an account with us?'); ?>
-        <?php
-        // Find OAuth2 plugin instance dynamically
-        $login_url = ROOT_PATH . "login.php";
-        if (class_exists('OAuth2Plugin')) {
-            foreach (PluginManager::allInstalled() as $path => $plugin) {
-                if ($plugin instanceof OAuth2Plugin && $plugin->isActive()) {
-                    // Get the first active instance of the plugin
-                    $instances = $plugin->getActiveInstances();
-                    if ($instances && $instances->count() > 0) {
-                        $instance = $instances->first();
-                        $login_url = ROOT_PATH . "login.php?do=ext&bk=oauth2.user.p" . $plugin->getId() . "i" . $instance->getId();
-                    }
-                    break;
-                }
-            }
-        }
-        ?>
-        <a href="<?php echo $login_url; ?>"><?php echo __('Sign In'); ?></a> <?php
+        <div  class="instructions">
+            <?php if ($cfg && $cfg->getClientRegistrationMode() !== 'disabled') { ?>
+                <?php echo __('Have an account with us?'); ?>
+                <a href="login.php"><?php echo __('Sign In'); ?></a> <?php
     if ($cfg->isClientRegistrationEnabled()) { ?>
 <?php echo sprintf(__('or %s register for an account %s to access all your tickets.'),
-    '<a href="' . $login_url . '">','</a>');
-    }
+    '<a href="account.php?do=create">','</a>');
+}
 }?>
     </div>
 </div>

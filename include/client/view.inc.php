@@ -29,11 +29,11 @@ if ($thisclient && $thisclient->isGuest()
     </div>
 
 <?php } ?>
-
-<table width="800" cellpadding="1" cellspacing="0" border="0" id="ticketInfo">
+<div id="ticketInfo-container" style="padding: 0 5rem 0 5rem;">
+<table width="70%" cellpadding="0" cellspacing="0" border="0" id="ticketInfo" style="border-collapse: separate; border-spacing: 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.05); background-color: #ffffff;">
     <tr>
         <td colspan="2" width="100%">
-            <h1>
+            <h1 style="color: black;">
                 <a href="tickets.php?id=<?php echo $ticket->getId(); ?>" title="<?php echo __('Reload'); ?>"><i class="refresh icon-refresh"></i></a>
                 <b>
                 <?php $subject_field = TicketForm::getInstance()->getField('subject');
@@ -41,63 +41,71 @@ if ($thisclient && $thisclient->isGuest()
                 </b>
                 <small>#<?php echo $ticket->getNumber(); ?></small>
 <div class="pull-right">
-      <a class="action-button" href="tickets.php?a=print&id=<?php
-          echo $ticket->getId(); ?>"><i class="icon-print"></i> <?php echo __('Print'); ?></a>
+  <a class="action-button" style="all: unset; display: inline-flex !important; align-items: center !important; gap: 4px !important; background-color: #197a56 !important; color: white !important; padding: 4px 10px !important; border-radius: 4px !important; font-size: 14px !important; font-weight: 500 !important; font-family: 'Segoe UI', sans-serif !important; cursor: pointer !important; text-decoration: none !important; line-height: 1.2 !important;" href="tickets.php?a=print&id=<?php echo $ticket->getId(); ?>">
+    <i class="icon-print"></i> <?php echo __('Print'); ?>
+  </a>
 
-<?php if ($ticket->hasClientEditableFields()
-        // Only ticket owners can edit the ticket details (and other forms)
-        && $thisclient->getId() == $ticket->getUserId()) { ?>
-                <a class="action-button" href="tickets.php?a=edit&id=<?php
-                     echo $ticket->getId(); ?>"><i class="icon-edit"></i> <?php echo __('Edit'); ?></a>
-<?php } ?>
+  <?php if ($ticket->hasClientEditableFields() && $thisclient->getId() == $ticket->getUserId()) { ?>
+    <a class="action-button" style="all: unset; display: inline-flex !important; align-items: center !important; gap: 4px !important; background-color: #197a56 !important; color: white !important; padding: 4px 10px !important; border-radius: 4px !important; font-size: 14px !important; font-weight: 500 !important; font-family: 'Segoe UI', sans-serif !important; cursor: pointer !important; text-decoration: none !important; line-height: 1.2 !important;" href="tickets.php?a=edit&id=<?php echo $ticket->getId(); ?>">
+      <i class="icon-edit"></i> <?php echo __('Edit'); ?>
+    </a>
+  <?php } ?>
 </div>
+
             </h1>
         </td>
     </tr>
     <tr>
-        <td width="50%">
-            <table class="infoTable" cellspacing="1" cellpadding="3" width="100%" border="0">
-                <thead>
-                    <tr><td class="headline" colspan="2">
+    <td width="50%" style="vertical-align: top; padding-right: 1rem;">
+        <table class="infoTable" cellspacing="0" cellpadding="8" width="100%" border="0"
+        style="border: 1px solid #ddd; border-radius: 6px; background-color: #f9f9f9; font-family: 'Segoe UI', sans-serif; font-size: 15px;">
+            <thead>
+                <tr>
+                    <td colspan="2" style="font-weight: bold; background: #f1f1f1; padding: 10px; border-bottom: 1px solid #ddd;">
                         <?php echo __('Basic Ticket Information'); ?>
-                    </td></tr>
-                </thead>
-                <tr>
-                    <th width="100"><?php echo __('Ticket Status');?>:</th>
-                    <td><?php echo ($S = $ticket->getStatus()) ? $S->getLocalName() : ''; ?></td>
+                    </td>
                 </tr>
+            </thead>
+            <tr>
+                <th style="text-align: left;">Ticket Status:</th>
+                <td><?php echo ($S = $ticket->getStatus()) ? $S->getLocalName() : ''; ?></td>
+            </tr>
+            <tr>
+                <th style="text-align: left;">Department:</th>
+                <td><?php echo Format::htmlchars($dept instanceof Dept ? $dept->getName() : ''); ?></td>
+            </tr>
+            <tr>
+                <th style="text-align: left;">Create Date:</th>
+                <td><?php echo Format::datetime($ticket->getCreateDate()); ?></td>
+            </tr>
+        </table>
+    </td>
+    <td width="50%" style="vertical-align: top;">
+        <table class="infoTable" cellspacing="0" cellpadding="8" width="100%" border="0"
+        style="border: 1px solid #ddd; border-radius: 6px; background-color: #f9f9f9; font-family: 'Segoe UI', sans-serif; font-size: 15px;">
+            <thead>
                 <tr>
-                    <th><?php echo __('Department');?>:</th>
-                    <td><?php echo Format::htmlchars($dept instanceof Dept ? $dept->getName() : ''); ?></td>
-                </tr>
-                <tr>
-                    <th><?php echo __('Create Date');?>:</th>
-                    <td><?php echo Format::datetime($ticket->getCreateDate()); ?></td>
-                </tr>
-           </table>
-       </td>
-       <td width="50%">
-           <table class="infoTable" cellspacing="1" cellpadding="3" width="100%" border="0">
-                <thead>
-                    <tr><td class="headline" colspan="2">
+                    <td colspan="2" style="font-weight: bold; background: #f1f1f1; padding: 10px; border-bottom: 1px solid #ddd;">
                         <?php echo __('User Information'); ?>
-                    </td></tr>
-                </thead>
-               <tr>
-                   <th width="100"><?php echo __('Name');?>:</th>
-                   <td><?php echo mb_convert_case(Format::htmlchars($ticket->getName()), MB_CASE_TITLE); ?></td>
-               </tr>
-               <tr>
-                   <th width="100"><?php echo __('Email');?>:</th>
-                   <td><?php echo Format::htmlchars($ticket->getEmail()); ?></td>
-               </tr>
-               <tr>
-                   <th><?php echo __('Phone');?>:</th>
-                   <td><?php echo $ticket->getPhoneNumber(); ?></td>
-               </tr>
-            </table>
-       </td>
-    </tr>
+                    </td>
+                </tr>
+            </thead>
+            <tr>
+                <th style="text-align: left;">Name:</th>
+                <td><?php echo mb_convert_case(Format::htmlchars($ticket->getName()), MB_CASE_TITLE); ?></td>
+            </tr>
+            <tr>
+                <th style="text-align: left;">Email:</th>
+                <td><?php echo Format::htmlchars($ticket->getEmail()); ?></td>
+            </tr>
+            <tr>
+                <th style="text-align: left;">Phone:</th>
+                <td><?php echo $ticket->getPhoneNumber(); ?></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
     <tr>
         <td colspan="2">
 <!-- Custom Data -->
@@ -191,9 +199,9 @@ echo $attrs; ?>><?php echo $draft ?: $info['message'];
     </div>
 <?php } ?>
     <p style="text-align:center">
-        <input type="submit" value="<?php echo __('Post Reply');?>">
-        <input type="reset" value="<?php echo __('Reset');?>">
-        <input type="button" value="<?php echo __('Cancel');?>" onClick="history.go(-1)">
+        <input type="submit" style="background-color: #00a651; color: white;" value="<?php echo __('Post Reply');?>">
+        <input type="reset" style="background-color: #ff4d4d; color: white" value="<?php echo __('Reset');?>">
+        <input type="button" style="background-color: #ffffff; border-color: #000000;" value="<?php echo __('Cancel');?>" onClick="history.go(-1)">
     </p>
 </form>
 <?php
@@ -213,3 +221,4 @@ foreach (AttachmentFile::objects()->filter(array(
 } ?>
 showImagesInline(<?php echo JsonDataEncoder::encode($urls); ?>);
 </script>
+</div>

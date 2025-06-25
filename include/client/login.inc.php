@@ -23,13 +23,36 @@ if ($content) {
     <div class="login-box">
     <strong><?php echo Format::htmlchars($errors['login']); ?></strong>
     <div>
-        <input id="username" placeholder="<?php echo __('Email or Username'); ?>" type="text" name="luser" size="30" value="<?php echo $email; ?>" class="nowarn">
+        <input id="username" 
+         style="  
+    font-family: Helvetica Neue, sans-serif;
+    color: #000;
+    padding: 0.5rem;
+    border-radius: 999px;
+   "
+        placeholder="<?php echo __('Email or Username'); ?>" type="text" name="luser" size="30" value="<?php echo $email; ?>" class="nowarn">
     </div>
     <div>
-        <input id="passwd" placeholder="<?php echo __('Password'); ?>" type="password" name="lpasswd" size="30" maxlength="128" value="<?php echo $passwd; ?>" class="nowarn"></td>
+        <input id="passwd" 
+         style="  
+    font-family: Helvetica Neue, sans-serif;
+    color: #000;
+    padding: 0.5rem;
+    border-radius: 999px;
+   "
+        placeholder="<?php echo __('Password'); ?>" type="password" name="lpasswd" size="30" maxlength="128" value="<?php echo $passwd; ?>" class="nowarn"></td>
     </div>
     <p>
-        <input class="btn" type="submit" value="<?php echo __('Sign In'); ?>">
+        <input class="btn" type="submit"
+         style="  
+    font-family: Helvetica Neue, sans-serif;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 999px;
+    background-color:#00a651;
+    width:10rem
+   "
+        value="<?php echo __('Sign In'); ?>">
 <?php if ($suggest_pwreset) { ?>
         <a style="padding-top:4px;display:inline-block;" href="pwreset.php"><?php echo __('Forgot My Password'); ?></a>
 <?php } ?>

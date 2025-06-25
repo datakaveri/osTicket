@@ -19,7 +19,7 @@ if ($cfg->isAvatarsEnabled() && $user)
 <?php echo $avatar; ?>
     </span>
 <?php } ?>
-    <div class="header">
+    <div class="header" style="color: white;">
         <div class="pull-right">
             <span style="vertical-align:middle;" class="textra">
         <?php if ($entry->flags & ThreadEntry::FLAG_EDITED) { ?>
@@ -37,7 +37,7 @@ if ($cfg->isAvatarsEnabled() && $user)
                     Format::datetime($entry->created)
                 )
             ); ?>
-            <span style="max-width:500px" class="faded title truncate"><?php
+            <span style="max-width:500px; color: white;" class="faded title truncate"><?php
                 echo $entry->title; ?>
             </span>
     </div>

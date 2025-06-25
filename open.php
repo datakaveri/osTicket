@@ -29,6 +29,8 @@ if ($_POST) {
             $errors['captcha']=sprintf('%s - %s', __('Invalid'), __('Please try again!'));
     }
 
+    $vars['phone'] = $_POST['phone'];
+
     $tform = TicketForm::objects()->one()->getForm($vars);
     $messageField = $tform->getField('message');
     $attachments = $messageField->getWidget()->getAttachments();

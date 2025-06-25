@@ -3,7 +3,7 @@
 'Use the forms below to update the information we have on file for your account'
 ); ?>
 </p>
-<form action="profile.php" method="post">
+<form action="profile.php" method="post" style="padding-bottom: 1rem;">
   <?php csrf_token(); ?>
 <table width="800" class="padded">
 <?php
@@ -90,7 +90,7 @@ $selected = ($info['lang'] == $l['code']) ? 'selected="selected"' : ''; ?>
 <?php } ?>
 <?php } ?>
 </table>
-<hr>
+
 <p style="text-align: center;">
     <input type="submit" value="<?php echo __('Update'); ?>"/>
     <input type="reset" value="<?php echo __('Reset'); ?>"/>

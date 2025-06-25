@@ -2532,7 +2532,7 @@ class CreationEvent extends ThreadEvent {
     static $state = 'created';
 
     function getDescription($mode=self::MODE_STAFF) {
-        return $this->template(__('Created by <b>{somebody}</b> {timestamp}'), $mode);
+        return $this->template(__('Created by <b style="color: #000;">{somebody}</b> {timestamp}'), $mode);
     }
 }
 
@@ -2580,7 +2580,7 @@ class EditEvent extends ThreadEvent {
         case isset($data['source']):
         case isset($data['user_id']):
         case isset($data['duedate']):
-            $base = __('Updated by <b>{somebody}</b> {timestamp} — %s');
+            $base = __('Updated by <b style="color: #000;">{somebody}</b> {timestamp} — %s');
             foreach (array(
                 'topic_id' => array(__('Help Topic'), array('Topic', 'getTopicName')),
                 'sla_id' => array(__('SLA'), array('SLA', 'getSLAName')),

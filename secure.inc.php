@@ -23,26 +23,7 @@ if(!function_exists('clientLoginPage')) {
         global $ost, $cfg, $nav;
         $_SESSION['_client']['auth']['dest'] =
             '/' . ltrim($_SERVER['REQUEST_URI'], '/');
-            
-        // Find OAuth2 plugin instance dynamically
-        $login_url = ROOT_PATH . "login.php";
-        
-        // Only try to find OAuth2 plugin if the class exists
-        if (class_exists('OAuth2Plugin')) {
-            foreach (PluginManager::allInstalled() as $path => $plugin) {
-                if ($plugin instanceof OAuth2Plugin && $plugin->isActive()) {
-                    // Get the first active instance of the plugin
-                    $instances = $plugin->getActiveInstances();
-                    if ($instances && $instances->count() > 0) {
-                        $instance = $instances->first();
-                        $login_url = ROOT_PATH . "login.php?do=ext&bk=oauth2.user.p" . $plugin->getId() . "i" . $instance->getId();
-                    }
-                    break;
-                }
-            }
-        }
-        
-        Http::redirect($login_url);
+        Http::redirect(ROOT_PATH . "login.php?do=ext&bk=oauth2.user.p1i1");
         exit;
     }
 }
