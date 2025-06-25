@@ -1,6 +1,7 @@
 html {
   font-size: 100%;
   /* overflow-y: scroll; */
+  /* overflow-y: scroll; */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -318,7 +319,7 @@ h2,
 
 #gradient-green-title {
   font-family: Arial, sans-serif;
-  font-size: 1.4rem;
+  font-size: 2rem !important;
   font-weight: bold;
   background: linear-gradient(to right, #05ac54, #015b2d);
   -webkit-background-clip: text !important;
@@ -360,8 +361,10 @@ body {
   /* background: url("../images/tgdex_bg.png") top left repeat-x; */
 }
 
+
 #header {
   position: relative;
+  /* height: 71px; */
   /* height: 71px; */
   padding: 0 20px;
   top: 0;
@@ -481,7 +484,7 @@ body {
 } */
 #content {
   /* padding: 20px 0; */
-  margin: 0 20px;
+  margin: 0 10px;
   height: auto !important;
   height: 350px;
   min-height: 350px;
@@ -1342,11 +1345,11 @@ img.avatar {
 .thread-body > p {
   font-size: large !important;
   line-height: 1.6rem !important;
-  font-family: "Avenir" !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
 }
 .thread-body > h1 {
   font-family: "sans-serif" !important;
-  font-size: 1.4rem;
+  font-size: 2rem;
   font-weight: bold;
   background: linear-gradient(to right, #05ac54, #015b2d);
   -webkit-background-clip: text !important;
@@ -1451,7 +1454,6 @@ img.avatar {
   border-top: 2px solid white;
 }
 #ticketThread::before {
-  border-left: 2px dotted #ddd;
   border-bottom-color: rgba(0, 0, 0, 0.1);
   position: absolute;
   margin-left: 74px;

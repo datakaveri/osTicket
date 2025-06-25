@@ -19,7 +19,6 @@
         
         .main-content {
             min-height: 50vh;
-            background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -158,7 +157,7 @@
     </div>
 
 </footer>
-    </footer>
+    
 </body>
 
 </html>

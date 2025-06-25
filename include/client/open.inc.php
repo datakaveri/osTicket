@@ -39,7 +39,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
     <?php csrf_token(); ?>
     <input type="hidden" name="a" value="open">
 
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; font-family:Avenir">
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
         <div style="flex: 1; min-width: 300px; display:flex; flex-direction:column; gap:1rem">
             <!-- Name -->
             <div style="margin-bottom: 1rem; width: 100%;">
@@ -78,8 +78,8 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
                           $(document.head).append(json.media);
                         }
                       });"
-                    style="width: 100%; padding: 10px; border-radius: 999px; border: 1px solid #ccc;">
-                    <option value="" selected>&mdash; <?php echo __('Select a Help Topic'); ?> &mdash;</option>
+                    style="width: 100%; padding: 10px; border-radius: 999px; border: 1px solid #ccc; background: white;">
+                    <option value="" selected><?php echo __('Select a Help Topic'); ?></option>
                     <?php
                     if ($topics = Topic::getPublicHelpTopics()) {
                         foreach ($topics as $id => $name) {
