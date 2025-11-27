@@ -231,7 +231,7 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                         <span class="valign-helper"></span>
                         <img src="../assets/default/images/forest-logo.svg" class="tg_govt_header">
                     </a> -->
-                    <a class="pull-left" id="logo" href="https://dev.catalogue.forest.iudx.io/" title="<?php echo __('Support Center'); ?>">
+                    <a class="pull-left" id="logo" href="https://forest-stack.digivan.forest.rajasthan.gov.in/" title="<?php echo __('Support Center'); ?>">
                             <span class="valign-helper"></span>
                             <img src="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" class="tg_govt_header">
                         </a>

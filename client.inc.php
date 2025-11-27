@@ -66,6 +66,48 @@ if($thisclient && $thisclient->getId() && $thisclient->isValid()){
     $thisclient = null;
 }
 
+// --- SSO Session Check for OAuth2/Keycloak ---
+if (class_exists('OAuth2Plugin') && isset($_SESSION['oauth2_access_token']) && $thisclient && $thisclient->getId() && $thisclient->isValid()) {
+    $accessToken = $_SESSION['oauth2_access_token'];
+    $keycloakUserinfoUrl = null;
+    // Try to get OAuth2 config (for Keycloak)
+    foreach (PluginManager::allInstalled() as $path => $plugin) {
+        if ($plugin instanceof OAuth2Plugin && $plugin->isActive()) {
+            $instances = $plugin->getActiveInstances();
+            if ($instances && $instances->count() > 0) {
+                $instance = $instances->first();
+                $config = $instance->getConfig();
+                $authUrl = $config->getAuthorizationUrl();
+                // Parse Keycloak base and realm from the auth URL
+                if (preg_match('#^(https://[^/]+/auth/realms/[^/]+)/protocol/openid-connect/auth#', $authUrl, $matches)) {
+                    $base = $matches[1];
+                    $keycloakUserinfoUrl = $base . '/protocol/openid-connect/userinfo';
+                }
+            }
+            break;
+        }
+    }
+    if ($keycloakUserinfoUrl) {
+        $ch = curl_init($keycloakUserinfoUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $accessToken,
+            'Accept: application/json',
+        ]);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if ($httpCode !== 200) {
+            // Token is invalid or expired, log out locally
+            if (isset($thisclient)) $thisclient->logOut();
+            osTicketSession::destroyCookie();
+            session_destroy();
+            Http::redirect('index.php');
+            exit;
+        }
+    }
+}
 /******* CSRF Protectin *************/
 // Enforce CSRF protection for POSTS
 if ($_POST  && !$ost->checkCSRFToken()) {

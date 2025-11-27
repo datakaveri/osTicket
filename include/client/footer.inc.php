@@ -75,13 +75,13 @@
                 <h3 style="color: #a3e635;font-size: 16px;font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.3px;font-family:'caladea';">Forest Stack</h3>
                 <ul style="list-style: none; padding: 0; margin: 0;">
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Home</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Home</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/about-us" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">About Forest Stack</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/about-us" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">About Forest Stack</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://helpdesk.tgdex.telangana.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Contact Us</a>
+                        <a href="https://helpdesk.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -91,22 +91,22 @@
                 <h3 style="color: #a3e635;font-size: 16px;font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.3px;font-family:'caladea';">Platform Features</h3>
                 <ul style="list-style: none; padding: 0; margin: 0;">
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/data-bank" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Data Banks</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/datasets" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Data Banks</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/ai-model" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">AI Models</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/ai-model" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">AI Models</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/potential-application" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Use Cases</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/usecases" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Use Cases</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/sandbox" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Sandbox IDE</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/sandbox" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Sandbox IDE</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/toolsets" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Toolsets</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/toolsets" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Toolsets</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/library" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Library</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/library" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Library</a>
                     </li>
                 </ul>
             </div>
@@ -116,16 +116,16 @@
                 <h3 style="color: #a3e635;font-size: 16px;font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.3px;font-family:'caladea';">Help & Support</h3>
                 <ul style="list-style: none; padding: 0; margin: 0;">
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://helpdesk.tgdex.telangana.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Help & Support</a>
+                        <a href="https://helpdesk.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Help & Support</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/faq" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">FAQs</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/faq" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">FAQs</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.tgdex.telangana.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">User Manual</a>
+                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">User Manual</a>
                     </li>
                     <li style="margin-bottom: 0.75rem;">
-                        <a href="https://tgdex.telangana.gov.in/sitemap" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Sitemap</a>
+                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/sitemap" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#fff'">Sitemap</a>
                     </li>
                 </ul>
             </div>
@@ -201,9 +201,9 @@
                     </a>
                 </div>
                 <div class="bottom-links" style="display: flex; align-items: center; gap: 1rem;">
-                    <a href="https://tgdex.telangana.gov.in/privacy-policy" style="color: #374151; text-decoration: none; font-size: 14px; font-weight: 400;">Privacy Policy</a>
+                    <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/privacy-policy" style="color: #374151; text-decoration: none; font-size: 14px; font-weight: 400;">Privacy Policy</a>
                     <span style="color: #9ca3af;">|</span>
-                    <a href="https://tgdex.telangana.gov.in/terms-of-service" style="color: #374151; text-decoration: none; font-size: 14px; font-weight: 400;">Terms of Service</a>
+                    <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/terms-of-service" style="color: #374151; text-decoration: none; font-size: 14px; font-weight: 400;">Terms of Service</a>
                 </div>
             </div>
 

@@ -43,7 +43,8 @@ try {
                     // Parse Keycloak base and realm from the auth URL
                     if (preg_match('#^(https://[^/]+/auth/realms/[^/]+)/protocol/openid-connect/auth#', $authUrl, $matches)) {
                         $base = $matches[1];
-                        $keycloakLogoutUrl = $base . '/protocol/openid-connect/logout?redirect_uri=' . urlencode($redirectUri ?: osTicket::get_base_url());
+                        // $keycloakLogoutUrl = $base . '/protocol/openid-connect/logout?redirect_uri=' . urlencode($redirectUri ?: osTicket::get_base_url());
+                        $keycloakLogoutUrl = $base . '/protocol/openid-connect/logout';
                     }
                 }
                 break;
