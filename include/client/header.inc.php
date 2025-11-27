@@ -169,41 +169,47 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                             ?>
                             <a href="<?php echo ROOT_PATH; ?>index.php"
                                 class="<?php echo activeTabClass('index.php'); ?>">
-                                <?php echo __('SUPPORT CENTER HOME'); ?>
+                                <?php echo __('Home'); ?>
                             </a>
 
                             <a href="<?php echo ROOT_PATH; ?>open.php"
                                 class="<?php echo activeTabClass('open.php'); ?>">
-                                <?php echo __('OPEN A NEW TICKET'); ?>
+                                <?php echo __('New Ticket'); ?>
+                            </a>
+
+                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/datasets" target="_blank">
+                                <?php echo __('Datasets'); ?>
+                            </a>
+
+                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/models" target="_blank">
+                                <?php echo __('Models'); ?>
+                            </a>
+
+                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/usecases" target="_blank">
+                                <?php echo __('Use Cases'); ?>
+                            </a>
+
+                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/innovations" target="_blank">
+                                <?php echo __('Challenges'); ?>
+                            </a>
+
+                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/about-us" target="_blank">
+                                <?php echo __('About Us'); ?>
                             </a>
 
                             <?php
                             if ($thisclient && is_object($thisclient) && $thisclient->isValid() && !$thisclient->isGuest()) {
-                                echo '<a href="' . ROOT_PATH . 'tickets.php" class="ticket_link_header ' . activeTabClass('tickets.php') . '">' .
-                                    sprintf(__('TICKETS <b>(%d)</b>'), $thisclient->getNumTickets()) .
-                                    '</a>';
-
                                 echo '<a class="signout_btn_header" href="' . $signout_url . '">' . __('SIGN OUT') . '</a>';
 
                                 $initials = strtoupper(substr($thisclient->getName(), 0, 1) .
                                     (strpos($thisclient->getName(), ' ') !== false ? substr($thisclient->getName(), strpos($thisclient->getName(), ' ') + 1, 1) : ''));
 
                                 echo '<a class="user_avatar_header">' . Format::htmlchars($initials) . '</a>';
-                            } elseif ($nav) {
+                            } else {
                                 if ($cfg->getClientRegistrationMode() != 'disabled') {
                             ?>
-                                    <a style="color: #4d7c0f;" href="<?php echo $signin_url; ?>" class="signin_btn_header"><?php echo __('SIGN IN'); ?></a>
+                                    <a style="background: #65a30d; color: #fff; padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; transition: all 0.3s;" href="<?php echo $signin_url; ?>" class="signin_btn_header" onmouseover="this.style.background='#4d7c0a'" onmouseout="this.style.background='#65a30d'"><?php echo __('Sign In'); ?></a>
                                 <?php
-                                }
-
-                                if ($thisclient && $thisclient->isValid() && $thisclient->isGuest()) {
-                                    echo '<a href="' . $signout_url . '">' . __('SIGN OUT') . '</a>';
-                                } elseif ($cfg->getClientRegistrationMode() == 'public') {
-                                ?>
-                                    <span class="guest_user_header">
-                                        <?php echo __('Guest User'); ?>
-                                    </span>
-                            <?php
                                 }
                             }
                             ?>

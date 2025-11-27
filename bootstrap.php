@@ -171,8 +171,8 @@ class Bootstrap {
     static function loadConfig() {
         #load config info
         $configfile='';
-        if(file_exists('/var/www/html/upload/ost-config.php'))
-            $configfile='/var/www/html/upload/ost-config.php';
+        if(file_exists(INCLUDE_DIR.'ost-config.php')) //NEW config file v 1.6 stable ++
+            $configfile=INCLUDE_DIR.'ost-config.php';
         elseif(file_exists(ROOT_DIR.'ostconfig.php')) //Old installs prior to v 1.6 RC5
             $configfile=ROOT_DIR.'ostconfig.php';
         elseif(file_exists(INCLUDE_DIR.'settings.php')) { //OLD config file.. v 1.6 RC5

@@ -11,15 +11,20 @@ notes: |
 
 name: Thank You
 body: |
-    <div>%{ticket.name},
-    <br>
-    <br>
-    Thank you for contacting us.
-    <br>
-    <br>
-    A support ticket request has been created and a representative will be
-    getting back to you shortly if necessary.</p>
-    <br>
-    <br>
-    Support Team
+    <div class="success-message-container">
+        <div class="success-icon-wrapper">
+            <svg class="success-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="#65a30d" opacity="0.1"/>
+                <path d="M9 12l2 2 4-4" stroke="#65a30d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="10" stroke="#65a30d" stroke-width="2"/>
+            </svg>
+        </div>
+        <h1 class="success-title">Ticket Created Successfully!</h1>
+        <p class="success-greeting">Hi %{ticket.name},</p>
+        <p class="success-message">Thank you for contacting us. Your support ticket request has been created and a representative will be getting back to you shortly if necessary.</p>
+        <div class="success-info-box">
+            <p class="success-info-label">Your Ticket Number:</p>
+            <p class="success-ticket-number">#%{ticket.number}</p>
+        </div>
+        <p class="success-footer">Support Team</p>
     </div>

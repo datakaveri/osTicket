@@ -211,12 +211,24 @@ require(CLIENTINC_DIR . 'header.inc.php');
                     </span>
                 </div> -->
                 <!-- <img src="<?php echo ROOT_PATH; ?>assets/default/images/background.png" alt="background" style="position:absolute;width:auto;height:auto;z-index:-1;"> -->
-                    <h1 style="margin-bottom:0 !important;font-weight: 700;color: #1a2e05;letter-spacing:0.32px;">Powering Forest &</h1>
-                    <h1 style="margin-top:0;margin-bottom:0 !important;font-weight: 700;color: #1a2e05;letter-spacing:0.32px;">Wildlife Conservation</h1>
-                    <h1 style="color: #65a30d;margin-top:0 !important;font-weight:700;" class="agriculture-text">with Smart, Secure Data</h1>
-                    <p style="font-weight: 500;"class="description">
-                        Forest Stack is a secure data exchange network by the Rajasthan Forest Department for wildlife researchers, innovators, and conservationists.
+                    <h1 style="margin-bottom:16px !important;font-weight: 700;color: #1a2e05;letter-spacing:0.32px;">Welcome to the Support Center</h1>
+                    <p style="font-weight: 500; margin-bottom: 24px;" class="description">
+                        In order to streamline support requests and better serve you, we utilize a support ticket system. Every support request is assigned a unique ticket number which you can use to track the progress and responses online. For your reference we provide complete archives and history of all your support requests. A valid email address is required to submit a ticket.
                     </p>
+                    
+                    <!-- Action Buttons -->
+                    <div style="display: flex; gap: 16px; margin-top: 24px;">
+                        <a href="<?php echo ROOT_PATH; ?>open.php" style="display: inline-block; padding: 12px 32px; background-color: #65a30d; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(101, 163, 13, 0.2);" 
+                           onmouseover="this.style.backgroundColor='#4d7a0a'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(101, 163, 13, 0.3)';" 
+                           onmouseout="this.style.backgroundColor='#65a30d'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(101, 163, 13, 0.2)';">
+                            Open a New Ticket
+                        </a>
+                        <a href="<?php echo ROOT_PATH; ?>tickets.php" style="display: inline-block; padding: 12px 32px; background-color: white; color: #65a30d; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px; border: 2px solid #65a30d; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" 
+                           onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.15)';" 
+                           onmouseout="this.style.backgroundColor='white'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
+                            Check Ticket Status
+                        </a>
+                    </div>
 
                 </div>
                 <div class="banner-content-right-section">
@@ -225,71 +237,6 @@ require(CLIENTINC_DIR . 'header.inc.php');
 
             </div>
         </div>
-
-    </div>
-</div>
-
-
-
-
-<div id="landing_page">
-    <?php include CLIENTINC_DIR . 'templates/sidebar.tmpl.php'; ?>
-    <div class="main-content_index">
-
-        <?php
-        if ($cfg && $cfg->isKnowledgebaseEnabled()) { ?>
-            <div class="search-form">
-                <form method="get" action="kb/faq.php">
-                    <input type="hidden" name="a" value="search" />
-                    <input type="text" name="q" class="search" placeholder="<?php echo __('Search our knowledge base'); ?>" />
-                    <button type="submit" class="green button"><?php echo __('Search'); ?></button>
-                </form>
-            </div>
-        <?php } ?>
-        <div class="thread-body">
-            <?php
-            if ($cfg && ($page = $cfg->getLandingPage()))
-                echo $page->getBodyWithImages();
-            else
-                echo  '<h1 >' . __('Welcome to the Support Center') . '</h1>';
-            ?>
-        </div>
-    </div>
-    <!-- <div class="clear"></div> -->
-
-    <div style="display:none">
-        <?php
-        if ($cfg && $cfg->isKnowledgebaseEnabled()) {
-            //FIXME: provide ability to feature or select random FAQs ??
-        ?>
-            <br /><br />
-            <?php
-            $cats = Category::getFeatured();
-            if ($cats->all()) { ?>
-                <h1><?php echo __('Featured Knowledge Base Articles'); ?></h1>
-            <?php
-            }
-
-            foreach ($cats as $C) { ?>
-                <div class="featured-category front-page">
-                    <i class="icon-folder-open icon-2x"></i>
-                    <div class="category-name">
-                        <?php echo $C->getName(); ?>
-                    </div>
-                    <?php foreach ($C->getTopArticles() as $F) { ?>
-                        <div class="article-headline">
-                            <div class="article-title"><a href="<?php echo ROOT_PATH;
-                                                                ?>kb/faq.php?id=<?php echo $F->getId(); ?>"><?php
-                                                                                                            echo $F->getQuestion(); ?></a></div>
-                            <div class="article-teaser"><?php echo $F->getTeaser(); ?></div>
-                        </div>
-                    <?php } ?>
-                </div>
-        <?php
-            }
-        }
-
-        ?>
 
     </div>
 </div>

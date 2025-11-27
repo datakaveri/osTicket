@@ -8,7 +8,7 @@ if ($activeMenu>0 && !isset($subnav[$activeMenu-1]))
 
 $info = $nav->getSubNavInfo();
 ?>
-<nav class="<?php echo @$info['class']; ?>" id="<?php echo $info['id']; ?>">
+<nav class="<?php echo @$info['class']; ?>" id="<?php echo $info['id']; ?>" style="display: none !important;">
   <ul id="sub_nav">
 <?php
     foreach($subnav as $k=> $item) {

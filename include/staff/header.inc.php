@@ -78,45 +78,59 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                     echo sprintf('<div id="notice_bar">%s</div>', $ost->getNotice());
                 ?>
                 <div id="header">
-                    <div style="display: flex; align-items:center;flex-direction:row-reverse">
+                    <div style="display: flex; align-items:center; justify-content: space-between; width: 100%;">
+                        <div style="display: flex; align-items: center; flex: 1;">
+                            <div class="logo_container_header">
+                                <a class="pull-left" id="logo" href="https://dev.catalogue.forest.iudx.io/" title="<?php echo __('Support Center'); ?>">
+                                    <span class="valign-helper"></span>
+                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" class="tg_govt_header">
+                                </a>
+                                <div class="logo_title">
+                                    <p class="logo_title_name">Forest Stack</p>
+                                    <p class="logo_title_department">Rajasthan</p>
+                                </div>
+                            </div>
+
+                            <!-- Client Navigation Menu -->
+                            <div class="staff-client-nav">
+                                <a href="<?php echo ROOT_PATH; ?>index.php" class="no-pjax">
+                                    <?php echo __('Home'); ?>
+                                </a>
+                                <a href="<?php echo ROOT_PATH; ?>open.php" class="no-pjax">
+                                    <?php echo __('New Ticket'); ?>
+                                </a>
+                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/datasets" target="_blank">
+                                    <?php echo __('Datasets'); ?>
+                                </a>
+                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/models" target="_blank">
+                                    <?php echo __('Models'); ?>
+                                </a>
+                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/usecases" target="_blank">
+                                    <?php echo __('Use Cases'); ?>
+                                </a>
+                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/innovations" target="_blank">
+                                    <?php echo __('Challenges'); ?>
+                                </a>
+                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/about-us" target="_blank">
+                                    <?php echo __('About Us'); ?>
+                                </a>
+                            </div>
+                        </div>
+
                         <div class="header_items" id="headerNav">
                             <p id="info" class="pull-right no-pjax">
-                                <!-- <?php $initials = strtoupper(substr($thisstaff->getName(), 0, 1) . (strpos($thisstaff->getName(), ' ') !== false ? substr($thisstaff->getName(), strpos($thisstaff->getName(), ' ') + 1, 1) : ''));
-                                        echo sprintf(__(' %s'), '<strong>' . $initials . '</strong>'); ?> -->
                                 <?php
                                 if ($thisstaff->isAdmin() && !defined('ADMINPAGE')) { ?>
-                                    <a href="<?php echo ROOT_PATH ?>scp/admin.php" class="no-pjax"><?php echo __('ADMIN PANEL'); ?></a>
+                                    <a href="<?php echo ROOT_PATH ?>scp/admin.php" class="no-pjax"><?php echo __('Admin Panel'); ?></a>
                                 <?php } else { ?>
-                                    <a href="<?php echo ROOT_PATH ?>scp/index.php" class="no-pjax"><?php echo __('AGENT PANEL'); ?></a>
+                                    <a href="<?php echo ROOT_PATH ?>scp/index.php" class="no-pjax"><?php echo __('Agent Panel'); ?></a>
                                 <?php } ?>
-                                <a href="<?php echo ROOT_PATH ?>scp/profile.php"><?php echo __('PROFILE'); ?></a>
-                                <a href="<?php echo ROOT_PATH ?>scp/logout.php?auth=<?php echo $ost->getLinkToken(); ?>" class="no-pjax signout_btn_header"><?php echo __('LOG OUT'); ?></a>
+                                <a href="<?php echo ROOT_PATH ?>scp/profile.php"><?php echo __('Profile'); ?></a>
+                                <a href="<?php echo ROOT_PATH ?>scp/logout.php?auth=<?php echo $ost->getLinkToken(); ?>" class="no-pjax signout_btn_header"><?php echo __('Log Out'); ?></a>
                                 <?php $initials = strtoupper(substr($thisstaff->getName(), 0, 1) . (strpos($thisstaff->getName(), ' ') !== false ? substr($thisstaff->getName(), strpos($thisstaff->getName(), ' ') + 1, 1) : ''));
                                 echo '<a class="user_avatar_header">' . Format::htmlchars($initials) . '</a>'; ?>
                             </p>
                         </div>
-                    </div>
-                    <div class="logo_container_header">
-                        <a class="pull-left" id="logo" href="https://dev.catalogue.forest.iudx.io/" title="<?php echo __('Support Center'); ?>">
-                            <span class="valign-helper"></span>
-                            <img src="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" class="tg_govt_header">
-                        </a>
-                        <div class="logo_title">
-                            <p class="logo_title_name">Forest Stack</p>
-                            <p class="logo_title_department">Rajasthan</p>
-                        </div>
-                        <!-- <span class="tg_short_logo_header">
-                            <a href="<?php echo ROOT_PATH ?>scp/index.php" class="no-pjax" id="logo">
-                                <span class="valign-helper"></span>
-                                <img style="width:auto;height:2rem;" src="<?php echo ROOT_PATH ?>logo.php?<?php echo strtotime($cfg->lastModified('staff_logo_id')); ?>" alt="osTicket &mdash; <?php echo __('Customer Support System'); ?>" />
-                            </a>
-                        </span>
-                        <span class="tg_big_logo_header">
-                            <a href="<?php echo ROOT_PATH ?>scp/index.php" class="no-pjax" id="logo">
-                                <span class="valign-helper"></span>
-                                <img style="width:auto;height:2rem;" src="<?php echo ROOT_PATH ?>logo.php?<?php echo strtotime($cfg->lastModified('staff_logo_id')); ?>" alt="osTicket &mdash; <?php echo __('Customer Support System'); ?>" />
-                            </a>
-                        </span> -->
                     </div>
                 </div>
                 <div id="pjax-container" class="<?php if ($_POST) echo 'no-pjax'; ?>">

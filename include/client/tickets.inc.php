@@ -159,143 +159,517 @@ $tickets->values(
 );
 
 ?>
-<div class="search well" style="padding: 20px;margin: 12px 0px;">
-    <div class="flush-left">
-        <form action="tickets.php" method="get" id="ticketSearchForm">
-            <div id="inputGroup">
-                <input type="hidden" name="a" value="search">
-                <input type="text" name="keywords" placeholder="<?php echo __('Search tickets'); ?>" value="<?php echo Format::htmlchars($settings['keywords']); ?>">
-                <input style="margin-right:8px;" type="submit" value="<?php echo __('Search'); ?>">
-            </div>
-            <div class="pull-right">
-                <span style="margin-bottom: 4px"><?php echo __('Help Topic'); ?>:</span>
-                <select name="topic_id" class="nowarn" onchange="javascript: this.form.submit(); ">
-                    <option value=""><?php echo __('All Help Topics'); ?></option>
-                    <?php
-                    foreach (Topic::getHelpTopics(true) as $id => $name) {
-                        $count = $thisclient->getNumTopicTickets($id, $org_tickets);
-                        if ($count == 0) continue;
-                    ?>
-                        <option value="<?php echo $id; ?>" <?php if ($settings['topic_id'] == $id) echo 'selected="selected"'; ?>>
-                            <?php echo sprintf('%s (%d)', Format::htmlchars($name), $thisclient->getNumTopicTickets($id)); ?>
-                        </option>
-                    <?php } ?>
-                </select>
-            </div>
-        </form>
-    </div>
-    <?php if ($settings['keywords'] || $settings['topic_id'] || $_REQUEST['sort']) { ?>
-        <div style="">
-            <strong>
-                <a href="?clear" class="clear-filters">
-                    <i class="icon-remove-circle"></i> <?php echo __('Clear all filters and sort'); ?>
-                </a>
-            </strong>
-        </div>
-    <?php } ?>
-</div>
+<style>
+.tickets-page-container {
+    width: 100%;
+    padding: 2rem 4rem;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 60vh;
+    margin-bottom: 3rem;
+}
 
+.tickets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
 
-<h1 style="padding:10px 3rem;">
-    <a href="<?php echo Http::refresh_url(); ?>" style="font-family: caladea;font-size: 32px;"><i class="refresh icon-refresh"></i>
-        <?php echo __('Tickets'); ?>
-    </a>
+.tickets-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a2e05;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
 
-    <div class="pull-right states">
-        <small>
+.tickets-title .refresh-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.tickets-title .refresh-icon:hover {
+    transform: rotate(180deg);
+}
+
+.tickets-status-tabs {
+    display: flex;
+    gap: 0.5rem;
+    background: #f3f4f6;
+    padding: 0.375rem;
+    border-radius: 10px;
+}
+
+.status-tab {
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.status-tab:hover {
+    background: #e5e7eb;
+    color: #1a2e05;
+}
+
+.status-tab.active {
+    background: #65a30d;
+    color: #fff;
+}
+
+.search-filter-section {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 2rem;
+}
+
+.search-filter-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-input-group {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-input-group input[type="text"] {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.search-input-group input[type="text"]:focus {
+    outline: none;
+    border-color: #65a30d;
+    box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.1);
+}
+
+.search-btn {
+    background: #65a30d;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-btn:hover {
+    background: #4d7c0a;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a2e05;
+}
+
+.filter-select {
+    padding: 10px 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fff;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #65a30d;
+}
+
+.clear-filters-link {
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.clear-filters-link:hover {
+    text-decoration: underline;
+}
+
+.tickets-table-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.tickets-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tickets-table thead {
+    background: #f9fafb;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.tickets-table th {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a2e05;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tickets-table th a {
+    color: #1a2e05;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tickets-table th a:hover {
+    color: #65a30d;
+}
+
+.tickets-table tbody tr {
+    border-bottom: 1px solid #f3f4f6;
+    transition: all 0.2s;
+}
+
+.tickets-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.tickets-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tickets-table td {
+    padding: 1.25rem 1.5rem;
+    font-size: 15px;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.ticket-number-link {
+    color: #65a30d;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+}
+
+.ticket-number-link:hover {
+    text-decoration: underline;
+}
+
+.ticket-subject-link {
+    color: #1a2e05;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 320px;
+}
+
+.ticket-subject-link:hover {
+    color: #65a30d;
+}
+
+.ticket-status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ticket-status-open {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.ticket-status-closed {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #9ca3af;
+}
+
+.empty-state svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.pagination-wrapper a {
+    color: #65a30d;
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.25rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.pagination-wrapper a:hover {
+    background: #f0fdf4;
+}
+
+@media (max-width: 768px) {
+    .tickets-page-container {
+        padding: 1.5rem;
+    }
+    
+    .tickets-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .search-filter-row {
+        flex-direction: column;
+    }
+    
+    .search-input-group {
+        width: 100%;
+    }
+    
+    .tickets-table th,
+    .tickets-table td {
+        padding: 0.75rem;
+        font-size: 13px;
+    }
+}
+</style>
+
+<div class="tickets-page-container">
+    <div class="tickets-header">
+        <h1 class="tickets-title">
+            <a href="<?php echo Http::refresh_url(); ?>" style="color: #1a2e05; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+                <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0113.66-5.66M20 14a8 8 0 01-13.66 5.66" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <?php echo __('Tickets'); ?>
+            </a>
+        </h1>
+
+        <div class="tickets-status-tabs">
             <?php if ($openTickets) { ?>
-                <i class="icon-file-alt"></i>
-                <a class="state <?php if ($status == 'open') echo 'active'; ?>"
-                    href="?<?php echo Http::build_query(array('a' => 'search', 'status' => 'open')); ?>">
+                <a class="status-tab <?php if ($status == 'open') echo 'active'; ?>"
+                   href="?<?php echo Http::build_query(array('a' => 'search', 'status' => 'open')); ?>">
                     <?php echo __('Open');
                     if ($openTickets > 0) echo sprintf(' (%d)', $openTickets); ?>
                 </a>
-                <?php if ($closedTickets) { ?>
-                    &nbsp;
-                    <span style="color:lightgray">|</span>
-                <?php }
-            }
+            <?php }
             if ($closedTickets) { ?>
-                &nbsp;
-                <i class="icon-file-text"></i>
-                <a class="state <?php if ($status == 'closed') echo 'active'; ?>"
-                    href="?<?php echo Http::build_query(array('a' => 'search', 'status' => 'closed')); ?>">
+                <a class="status-tab <?php if ($status == 'closed') echo 'active'; ?>"
+                   href="?<?php echo Http::build_query(array('a' => 'search', 'status' => 'closed')); ?>">
                     <?php echo __('Closed');
                     if ($closedTickets > 0) echo sprintf(' (%d)', $closedTickets); ?>
                 </a>
             <?php } ?>
-        </small>
+        </div>
     </div>
-</h1>
-<div class="table-container">
 
+    <div class="search-filter-section">
+        <form action="tickets.php" method="get" id="ticketSearchForm">
+            <input type="hidden" name="a" value="search">
+            <div class="search-filter-row">
+                <div class="search-input-group">
+                    <input type="text" 
+                           name="keywords" 
+                           placeholder="<?php echo __('Search tickets by number or subject...'); ?>" 
+                           value="<?php echo Format::htmlchars($settings['keywords']); ?>">
+                    <button type="submit" class="search-btn"><?php echo __('Search'); ?></button>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label"><?php echo __('Help Topic'); ?>:</label>
+                    <select name="topic_id" class="filter-select" onchange="this.form.submit();">
+                        <option value=""><?php echo __('All Topics'); ?></option>
+                        <?php
+                        foreach (Topic::getHelpTopics(true) as $id => $name) {
+                            $count = $thisclient->getNumTopicTickets($id, $org_tickets);
+                            if ($count == 0) continue;
+                        ?>
+                            <option value="<?php echo $id; ?>" <?php if ($settings['topic_id'] == $id) echo 'selected="selected"'; ?>>
+                                <?php echo sprintf('%s (%d)', Format::htmlchars($name), $count); ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+            
+            <?php if ($settings['keywords'] || $settings['topic_id'] || $_REQUEST['sort']) { ?>
+                <a href="?clear" class="clear-filters-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <?php echo __('Clear all filters and sort'); ?>
+                </a>
+            <?php } ?>
+        </form>
+    </div>
 
-    <table style="font-family: 'DM Sans', sans-serif;" id="ticketTable" width="100%" border="0" cellspacing="0" cellpadding="0" style="color: #000">
-        <thead>
-            <tr>
-                <th nowrap>
-                    <a href="tickets.php?sort=ID&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Ticket ID')); ?>"><?php echo __('Ticket'); ?> <i class="icon-sort"></i></a>
-                </th>
-                <th width="160">
-                    <a href="tickets.php?sort=date&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Date')); ?>"><?php echo __('Create Date'); ?> <i class="icon-sort"></i></a>
-                </th>
-                <th width="100">
-                    <a href="tickets.php?sort=status&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Status')); ?>"><?php echo __('Status'); ?> <i class="icon-sort"></i></a>
-                </th>
-                <th width="320">
-                    <a href="tickets.php?sort=subject&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Subject')); ?>"><?php echo __('Subject'); ?> <i class="icon-sort"></i></a>
-                </th>
-                <th width="160">
-                    <a href="tickets.php?sort=dept&order=<?php echo $negorder; ?><?php echo $qstr; ?>" title="<?php echo sprintf('%s %s', __('Sort By'), __('Department')); ?>"><?php echo __('Department'); ?> <i class="icon-sort"></i></a>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $subject_field = TicketForm::objects()->one()->getField('subject');
-            $defaultDept = Dept::getDefaultDeptName();
-            if ($tickets->exists(true)) {
-                foreach ($tickets as $T) {
-                    $dept = $T['dept__ispublic']
-                        ? Dept::getLocalById($T['dept_id'], 'name', $T['dept__name'])
-                        : $defaultDept;
-                    $subject = $subject_field->display(
-                        $subject_field->to_php($T['cdata__subject']) ?: $T['cdata__subject']
-                    );
-                    $status = TicketStatus::getLocalById($T['status_id'], 'value', $T['status__name']);
-                    $ticketNumber = $T['number'];
-                    if ($T['isanswered'] && !strcasecmp($T['status__state'], 'open')) {
-                        $subject = "<b>$subject</b>";
-                        $ticketNumber = "<b>$ticketNumber</b>";
+    <div class="tickets-table-card">
+        <table class="tickets-table">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="tickets.php?sort=ID&order=<?php echo $negorder; ?><?php echo $qstr; ?>">
+                            <?php echo __('Ticket'); ?>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="tickets.php?sort=date&order=<?php echo $negorder; ?><?php echo $qstr; ?>">
+                            <?php echo __('Created'); ?>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="tickets.php?sort=status&order=<?php echo $negorder; ?><?php echo $qstr; ?>">
+                            <?php echo __('Status'); ?>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="tickets.php?sort=subject&order=<?php echo $negorder; ?><?php echo $qstr; ?>">
+                            <?php echo __('Subject'); ?>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="tickets.php?sort=dept&order=<?php echo $negorder; ?><?php echo $qstr; ?>">
+                            <?php echo __('Department'); ?>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $subject_field = TicketForm::objects()->one()->getField('subject');
+                $defaultDept = Dept::getDefaultDeptName();
+                if ($tickets->exists(true)) {
+                    foreach ($tickets as $T) {
+                        $dept = $T['dept__ispublic']
+                            ? Dept::getLocalById($T['dept_id'], 'name', $T['dept__name'])
+                            : $defaultDept;
+                        $subject = $subject_field->display(
+                            $subject_field->to_php($T['cdata__subject']) ?: $T['cdata__subject']
+                        );
+                        $status = TicketStatus::getLocalById($T['status_id'], 'value', $T['status__name']);
+                        $ticketNumber = $T['number'];
+                        $isBold = $T['isanswered'] && !strcasecmp($T['status__state'], 'open');
+                        $thisclient->getId() != $T['user_id'] ? $isCollab = true : $isCollab = false;
+                ?>
+                        <tr>
+                            <td>
+                                <a class="ticket-number-link" 
+                                   href="tickets.php?id=<?php echo $T['ticket_id']; ?>"
+                                   style="<?php if ($isBold) echo 'font-weight: 700;'; ?>">
+                                    #<?php echo $ticketNumber; ?>
+                                </a>
+                            </td>
+                            <td><?php echo Format::date($T['created']); ?></td>
+                            <td>
+                                <span class="ticket-status-badge ticket-status-<?php echo strtolower($T['status__state']); ?>">
+                                    <?php echo $status; ?>
+                                </span>
+                            </td>
+                            <td>
+                                <a class="ticket-subject-link" 
+                                   href="tickets.php?id=<?php echo $T['ticket_id']; ?>"
+                                   style="<?php if ($isBold) echo 'font-weight: 700;'; ?>">
+                                    <?php if ($isCollab) echo '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="display:inline;margin-right:4px;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>'; ?>
+                                    <?php echo $subject; ?>
+                                </a>
+                            </td>
+                            <td><?php echo $dept; ?></td>
+                        </tr>
+                <?php
                     }
-                    $thisclient->getId() != $T['user_id'] ? $isCollab = true : $isCollab = false;
-            ?>
-                    <tr id="<?php echo $T['ticket_id']; ?>">
-                        <td data-label="Ticket" >
-                            <a style="color:black; text-decoration:underline" class="Icon <?php echo strtolower($T['source']); ?>Ticket" title="<?php echo $T['user__default_email__address']; ?>" href="tickets.php?id=<?php echo $T['ticket_id']; ?>"><?php echo $ticketNumber; ?></a>
+                } else {
+                ?>
+                    <tr>
+                        <td colspan="5" class="empty-state">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p><?php echo __('No tickets found'); ?></p>
                         </td>
-                        <td data-label="Create Date"><?php echo Format::date($T['created']); ?></td>
-                        <td data-label="Status"><?php echo $status; ?></td>
-                        <td data-label="Subject">
-                            <?php if ($isCollab) { ?>
-                                <div style="max-height: 1.2em; max-width: 320px;" class="link truncate" href="tickets.php?id=<?php echo $T['ticket_id']; ?>"><i class="icon-group"></i> <?php echo $subject; ?></div>
-                            <?php } else { ?>
-                                <div style="max-height: 1.2em; max-width: 320px;color:black; text-decoration:underline" class="link truncate" href="tickets.php?id=<?php echo $T['ticket_id']; ?>"><?php echo $subject; ?></div>
-                            <?php } ?>
-                        </td>
-                        <td data-label="Department"><span class="truncate"><?php echo $dept; ?></span></td>
                     </tr>
-            <?php
+                <?php
                 }
-            } else {
-                echo '<tr><td colspan="5" data-label="Message">' . __('Your query did not match any records') . '</td></tr>';
-            }
-            ?>
-        </tbody>
-    </table>
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <?php
+    if ($total) {
+        echo '<div class="pagination-wrapper">' . __('Page') . ': ' . $pageNav->getPageLinks() . '</div>';
+    }
+    ?>
 </div>
 <?php
-if ($total) {
-    echo '<div class="pagination-container">&nbsp;' . __('Page') . ':' . $pageNav->getPageLinks() . '&nbsp;</div>';
-}
-?>

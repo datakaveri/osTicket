@@ -71,7 +71,6 @@
 - id: 2
   type: T # notrans
   title: Ticket Details
-  instructions: Please Describe Your Issue
   notes: |
     This form will be attached to every ticket, regardless of its source.
     You can add any fields to this form and they will be available to all

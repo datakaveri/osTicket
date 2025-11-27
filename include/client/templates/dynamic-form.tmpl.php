@@ -9,8 +9,12 @@ $isCreate = (isset($options['mode']) && $options['mode'] == 'create');
 <tr>
     <td colspan="2">
         <div class="form-header">
-            <h3><?php echo Format::htmlchars($form->getTitle()); ?></h3>
-            <div><?php echo Format::display($form->getInstructions()); ?></div>
+            <h3 style="display: none;"><?php echo Format::htmlchars($form->getTitle()); ?></h3>
+            <?php 
+            $instructions = $form->getInstructions();
+            if ($instructions && trim($instructions) && $instructions !== 'Please Describe Your Issue'): ?>
+                <div><?php echo Format::display($instructions); ?></div>
+            <?php endif; ?>
         </div>
     </td>
 </tr>
