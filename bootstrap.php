@@ -387,6 +387,9 @@ require(INCLUDE_DIR.'class.validator.php');
 
 // Determine the path in the URI used as the base of the osTicket
 // installation
+// Allow ROOT_PATH override via environment variable (useful for reverse proxy / subpath deployments)
+if (!defined('ROOT_PATH') && ($envRoot = getenv('OSTICKET_ROOT_PATH')))
+    define('ROOT_PATH', $envRoot);
 if (!defined('ROOT_PATH') && ($rp = osTicket::get_root_path(dirname(__file__))))
     define('ROOT_PATH', rtrim($rp, '/').'/');
 
