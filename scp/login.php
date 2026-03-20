@@ -61,7 +61,7 @@ if ($_POST) {
     // requested for each attempt.
     if (!$ost->checkCSRFToken()) {
         $_SESSION['_staff']['auth']['msg'] = __('Valid CSRF Token Required');
-        $redirect(ROOT_PATH.'scp/login.php');
+        $redirect($_SERVER['REQUEST_URI']);
     }
 
 }
