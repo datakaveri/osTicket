@@ -1,0 +1,889 @@
+/**
+ * MahaAgX staff (SCP) theme overrides — color, inputs, typography.
+ * Load after scp.css
+ */
+:root {
+  --maha-staff-primary: #00b371;
+  --maha-staff-primary-dark: #009960;
+  --maha-staff-accent: #00d084;
+  --maha-staff-text: #1a2e05;
+  --maha-staff-text-body: #0f172a;
+  --maha-staff-muted: rgba(26, 46, 5, 0.7);
+  /* Form fields: mint wash (same family as active nav tabs), not blue-grey */
+  --maha-staff-input-bg: #ecfdf5;
+  --maha-staff-input-border: #a7f3d0;
+  --maha-staff-input-focus-bg: #ffffff;
+  --maha-staff-input-focus-ring: rgba(0, 208, 132, 0.28);
+  --maha-staff-radius: 10px;
+  --maha-staff-radius-btn: 10px;
+  --maha-staff-font: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Table header strip (matches tab “active” mint + teal labels) */
+  --maha-staff-table-header-bg: linear-gradient(180deg, #f0fdf4 0%, #d1fae5 100%);
+  --maha-staff-table-header-text: #0f766e;
+  --maha-staff-table-header-border: #6ee7b7;
+  --maha-staff-table-header-accent: rgba(0, 179, 113, 0.45);
+}
+
+/* --- 3. Font family (SCP-wide) --- */
+html,
+body,
+body input,
+body select,
+body textarea,
+body button,
+.button,
+.action-button,
+.form_table,
+.table,
+#nav,
+#sub_nav,
+#content,
+.dialog {
+  font-family: var(--maha-staff-font) !important;
+}
+
+.logo_title_name,
+.logo_title_department,
+.caladea-regular,
+.caladea-bold,
+.caladea-regular-italic,
+.caladea-bold-italic,
+.table tr.header td,
+.table tr.header th,
+.table > thead th {
+  font-family: var(--maha-staff-font) !important;
+}
+
+#content > h1,
+#content > h2,
+#content h1,
+#content h2,
+#content h3,
+#content .headline {
+  font-family: var(--maha-staff-font) !important;
+  color: var(--maha-staff-text);
+}
+
+/* --- 1. Color theme: primary greens --- */
+.user_avatar_header {
+  background-color: var(--maha-staff-primary) !important;
+}
+
+.signout_btn_header {
+  border-color: var(--maha-staff-primary) !important;
+  color: var(--maha-staff-primary) !important;
+}
+
+.signout_btn_header:hover {
+  background: rgba(0, 208, 132, 0.1) !important;
+  color: var(--maha-staff-primary-dark) !important;
+  border-color: var(--maha-staff-accent) !important;
+  text-decoration: none !important;
+}
+
+/* Form “section” headers — solid Maha green bar */
+.form_table th,
+div.section-break {
+  background: linear-gradient(135deg, var(--maha-staff-primary) 0%, #059669 100%) !important;
+  color: #fff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.form_table th h4 {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+/*
+ * Data tables: header row — pale mint + teal text (same family as main tabs)
+ */
+#content table.list thead th,
+table.list thead th {
+  background: var(--maha-staff-table-header-bg) !important;
+  color: var(--maha-staff-table-header-text) !important;
+  border-bottom: 2px solid var(--maha-staff-table-header-accent) !important;
+  font-weight: 600 !important;
+}
+
+#content table.list thead th a,
+table.list thead th a {
+  color: var(--maha-staff-table-header-text) !important;
+  background-color: transparent !important;
+}
+
+#content table.list thead th a:hover,
+table.list thead th a:hover {
+  color: var(--maha-staff-primary-dark) !important;
+}
+
+/* Table caption strip above lists */
+#content table.list caption,
+table.list caption {
+  background: linear-gradient(135deg, var(--maha-staff-primary) 0%, #059669 100%) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+/* Generic .table header rows (settings, reports, etc.) */
+#content .table > thead th,
+#content .table tr.header th,
+#content .table tr.header td {
+  background: var(--maha-staff-table-header-bg) !important;
+  color: var(--maha-staff-table-header-text) !important;
+  border-bottom: 2px solid var(--maha-staff-table-header-accent) !important;
+}
+
+#content .table tr.header {
+  border-bottom-color: var(--maha-staff-table-header-border) !important;
+}
+
+/* Staff queue / datatable (#scpTable) */
+#scpTable caption {
+  background: linear-gradient(180deg, #ecfdf5 0%, #d1fae5 100%) !important;
+  color: var(--maha-staff-table-header-text) !important;
+  border-bottom: 2px solid var(--maha-staff-table-header-accent) !important;
+  font-weight: 600 !important;
+}
+
+#scpTable th {
+  background: var(--maha-staff-table-header-bg) !important;
+  color: var(--maha-staff-table-header-text) !important;
+  border-bottom: 1px solid var(--maha-staff-table-header-border) !important;
+}
+
+#scpTable th a {
+  color: var(--maha-staff-table-header-text) !important;
+}
+
+#scpTable th a:hover {
+  color: var(--maha-staff-accent) !important;
+}
+
+/* Footer row of list tables — light mint tint */
+#content table.list tfoot td,
+table.list tfoot td {
+  background: #f0fdf4 !important;
+  color: var(--maha-staff-text-body) !important;
+}
+
+/* Nav active accents → Maha green */
+#nav .inactive li a.active,
+#nav .active li a.active,
+#nav li.inactive > ul > li > a.active,
+#nav li.active > ul > li > a.active {
+  border-left-color: var(--maha-staff-accent) !important;
+}
+
+#nav .inactive li a:hover,
+#nav .active li a:hover {
+  border-left-color: var(--maha-staff-accent) !important;
+}
+
+#nav .inactive li a.active i[class^="icon-"],
+#nav .active li a.active i[class^="icon-"],
+#nav li > ul > li > a.active i[class^="icon-"] {
+  color: var(--maha-staff-accent) !important;
+}
+
+.staff-client-nav a.active_tab_header {
+  color: var(--maha-staff-primary) !important;
+  text-decoration-color: var(--maha-staff-accent);
+}
+
+/*
+ * Main SCP horizontal tabs (Dashboard, Users, Tasks, Tickets, Knowledgebase)
+ * MahaAgX-style: pale mint active row, teal/olive label + thick bottom bar, slate inactive
+ */
+#nav {
+  background: #ffffff !important;
+  border-top: 1px solid #e8edf2 !important;
+  border-bottom: 1px solid #eef2f6 !important;
+  box-shadow: none !important;
+}
+
+/* Top-level tab links only (exclude mega-menu dropdown items) */
+#nav > li.inactive > a {
+  color: #64748b !important;
+  background: transparent !important;
+  border-bottom: 3px solid transparent !important;
+  font-weight: 500 !important;
+}
+
+#nav > li.active > a {
+  background: #ecfdf5 !important;
+  color: #0f766e !important;
+  border-bottom: 4px solid var(--maha-staff-primary) !important;
+  font-weight: 600 !important;
+}
+
+#nav > li.inactive > a:hover {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border-bottom-color: transparent !important;
+}
+
+#nav > li.active > a:hover {
+  background: #d1fae5 !important;
+  color: #0d9488 !important;
+  border-bottom-color: var(--maha-staff-accent) !important;
+}
+
+/*
+ * Mega-menu dropdown links live inside li.active / li.inactive but must NOT inherit
+ * #nav .active a { color: #65a30d !important } (tab style) — that caused olive menu text.
+ */
+#nav li.active > ul > li > a,
+#nav li.inactive > ul > li > a {
+  color: #64748b !important;
+  background: transparent !important;
+  background-image: none !important;
+  border-bottom: none !important;
+  font-weight: 500 !important;
+}
+
+#nav li.active > ul > li > a.active,
+#nav li.inactive > ul > li > a.active {
+  color: #0f766e !important;
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%) !important;
+  border-left: 4px solid var(--maha-staff-primary) !important;
+  font-weight: 600 !important;
+}
+
+#nav li.active > ul > li > a:hover,
+#nav li.inactive > ul > li > a:hover {
+  color: #0f172a !important;
+  background-color: #f0fdf4 !important;
+  border-left-color: var(--maha-staff-primary) !important;
+}
+
+#nav li.active > ul > li > a.active:hover,
+#nav li.inactive > ul > li > a.active:hover {
+  color: #0d9488 !important;
+  border-left-color: var(--maha-staff-accent) !important;
+}
+
+#nav li.active > ul > li > a:not(.active) i[class^="icon-"],
+#nav li.inactive > ul > li > a:not(.active) i[class^="icon-"] {
+  color: #64748b !important;
+  opacity: 0.85 !important;
+}
+
+#nav li.active > ul > li > a.active i[class^="icon-"],
+#nav li.inactive > ul > li > a.active i[class^="icon-"] {
+  color: var(--maha-staff-primary) !important;
+  opacity: 1 !important;
+}
+
+/* Secondary tab row (ul#sub_nav inside staff nav, tickets-nav) — same Maha tab language */
+#sub_nav li > a,
+nav.tickets-nav li > a {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+  background: transparent !important;
+  color: #64748b !important;
+  border-bottom: 3px solid transparent !important;
+}
+
+#sub_nav li > a.active,
+nav.tickets-nav li > a.active,
+#sub_nav li > a:hover.active,
+nav.tickets-nav li > a:hover.active {
+  background: #ecfdf5 !important;
+  color: #0f766e !important;
+  border: none !important;
+  border-bottom: 4px solid var(--maha-staff-primary) !important;
+  box-shadow: none !important;
+}
+
+#sub_nav li > a:hover:not(.active),
+nav.tickets-nav li > a:hover:not(.active) {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border-color: transparent !important;
+  transform: none !important;
+}
+
+/* --- Primary buttons --- */
+input[type="submit"]:not(.link):not(.light),
+input[type="button"]:not(.link):not(.light):not(.dark):not(#cancelButton),
+input[type="reset"]:not(#resetButton):not(.link),
+button[type="submit"]:not(.link):not(.light),
+.action-button:not(.muted):not(.danger),
+.button:not(.link):not(.white):not(.dark):not(.light):not(#cancelButton),
+.primary.button {
+  background-color: var(--maha-staff-accent) !important;
+  color: #0a0a0a !important;
+  border-radius: var(--maha-staff-radius-btn) !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:not(#cancelButton):hover,
+button[type="submit"]:hover,
+.action-button:not(.muted):hover,
+.button:not(.link):not(.white):hover,
+.primary.button:hover {
+  background-color: var(--maha-staff-primary) !important;
+  color: #fff !important;
+}
+
+.action-button.muted,
+.button.muted {
+  border-radius: var(--maha-staff-radius-btn) !important;
+}
+
+#cancelButton {
+  background: var(--maha-staff-input-bg) !important;
+  border-radius: var(--maha-staff-radius-btn) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  color: var(--maha-staff-text-body) !important;
+}
+
+#cancelButton:hover {
+  background: #d1fae5 !important;
+  border-color: var(--maha-staff-accent) !important;
+  color: #065f46 !important;
+}
+
+/* --- 2. Input / select / textarea (Maha “form field” look) --- */
+#content .form_table input[type="text"],
+#content .form_table input[type="email"],
+#content .form_table input[type="password"],
+#content .form_table input[type="number"],
+#content .form_table input[type="url"],
+#content .form_table input[type="tel"],
+#content .form_table input[type="search"],
+#content .form_table select,
+#content .form_table textarea,
+#content input[type="text"]:not(.select2-search__field),
+#content input[type="password"],
+#content input[type="email"],
+#content input[type="number"],
+#content input[type="url"],
+#content input[type="tel"],
+#content input[type="search"],
+#content textarea:not(.richtext),
+#content select {
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+  box-shadow: none !important;
+}
+
+#content .form_table input:focus,
+#content .form_table select:focus,
+#content .form_table textarea:focus,
+#content input[type="text"]:focus,
+#content input[type="password"]:focus,
+#content input[type="email"]:focus,
+#content input[type="number"]:focus,
+#content input[type="url"]:focus,
+#content input[type="tel"]:focus,
+#content input[type="search"]:focus,
+#content textarea:focus,
+#content select:focus {
+  outline: none !important;
+  border-color: var(--maha-staff-accent) !important;
+  box-shadow: 0 0 0 3px var(--maha-staff-input-focus-ring) !important;
+  background: var(--maha-staff-input-focus-bg) !important;
+}
+
+#content .form_table .error input,
+#content .form_table .error select,
+#content .form_table .error textarea {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2) !important;
+}
+
+/* KB / list search row */
+#content .search input[type="text"],
+#content #basic_search input[type="text"],
+#content #basic_search #query {
+  min-height: 40px;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+  line-height: 1.4 !important;
+}
+
+/* Dashboard: date + period controls share one field height (select was easy to mis-size vs scp.css) */
+#content #basic_search select {
+  min-height: 40px !important;
+  padding: 0.5rem 2.25rem 0.5rem 1rem !important;
+  line-height: 1.4 !important;
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background-color: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+  font-family: var(--maha-staff-font) !important;
+  appearance: auto !important;
+}
+
+#content #basic_search {
+  background: linear-gradient(180deg, rgba(240, 253, 244, 0.9) 0%, #ffffff 100%) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  border-radius: var(--maha-staff-radius) !important;
+  padding: 12px 16px !important;
+  margin: 0 0 16px 0 !important;
+}
+
+#content #basic_search label {
+  color: var(--maha-staff-text-body) !important;
+  font-weight: 500 !important;
+  margin-right: 14px !important;
+  vertical-align: middle !important;
+}
+
+#content #basic_search input.dp,
+#content #basic_search input[type="text"] {
+  vertical-align: middle !important;
+}
+
+#content #basic_search .action-button,
+#content #basic_search button.action-button {
+  vertical-align: middle !important;
+  margin-left: 4px !important;
+}
+
+/* Chart card: replace grey chrome from dashboard.css */
+#content #line-chart-here {
+  border: 2px solid var(--maha-staff-input-border) !important;
+  border-radius: var(--maha-staff-radius) !important;
+  background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 55%, #ffffff 100%) !important;
+  box-shadow: 0 1px 3px rgba(15, 118, 110, 0.06) !important;
+}
+
+/* Dashboard statistics tables (header row lives in first tbody) */
+#content table.dashboard-stats tbody:first-child th {
+  background: var(--maha-staff-table-header-bg) !important;
+  color: var(--maha-staff-table-header-text) !important;
+  border-bottom: 2px solid var(--maha-staff-table-header-accent) !important;
+  font-weight: 600 !important;
+  padding: 10px 12px !important;
+}
+
+#content table.dashboard-stats {
+  border-bottom-color: var(--maha-staff-table-header-border) !important;
+}
+
+#content table.dashboard-stats tbody:nth-child(2) tr:nth-child(odd) {
+  background-color: rgba(236, 253, 245, 0.65) !important;
+}
+
+#content table.dashboard-stats tbody:nth-child(2) th {
+  color: var(--maha-staff-table-header-text) !important;
+  border-right-color: var(--maha-staff-input-border) !important;
+}
+
+/* jQuery UI datepicker (dashboard “Last month” field) */
+.ui-datepicker .ui-datepicker-header {
+  background: linear-gradient(135deg, var(--maha-staff-primary) 0%, #059669 100%) !important;
+  color: #fff !important;
+  border-color: var(--maha-staff-primary-dark) !important;
+}
+
+.ui-datepicker .ui-state-default {
+  border-color: var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+}
+
+.ui-datepicker .ui-state-active,
+.ui-datepicker .ui-state-hover {
+  background: #d1fae5 !important;
+  color: var(--maha-staff-primary-dark) !important;
+  border-color: var(--maha-staff-accent) !important;
+}
+
+#content .attached.input input[type="text"] {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right: none !important;
+  margin-right: 0 !important;
+}
+
+#content .attached.input button.button.attached,
+#content .attached.input .button.attached,
+#content #searchSubmit.button.attached {
+  border-radius: 0 var(--maha-staff-radius-btn) var(--maha-staff-radius-btn) 0 !important;
+  background: var(--maha-staff-accent) !important;
+  color: #0a0a0a !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  border-left: none !important;
+  padding: 0.5rem 1.25rem !important;
+  margin: 0 !important;
+  vertical-align: top;
+}
+
+#content .attached.input button.button.attached:hover,
+#content #searchSubmit.button.attached:hover {
+  background: var(--maha-staff-primary) !important;
+  color: #fff !important;
+}
+
+#content .search input[type="submit"],
+#content #basic_search input[type="submit"],
+#content input.search-button {
+  border-radius: var(--maha-staff-radius-btn) !important;
+  background: var(--maha-staff-accent) !important;
+  color: #0a0a0a !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1.25rem !important;
+}
+
+/* Filter / sort action pills (KB Category, Help Topic, queue Sort) */
+#content .action-button.muted {
+  border-radius: var(--maha-staff-radius-btn) !important;
+  background: var(--maha-staff-primary) !important;
+  color: #fff !important;
+  border: 1px solid var(--maha-staff-primary-dark) !important;
+  font-weight: 600 !important;
+}
+
+#content .action-button.muted:hover {
+  background: var(--maha-staff-primary-dark) !important;
+  color: #fff !important;
+}
+
+/* Select2 (staff) */
+.select2-container--default .select2-selection--single {
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+  min-height: 42px !important;
+  padding: 4px 8px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: var(--maha-staff-text-body) !important;
+  line-height: 34px !important;
+  font-family: var(--maha-staff-font) !important;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--single {
+  border-color: var(--maha-staff-accent) !important;
+  box-shadow: 0 0 0 3px var(--maha-staff-input-focus-ring) !important;
+}
+
+.select2-dropdown {
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  font-family: var(--maha-staff-font) !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #d1fae5 !important;
+  color: var(--maha-staff-text) !important;
+}
+
+.select2-container--default .select2-results__option[aria-selected="true"] {
+  background-color: rgba(0, 208, 132, 0.15) !important;
+  color: var(--maha-staff-primary-dark) !important;
+}
+
+/* Checkboxes / radios: keep readable, do not pill */
+#content .form_table input[type="checkbox"],
+#content .form_table input[type="radio"],
+#content input[type="checkbox"],
+#content input[type="radio"] {
+  border-radius: 4px !important;
+  width: auto !important;
+  margin-right: 6px !important;
+}
+
+/* Thread reply box (non-richtext) */
+#response_options input[type="text"],
+#response_options textarea:not(.richtext) {
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+}
+
+/* Modals / lookup (often outside #content) */
+.ui-dialog .form_table input[type="text"],
+.ui-dialog .form_table input[type="email"],
+.ui-dialog .form_table input[type="password"],
+.ui-dialog .form_table input[type="tel"],
+.ui-dialog .form_table input[type="number"],
+.ui-dialog .form_table input[type="search"],
+.ui-dialog .form_table input[type="url"],
+.ui-dialog .form_table select,
+.ui-dialog .form_table textarea,
+.ui-dialog input[type="text"],
+.ui-dialog input[type="email"],
+.ui-dialog input[type="password"],
+.ui-dialog input[type="tel"],
+.ui-dialog input[type="number"],
+.ui-dialog input[type="search"],
+.ui-dialog textarea,
+.ui-dialog select,
+.dialog input[type="text"],
+.dialog input[type="email"],
+.dialog input[type="password"],
+.dialog input[type="tel"],
+.dialog input[type="number"],
+.dialog input[type="search"],
+.dialog input[type="url"],
+.dialog select,
+.dialog textarea {
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+  box-shadow: none !important;
+}
+
+.dialog input[type="text"]:focus,
+.dialog input[type="email"]:focus,
+.dialog input[type="password"]:focus,
+.dialog input[type="tel"]:focus,
+.dialog input[type="number"]:focus,
+.dialog input[type="search"]:focus,
+.dialog input[type="url"]:focus,
+.dialog textarea:focus,
+.dialog select:focus {
+  outline: none !important;
+  border-color: var(--maha-staff-accent) !important;
+  box-shadow: 0 0 0 3px var(--maha-staff-input-focus-ring) !important;
+  background: var(--maha-staff-input-focus-bg) !important;
+}
+
+.dialog fieldset input:not([type="checkbox"]):not([type="radio"]),
+.dialog fieldset textarea,
+.dialog fieldset select {
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+}
+
+/* ========== Staff popup (#popup) — user lookup & similar modals ========== */
+.dialog#popup,
+.dialog#popup .body,
+#the-lookup-form {
+  font-family: var(--maha-staff-font) !important;
+}
+
+.dialog {
+  background: #ffffff !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0 4px 6px rgba(15, 118, 110, 0.06),
+    0 20px 50px rgba(0, 0, 0, 0.12) !important;
+}
+
+.dialog h3,
+.dialog h3.drag-handle,
+#the-lookup-form h3.drag-handle {
+  font-family: var(--maha-staff-font) !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  color: var(--maha-staff-text-body) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.35 !important;
+}
+
+.dialog a.close {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+.dialog a.close:hover {
+  color: var(--maha-staff-primary) !important;
+}
+
+.dialog hr,
+#the-lookup-form > hr {
+  border: 0 !important;
+  height: 1px !important;
+  margin: 14px 0 !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--maha-staff-input-border) 15%,
+    var(--maha-staff-input-border) 85%,
+    transparent 100%
+  ) !important;
+  filter: none !important;
+}
+
+.dialog #msg_info,
+.dialog .info-banner,
+#the-lookup-form #msg_info {
+  margin: 0 0 14px 0 !important;
+  padding: 12px 14px !important;
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: linear-gradient(180deg, #ecfdf5 0%, #f0fdf4 100%) !important;
+  color: #065f46 !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+}
+
+.dialog #msg_info i,
+#the-lookup-form #msg_info i {
+  color: var(--maha-staff-primary) !important;
+}
+
+#the-lookup-form input#user-search.search-input,
+#the-lookup-form input#org-search.search-input,
+.dialog#popup input#user-search,
+.dialog#popup input#org-search {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 44px !important;
+  padding: 0.55rem 1rem !important;
+  box-sizing: border-box !important;
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+}
+
+#the-lookup-form input#user-search.search-input:focus,
+#the-lookup-form input#org-search.search-input:focus,
+.dialog#popup input#user-search:focus,
+.dialog#popup input#org-search:focus {
+  outline: none !important;
+  border-color: var(--maha-staff-accent) !important;
+  box-shadow: 0 0 0 3px var(--maha-staff-input-focus-ring) !important;
+  background: var(--maha-staff-input-focus-bg) !important;
+}
+
+/* Dynamic form section title row (“Create New User”, etc.) — lookup + popup tables */
+.dialog#popup table th,
+#the-lookup-form table th,
+.dialog th {
+  font-family: var(--maha-staff-font) !important;
+  background: linear-gradient(135deg, var(--maha-staff-primary) 0%, #059669 100%) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+}
+
+.dialog#popup table th em,
+.dialog#popup table th strong,
+#the-lookup-form table th em,
+#the-lookup-form table th strong,
+.dialog th em,
+.dialog th strong {
+  font-style: normal !important;
+  color: #fff !important;
+}
+
+.dialog#popup table th .pull-right a,
+#the-lookup-form table th .pull-right a,
+.dialog th .pull-right a {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.dialog table.fixed tbody tr td.multi-line {
+  color: var(--maha-staff-text-body) !important;
+  font-weight: 500 !important;
+  vertical-align: middle !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.dialog table.fixed tbody tr td:not(.multi-line) {
+  vertical-align: middle !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.dialog .table td:not(:empty) {
+  background-color: #ffffff !important;
+}
+
+/* Phone + extension: same radius/fill as other fields (not pill) */
+.dialog .ost-inline-phone-row {
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px 12px !important;
+  width: 100% !important;
+}
+
+.dialog .ost-inline-phone-main input[type="tel"],
+.dialog .ost-inline-phone-ext input[type="text"] {
+  min-height: 44px !important;
+  padding: 0.5rem 0.85rem !important;
+  border-radius: var(--maha-staff-radius) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  background: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+  box-sizing: border-box !important;
+}
+
+.dialog .ost-inline-phone-main input[type="tel"] {
+  min-width: 200px !important;
+  flex: 1 1 200px !important;
+}
+
+.dialog .ost-inline-phone-ext-label {
+  color: var(--maha-staff-text-body) !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+}
+
+/* Footer actions */
+.dialog#popup p.full-width,
+#the-lookup-form p.full-width {
+  margin-top: 16px !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(167, 243, 208, 0.6) !important;
+}
+
+.dialog#popup input[type="submit"],
+#the-lookup-form input[type="submit"] {
+  min-width: 7rem !important;
+  padding: 0.55rem 1.25rem !important;
+}
+
+.dialog#popup input#resetButton,
+#the-lookup-form input#resetButton {
+  background: #fff !important;
+  color: #9a3412 !important;
+  border: 1px solid #fdba74 !important;
+  border-radius: var(--maha-staff-radius-btn) !important;
+  font-weight: 600 !important;
+  padding: 0.55rem 1.1rem !important;
+}
+
+.dialog#popup input#resetButton:hover,
+#the-lookup-form input#resetButton:hover {
+  background: #fff7ed !important;
+  border-color: #f97316 !important;
+  color: #7c2d12 !important;
+}
+
+.dialog#popup input#cancelButton,
+#the-lookup-form input#cancelButton {
+  background: var(--maha-staff-input-bg) !important;
+  color: var(--maha-staff-text-body) !important;
+  border: 1px solid var(--maha-staff-input-border) !important;
+  font-weight: 600 !important;
+  padding: 0.55rem 1.25rem !important;
+}
+
+.dialog#popup input#cancelButton:hover,
+#the-lookup-form input#cancelButton:hover {
+  background: #d1fae5 !important;
+  border-color: var(--maha-staff-accent) !important;
+  color: #065f46 !important;
+}
+
+.dialog#popup #popup-loading h1 {
+  font-family: var(--maha-staff-font) !important;
+  color: var(--maha-staff-text-body) !important;
+}

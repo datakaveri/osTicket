@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Design Options - MahaAgX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f0f4f0;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    .preview-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .preview-header h1 {
+      font-size: 1.5rem;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    .preview-header p {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: #e2e8f0;
+      color: #475569;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    .tab-btn:hover { background: #cbd5e1; }
+    .tab-btn.active {
+      background: #00d084;
+      color: #0a0a0a;
+    }
+    .preview-frame {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      min-height: 500px;
+    }
+    .design-option { display: none; }
+    .design-option.active { display: block; }
+
+    /* Shared form styles */
+    .form-label { display: block; font-weight: 600; color: #0f172a; margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .form-label .req { color: #dc2626; }
+    .form-input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-input:focus { outline: none; border-color: #00d084; box-shadow: 0 0 0 3px rgba(0,208,132,0.15); }
+    .form-field { margin-bottom: 1rem; }
+    .btn-login {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #00d084;
+      color: #0a0a0a;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-login:hover { background: #00b371; }
+    .link-register { color: #00d084; font-weight: 600; text-decoration: none; }
+    .link-register:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="preview-header">
+    <h1>Login Design Options - MahaAgX</h1>
+    <p>Click a tab to preview each design. These are static mockups.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-option="a">A: Full-page background</button>
+    <button class="tab-btn" data-option="b">B: Minimal form-only</button>
+    <button class="tab-btn" data-option="c">C: Image above form</button>
+    <button class="tab-btn" data-option="d">D: Split-screen</button>
+    <button class="tab-btn" data-option="e">E: Refined split card</button>
+  </div>
+
+  <div class="preview-frame">
+    <!-- Option A: Full-page background image -->
+    <div id="option-a" class="design-option active">
+      <div style="position:relative;min-height:500px;background:url('assets/default/images/mahaagx/login.png') center/cover;">
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);padding:2.5rem;border-radius:20px;width:100%;max-width:380px;box-shadow:0 25px 50px rgba(0,0,0,0.2);">
+            <h2 style="color:#0f172a;font-size:1.75rem;margin-bottom:0.5rem;">Login to MahaAgX</h2>
+            <p style="color:#64748b;font-size:0.9rem;margin-bottom:1.5rem;">To better serve you, we encourage our Clients to register.</p>
+            <div class="form-field">
+              <label class="form-label">Email ID <span class="req">*</span></label>
+              <input type="text" class="form-input" placeholder="Enter your email" value="Sunil491989">
+            </div>
+            <div class="form-field">
+              <label class="form-label">Password <span class="req">*</span></label>
+              <input type="password" class="form-input" placeholder="Enter your password">
+            </div>
+            <button class="btn-login">Log In</button>
+            <p style="text-align:center;margin-top:1rem;color:#64748b;font-size:0.9rem;">New to MahaAgX? <a class="link-register" href="#">Register</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option B: Minimal form-only -->
+    <div id="option-b" class="design-option">
+      <div style="padding:3rem;max-width:400px;margin:0 auto;">
+        <h2 style="color:#0f172a;font-size:1.75rem;margin-bottom:0.5rem;">Login to MahaAgX</h2>
+        <p style="color:#64748b;font-size:0.9rem;margin-bottom:2rem;">To better serve you, we encourage our Clients to register.</p>
+        <div class="form-field">
+          <label class="form-label">Email ID <span class="req">*</span></label>
+          <input type="text" class="form-input" placeholder="Enter your email" value="Sunil491989">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Password <span class="req">*</span></label>
+          <input type="password" class="form-input" placeholder="Enter your password">
+        </div>
+        <div style="text-align:right;margin-bottom:1rem;"><a class="link-register" href="#">Forgot Password?</a></div>
+        <button class="btn-login">Log In</button>
+        <p style="text-align:center;margin-top:1rem;color:#64748b;font-size:0.9rem;">New to MahaAgX? <a class="link-register" href="#">Register</a></p>
+      </div>
+    </div>
+
+    <!-- Option C: Image above form -->
+    <div id="option-c" class="design-option">
+      <div style="height:180px;overflow:hidden;">
+        <img src="assets/default/images/mahaagx/login.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="padding:2rem;">
+        <h2 style="color:#0f172a;font-size:1.5rem;margin-bottom:0.5rem;">Login to MahaAgX</h2>
+        <p style="color:#64748b;font-size:0.9rem;margin-bottom:1.5rem;">To better serve you, we encourage our Clients to register.</p>
+        <div class="form-field">
+          <label class="form-label">Email ID <span class="req">*</span></label>
+          <input type="text" class="form-input" placeholder="Enter your email" value="Sunil491989">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Password <span class="req">*</span></label>
+          <input type="password" class="form-input" placeholder="Enter your password">
+        </div>
+        <button class="btn-login">Log In</button>
+        <p style="text-align:center;margin-top:1rem;color:#64748b;font-size:0.9rem;">New to MahaAgX? <a class="link-register" href="#">Register</a></p>
+      </div>
+    </div>
+
+    <!-- Option D: Split-screen full viewport -->
+    <div id="option-d" class="design-option">
+      <div style="display:grid;grid-template-columns:1fr 1fr;min-height:500px;">
+        <div style="background:url('assets/default/images/mahaagx/login.png') center/cover;">
+          <div style="height:100%;background:linear-gradient(135deg,rgba(0,0,0,0.2) 0%,transparent 100%);"></div>
+        </div>
+        <div style="padding:3rem;display:flex;flex-direction:column;justify-content:center;background:#fff;">
+          <h2 style="color:#0f172a;font-size:1.75rem;margin-bottom:0.5rem;">Login to MahaAgX</h2>
+          <p style="color:#64748b;font-size:0.9rem;margin-bottom:1.5rem;">To better serve you, we encourage our Clients to register.</p>
+          <div class="form-field">
+            <label class="form-label">Email ID <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Enter your email" value="Sunil491989">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Password <span class="req">*</span></label>
+            <input type="password" class="form-input" placeholder="Enter your password">
+          </div>
+          <button class="btn-login">Log In</button>
+          <p style="text-align:center;margin-top:1rem;color:#64748b;font-size:0.9rem;">New to MahaAgX? <a class="link-register" href="#">Register</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option E: Refined split card -->
+    <div id="option-e" class="design-option">
+      <div style="display:grid;grid-template-columns:1.1fr 0.9fr;min-height:420px;">
+        <div style="padding:2.5rem;border-right:1px solid #e2e8f0;display:flex;flex-direction:column;justify-content:center;">
+          <h2 style="color:#0f172a;font-size:1.5rem;margin-bottom:0.5rem;">Login to MahaAgX</h2>
+          <p style="color:#64748b;font-size:0.9rem;margin-bottom:1.5rem;">To better serve you, we encourage our Clients to register.</p>
+          <div class="form-field">
+            <label class="form-label">Email ID <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="Enter your email" value="Sunil491989">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Password <span class="req">*</span></label>
+            <input type="password" class="form-input" placeholder="Enter your password">
+          </div>
+          <button class="btn-login">Log In</button>
+          <p style="text-align:center;margin-top:1rem;color:#64748b;font-size:0.9rem;">New to MahaAgX? <a class="link-register" href="#">Register</a></p>
+        </div>
+        <div style="overflow:hidden;background:#f0f4f0;">
+          <img src="assets/default/images/mahaagx/login.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.design-option').forEach(o => o.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('option-' + btn.dataset.option).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

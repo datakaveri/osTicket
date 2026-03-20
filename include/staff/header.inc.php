@@ -41,6 +41,7 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
             <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-3.7.0.min.js"></script>
             <link rel="stylesheet" href="<?php echo ROOT_PATH ?>css/thread.css" media="all">
             <link rel="stylesheet" href="<?php echo ROOT_PATH ?>scp/css/scp.css" media="all">
+            <link rel="stylesheet" href="<?php echo ROOT_PATH ?>scp/css/mahaagx-staff-theme.css" media="all">
             <link rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/redactor.css" media="screen">
             <link rel="stylesheet" href="<?php echo ROOT_PATH ?>css/typeahead.css" media="screen">
             <link type="text/css" href="<?php echo ROOT_PATH; ?>css/ui-lightness/jquery-ui-1.13.2.custom.min.css"
@@ -57,7 +58,7 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
             <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/rtl.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH ?>scp/css/translatable.css" />
             <!-- Favicons -->
-            <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" sizes="32x32" />
+            <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" sizes="32x32" />
             <!-- <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>images/tgdex_favicon.png" sizes="16x16" /> -->
 
             <?php
@@ -81,14 +82,11 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                     <div style="display: flex; align-items:center; justify-content: space-between; width: 100%;">
                         <div style="display: flex; align-items: center; flex: 1;">
                             <div class="logo_container_header">
-                                <a class="pull-left" id="logo" href="https://dev.catalogue.forest.iudx.io/" title="<?php echo __('Support Center'); ?>">
+                                <a class="pull-left" id="logo" href="<?php echo ROOT_PATH; ?>" title="<?php echo __('Support Center'); ?>">
                                     <span class="valign-helper"></span>
-                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" class="tg_govt_header">
+                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" class="tg_govt_header">
                                 </a>
-                                <div class="logo_title">
-                                    <p class="logo_title_name">Forest Stack</p>
-                                    <p class="logo_title_department">Rajasthan</p>
-                                </div>
+                                <!-- Removed previous Forest Stack Rajasthan text branding -->
                             </div>
 
                             <!-- Client Navigation Menu -->

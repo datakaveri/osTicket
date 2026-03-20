@@ -36,14 +36,14 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 <style>
 .new-ticket-container {
     width: 100%;
-    padding: 2rem 4rem;
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .form-parent-container {
     background: #ffffff;
     border-radius: 16px;
-    padding: 2.5rem;
+    /* Reduce horizontal space around Contact Information */
+    padding: 2rem 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     margin-bottom: 2rem;
 }
@@ -58,6 +58,18 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 .form-card {
     position: relative;
     transition: opacity 0.3s ease-in-out;
+}
+
+.form-card--contact {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.25rem;
+}
+
+.contact-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .form-card:first-child::after {
@@ -107,15 +119,45 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 }
 
 .form-section-title {
-    font-size: 18px;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #1a2e05;
-    margin-bottom: 1.5rem;
+    color: #0f172a;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     min-height: 28px;
     height: 28px;
+}
+
+.form-section-title--lined {
+    position: relative;
+    padding-left: 14px; /* room for left accent bar */
+}
+
+.form-section-title--lined::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 24px;
+    border-radius: 999px;
+    background: #00d084;
+}
+
+.form-section-title--lined::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    margin-left: 12px;
+    border-radius: 999px;
+    background: rgba(0, 208, 132, 0.55);
+}
+
+.form-row-title {
+    margin-bottom: 1.25rem;
 }
 
 .form-section-title svg {
@@ -188,15 +230,15 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 }
 
 .form-field {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
 }
 
 .form-label {
     display: block;
     font-weight: 600;
-    font-size: 14px;
-    color: #1a2e05;
-    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #111827;
+    margin-bottom: 0.4rem;
 }
 
 .form-label .required {
@@ -213,13 +255,14 @@ input[type="tel"],
 select,
 textarea {
     width: 100% !important;
-    padding: 12px 16px;
-    border: 2px solid #e5e7eb;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 1rem;
     font-family: inherit;
     transition: all 0.2s;
     box-sizing: border-box;
+    background: #ffffff;
 }
 
 .form-input:focus,
@@ -231,12 +274,89 @@ input[type="tel"]:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #65a30d;
-    box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.1);
+    border-color: #00d084;
+    box-shadow: 0 0 0 4px rgba(0, 208, 132, 0.14);
 }
 
 .form-input::placeholder {
     color: #9ca3af;
+}
+
+/* Grey placeholder for required <select> (e.g., "Select a help topic") */
+.new-ticket-container #ticketForm select:required:invalid {
+    color: #9ca3af !important;
+}
+
+.new-ticket-container #ticketForm select option {
+    color: #111827;
+}
+
+.new-ticket-container #ticketForm select option[value=""] {
+    color: #9ca3af;
+}
+
+/* MahaAGX-like field styling for Open Ticket (override global #ticketForm rules) */
+.new-ticket-container #ticketForm .form-input,
+.new-ticket-container #ticketForm .form-select,
+.new-ticket-container #ticketForm textarea.form-textarea,
+.new-ticket-container #ticketForm input[type="text"],
+.new-ticket-container #ticketForm input[type="email"],
+.new-ticket-container #ticketForm input[type="tel"],
+.new-ticket-container #ticketForm select,
+.new-ticket-container #ticketForm textarea {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: #111827 !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 10px !important;
+    padding: 14px 16px !important;
+    font-size: 1rem !important;
+    background: #ffffff !important;
+}
+
+.new-ticket-container #ticketForm .form-input:focus,
+.new-ticket-container #ticketForm .form-select:focus,
+.new-ticket-container #ticketForm input[type="text"]:focus,
+.new-ticket-container #ticketForm input[type="email"]:focus,
+.new-ticket-container #ticketForm input[type="tel"]:focus,
+.new-ticket-container #ticketForm select:focus,
+.new-ticket-container #ticketForm textarea:focus {
+    border-color: #00d084 !important;
+    box-shadow: 0 0 0 4px rgba(0, 208, 132, 0.14) !important;
+}
+
+.new-ticket-container #ticketForm .form-label {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 0.95rem;
+}
+
+.ticket-details-empty {
+    padding: 0.5rem;
+    height: 100%;
+}
+
+.ticket-details-empty__img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    display: block;
+}
+
+.ticket-details-empty__hint {
+    margin-top: 0.9rem;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Match right card styling with left card */
+#request-details-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.25rem;
 }
 
 .form-select {
@@ -259,47 +379,58 @@ textarea:focus {
     padding-top: 0;
 }
 
-.btn-submit {
-    background: #65a30d;
-    color: #fff;
-    padding: 12px 32px;
-    border: none;
-    border-radius: 30px;
-    font-size: 15px;
+.new-ticket-container .btn-submit {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #00d084 !important;
+    color: #0a0a0a !important;
+    padding: 0.75rem 1.5rem;
+    border: none !important;
+    border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: 150ms ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-.btn-submit:hover {
-    background: #4d7c0a;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+.new-ticket-container .btn-submit:hover {
+    background: #00b371 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
-.btn-cancel {
-    background: #fff;
-    color: #65a30d;
-    padding: 12px 32px;
-    border: 2px solid #65a30d;
-    border-radius: 30px;
-    font-size: 15px;
+.new-ticket-container .btn-cancel {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: transparent !important;
+    color: #00d084 !important;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(0, 208, 132, 0.55) !important;
+    border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: 150ms ease;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
-.btn-cancel:hover {
-    background: #f0fdf4;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+.new-ticket-container .btn-cancel:hover {
+    background: rgba(0, 208, 132, 0.08) !important;
+    border-color: #00b371 !important;
+    color: #00b371 !important;
+    transform: translateY(-1px);
+}
+
+.new-ticket-container .btn-submit:focus-visible,
+.new-ticket-container .btn-cancel:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 208, 132, 0.14);
 }
 
 .info-banner {
@@ -384,12 +515,36 @@ textarea:focus {
 }
 </style>
 
-<div class="new-ticket-container">
-    <div class="new-ticket-header">
-        <h1><?php echo __('Submit a Support Request'); ?></h1>
-        <p><?php echo __('Fill in the form below and our support team will get back to you as soon as possible. We typically respond within 24 hours.'); ?></p>
-    </div>
+<div class="maha-asset-header">
+    <div class="maha-asset-header__container">
+        <div class="maha-asset-header__leaf">
+            <img src="<?php echo ROOT_PATH; ?>assets/default/images/mahaagx/assets-leaf.png" alt="" class="maha-asset-header__leaf-img" />
+        </div>
 
+        <div class="maha-asset-header__content">
+            <nav class="maha-asset-header__breadcrumbs" aria-label="<?php echo __('Breadcrumb'); ?>">
+                <ol class="maha-breadcrumbs">
+                    <li class="maha-breadcrumbs__item">
+                        <a class="maha-breadcrumbs__link" href="<?php echo ROOT_PATH; ?>index.php"><?php echo __('Home'); ?></a>
+                    </li>
+                    <li class="maha-breadcrumbs__item maha-breadcrumbs__current" aria-current="page">
+                        <?php echo __('New Ticket'); ?>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="maha-asset-header__title-wrap">
+                <h3 class="maha-asset-header__title"><?php echo __('Submit a Support Request'); ?></h3>
+            </div>
+
+            <p class="maha-asset-header__desc">
+                <?php echo __('Fill in the form below and our support team will get back to you as soon as possible. We typically respond within 24 hours.'); ?>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="new-ticket-container">
     <?php if ($errors && $errors['err']): ?>
     <div style="background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
         <p style="color: #dc2626; margin: 0; font-weight: 500;"><?php echo $errors['err']; ?></p>
@@ -402,107 +557,118 @@ textarea:focus {
         <input type="hidden" name="a" value="open">
 
         <div class="form-parent-container">
+            <div class="form-section-title form-section-title--lined form-row-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#00d084"/>
+                </svg>
+                <?php echo __('Contact Information'); ?>
+            </div>
+
             <div class="form-columns">
                 <!-- LEFT COLUMN: Contact Information -->
-                <div class="form-card">
-                    <div class="form-section-title">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#1a2e05"/>
-                        </svg>
-                        <?php echo __('Contact Information'); ?>
-                    </div>
+                <div class="form-card form-card--contact">
+                    <div class="contact-fields">
+                        <div class="form-field">
+                            <label class="form-label" for="name">
+                                <?php echo __('Full Name'); ?> <span class="required" aria-hidden="true"></span>
+                            </label>
+                            <input type="text" 
+                                   name="name" 
+                                   id="name" 
+                                   class="form-input" 
+                                   value="<?php echo $info['name']; ?>" 
+                                   placeholder="<?php echo __('Enter your full name'); ?>"
+                                   required>
+                            <?php if ($errors['name']): ?>
+                                <span class="error-message"><?php echo $errors['name']; ?></span>
+                            <?php endif; ?>
+                        </div>
 
-                    <div class="form-field">
-                        <label class="form-label" for="name">
-                            <?php echo __('Full Name'); ?> <span class="required">*</span>
-                        </label>
-                        <input type="text" 
-                               name="name" 
-                               id="name" 
-                               class="form-input" 
-                               value="<?php echo $info['name']; ?>" 
-                               placeholder="<?php echo __('Enter your full name'); ?>"
-                               required>
-                        <?php if ($errors['name']): ?>
-                            <span class="error-message"><?php echo $errors['name']; ?></span>
-                        <?php endif; ?>
-                    </div>
+                        <div class="form-field">
+                            <label class="form-label" for="email">
+                                <?php echo __('Email Address'); ?> <span class="required" aria-hidden="true"></span>
+                            </label>
+                            <input type="email" 
+                                   name="email" 
+                                   id="email" 
+                                   class="form-input" 
+                                   value="<?php echo $info['email']; ?>" 
+                                   placeholder="<?php echo __('your.email@example.com'); ?>"
+                                   required>
+                            <?php if ($errors['email']): ?>
+                                <span class="error-message"><?php echo $errors['email']; ?></span>
+                            <?php endif; ?>
+                        </div>
 
-                    <div class="form-field">
-                        <label class="form-label" for="email">
-                            <?php echo __('Email Address'); ?> <span class="required">*</span>
-                        </label>
-                        <input type="email" 
-                               name="email" 
-                               id="email" 
-                               class="form-input" 
-                               value="<?php echo $info['email']; ?>" 
-                               placeholder="<?php echo __('your.email@example.com'); ?>"
-                               required>
-                        <?php if ($errors['email']): ?>
-                            <span class="error-message"><?php echo $errors['email']; ?></span>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="form-field">
-                        <label class="form-label" for="topicId">
-                            <?php echo __('Help Topic'); ?> <span class="required">*</span>
-                        </label>
-                        <select id="topicId" 
-                                name="topicId" 
-                                class="form-select"
-                                onchange="javascript:
-                                    if (this.value) {
-                                        $('#request-details-card').fadeIn(300);
-                                        var data = $(':input[name]', '#dynamic-form').serialize();
-                                        $.ajax(
-                                          'ajax.php/form/help-topic/' + this.value,
-                                          {
-                                            data: data,
-                                            dataType: 'json',
-                                            success: function(json) {
-                                              $('#dynamic-form').empty().append(json.html);
-                                              $(document.head).append(json.media);
-                                            }
-                                          });
-                                    } else {
-                                        $('#request-details-card').fadeOut(300);
-                                    }"
-                                required>
-                            <option value=""><?php echo __('Select a help topic'); ?></option>
-                            <?php
-                            if ($topics = Topic::getPublicHelpTopics()) {
-                                foreach ($topics as $id => $name) {
-                                    echo sprintf(
-                                        '<option value="%d" %s>%s</option>',
-                                        $id,
-                                        ($info['topicId'] == $id) ? 'selected="selected"' : '',
-                                        $name
-                                    );
-                                }
-                            } ?>
-                        </select>
-                        <?php if ($errors['topicId']): ?>
-                            <span class="error-message"><?php echo $errors['topicId']; ?></span>
-                        <?php endif; ?>
+                        <div class="form-field">
+                            <label class="form-label" for="topicId">
+                                <?php echo __('Help Topic'); ?> <span class="required" aria-hidden="true"></span>
+                            </label>
+                            <select id="topicId" 
+                                    name="topicId" 
+                                    class="form-select"
+                                    onchange="javascript:
+                                        if (this.value) {
+                                            $('#request-details-card').fadeIn(300);
+                                            $('#request-details-card .ticket-details-empty').hide();
+                                            $('#request-details-card .ticket-details-form').fadeIn(200);
+                                            var data = $(':input[name]', '#dynamic-form').serialize();
+                                            $.ajax(
+                                              'ajax.php/form/help-topic/' + this.value,
+                                              {
+                                                data: data,
+                                                dataType: 'json',
+                                                success: function(json) {
+                                                  $('#dynamic-form').empty().append(json.html);
+                                                  $(document.head).append(json.media);
+                                                }
+                                              });
+                                        } else {
+                                            $('#request-details-card .ticket-details-form').hide();
+                                            $('#request-details-card .ticket-details-empty').fadeIn(200);
+                                        }"
+                                    required>
+                                <option value=""><?php echo __('Select a help topic'); ?></option>
+                                <?php
+                                if ($topics = Topic::getPublicHelpTopics()) {
+                                    foreach ($topics as $id => $name) {
+                                        echo sprintf(
+                                            '<option value="%d" %s>%s</option>',
+                                            $id,
+                                            ($info['topicId'] == $id) ? 'selected="selected"' : '',
+                                            $name
+                                        );
+                                    }
+                                } ?>
+                            </select>
+                            <?php if ($errors['topicId']): ?>
+                                <span class="error-message"><?php echo $errors['topicId']; ?></span>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
 
                 <!-- RIGHT COLUMN: Ticket Details -->
-                <div class="form-card" id="request-details-card" style="display: <?php echo ($info['topicId'] ? 'block' : 'none'); ?>;">
-                    <div class="form-section-title">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="#1a2e05"/>
-                        </svg>
-                        <?php echo __('Ticket Details'); ?>
+                <div class="form-card" id="request-details-card">
+                    <div class="ticket-details-empty" style="display: <?php echo ($info['topicId'] ? 'none' : 'block'); ?>;">
+                        <img class="ticket-details-empty__img" src="<?php echo ROOT_PATH; ?>assets/default/images/mahaagx/contact.jpg" alt="<?php echo __('Contact'); ?>" />
                     </div>
 
-                    <div id="dynamic-form">
-                        <?php
-                        $options = array('mode' => 'create');
-                        foreach ($forms as $form) {
-                            include(CLIENTINC_DIR . 'templates/dynamic-form.tmpl.php');
-                        } ?>
+                    <div class="ticket-details-form" style="display: <?php echo ($info['topicId'] ? 'block' : 'none'); ?>;">
+                        <div class="form-section-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="#1a2e05"/>
+                            </svg>
+                            <?php echo __('Ticket Details'); ?>
+                        </div>
+
+                        <div id="dynamic-form">
+                            <?php
+                            $options = array('mode' => 'create');
+                            foreach ($forms as $form) {
+                                include(CLIENTINC_DIR . 'templates/dynamic-form.tmpl.php');
+                            } ?>
+                        </div>
                     </div>
                 </div>
             </div>

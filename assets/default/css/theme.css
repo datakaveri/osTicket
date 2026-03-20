@@ -498,21 +498,20 @@ body {
   border-bottom-style: solid;
   padding: 12px 80px;
 } */
+/* MahaAgX header - padding var(--spacing-md) 0 = 1rem vertical */
  #header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  /* background-color: #fff; */
-  background:linear-gradient(180deg, rgba(247, 254, 231, .7) 0%, rgba(247, 254, 231, 0) 100%), #fff;
-  /* border-bottom: 1px solid #c2c2c2; */
-  padding: 14px 77px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1rem 77px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); optional shadow */
 }
 
 .header_items {
@@ -527,9 +526,11 @@ body {
 
 /* Active tab button */
 .active_tab_header {
-  font-weight: 700 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 6px !important;
+  /* MahaAgX nav--link-active */
+  background: #d1fae5; /* Light green background */
+  color: #047857 !important; /* Dark green text */
+  font-weight: 500 !important;
+  text-decoration: none !important;
 }
 
 .logo_title{ 
@@ -555,10 +556,11 @@ font-weight: 500;
     justify-content: center;
 
 }
+/* MahaAgX logo--image: height 2.5rem */
 .tg_govt_header {
   width: auto;
   margin-right: 12px;
-  height: 3rem !important;
+  height: 2.5rem !important;
 }
 /* .tg_short_logo_header {
   display: none;
@@ -846,11 +848,11 @@ button.action-button[data-toggle="dropdown"]:hover {
   height: auto !important;
   height: 350px;
   min-height: 350px;
-  padding: 32px 80px;
+  /* Align content with header/footer horizontal padding */
+  padding: 32px 77px;
   padding-top: 48px;
   flex: 1;
-  background: #fafafa;
-  margin-top: 24px;
+  background: #fff;
 }
 #content > h1 {
   color: #1a2e05;
@@ -1098,8 +1100,6 @@ button.action-button[data-toggle="dropdown"]:hover {
 }
 #ticketForm {
   font-family: Open Sans, Helvetica, Arial, sans-serif;
-  padding: 1rem;
-  padding-left: 4rem;
 }
 .ticke_submit_wrapper_open_ticket {
   text-align: right;
@@ -1140,14 +1140,13 @@ span.required {
 #clientLogin div input,
 #ticketForm div textarea,
 #clientLogin div textarea {
-  width: auto;
   /* border: 1px solid #aaa; */
   background: #fff;
   display: block;
   color: #3f6212b3 !important;;
   border: 1px solid #3f6212 !important;
-  font-size: 15px !important;
-  padding: 14px 16px !important;
+  font-size: 12px !important;
+  padding: 11px !important;
 }
 #ticketForm div input[type="file"],
 #clientLogin div input[type="file"] {
@@ -1228,7 +1227,6 @@ span.required {
 #clientLogin {
   position: relative;
   display: block;
-  margin-top: 20px;
   padding: 30px;
   border-radius: 10px;
   background: linear-gradient(
@@ -1628,7 +1626,7 @@ input[type="submit"],
 button[type="submit"],
 .button,
 input.button {
-  background: #65a30d;
+  background: #059669;
   color: #fff;
   border: none;
   padding: 12px 24px;
@@ -2267,7 +2265,7 @@ img.avatar {
   min-height: 350px;
   padding: 20px 16px;
   flex: 1;
-  background: #fafafa;
+  background: #fff;
 }
 
   #content > h1 {
@@ -2817,4 +2815,253 @@ font-weight: 500;
     .success-ticket-number {
         font-size: 24px;
     }
+}
+
+/* MahaAgX-style header for client portal */
+.logo_container_header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo_container_header #logo img,
+.logo_container_header .tg_govt_header {
+  height: 40px;
+}
+
+/* MahaAgX header - nav--menu gap 6px, nav--link font-size-sm at smaller viewports */
+.header_items p {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+}
+
+/* Nav links: font-size-sm (0.875rem), font-weight 400 - MahaAgX nav--link */
+.header_items p a {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #374151;
+}
+
+.header_items p a:not(.signin_btn_header):not(.register_btn_header) {
+  /* MahaAgX nav--link spacing: padding creates perceived gaps */
+  padding: 0.25rem clamp(0.5rem, 1vw, 0.875rem); /* var(--spacing-xs) + clamp from MahaAgX */
+  border-radius: 10px;
+  margin-right: 6px; /* nav--menu gap */
+}
+
+/* Login: MahaAgX btn--login - font-size-sm, padding var(--spacing-sm) var(--spacing-md) */
+.header_items p a.signin_btn_header {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0;
+  font-weight: 500;
+  background: transparent;
+  color: #00d084;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  transition: 150ms ease;
+}
+
+/* Register: MahaAgX btn--register - font-size-sm, padding var(--spacing-sm) var(--spacing-lg) */
+.header_items p a.register_btn_header {
+  font-size: 0.875rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  background: #00d084;
+  color: #0a0a0a;
+  margin-left: 0;
+  margin-right: 0;
+  border: none;
+  transition: 150ms ease;
+}
+
+.header_items p a.signin_btn_header:hover,
+.header_items p a.register_btn_header:hover {
+  text-decoration: none;
+}
+
+.header_items p a.signin_btn_header:hover {
+  color: #00b371;
+}
+
+.header_items p a.register_btn_header:hover {
+  background: #00b371;
+  color: #0a0a0a;
+  transform: translateY(-1px);
+}
+
+/* ===== MahaAgX-style Asset Header (ported from MahaAgX asset-header.component.scss) ===== */
+.maha-asset-header {
+  width: 100%;
+  min-width: 0;
+  /* Align with header grid and remove top gap */
+  padding: 0 0 2rem; /* remove horizontal space */
+  position: relative;
+  box-sizing: border-box;
+}
+
+.maha-asset-header__container {
+  width: 100%;
+  max-width: none; /* keep aligned with header padding */
+  margin: 0;
+  background: #f5f3ed;
+  border-radius: 12px; /* MahaAgX card radius */
+  position: relative;
+  overflow: hidden;
+  /* #content already has 77px horizontal padding; add a modest inset inside the card */
+  padding: 28px 1.5rem;
+  box-sizing: border-box;
+}
+
+.maha-asset-header__leaf {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  max-width: 40%;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.maha-asset-header__leaf-img {
+  height: 65%;
+  width: auto;
+  object-fit: cover;
+  object-position: right bottom;
+  opacity: 0.6; /* match MahaAgX asset-header */
+}
+
+.maha-asset-header__content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  min-width: 0;
+}
+
+.maha-asset-header__breadcrumbs {
+  margin-bottom: 1rem; /* var(--spacing-md) */
+}
+
+.maha-breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.25rem; /* var(--spacing-xs) */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  color: #4b5563;
+  overflow: hidden;
+}
+
+.maha-breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.maha-breadcrumbs__item:not(:last-child)::after {
+  content: '>';
+  margin-left: 0.25rem;
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+.maha-breadcrumbs__link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 150ms ease;
+  white-space: nowrap;
+}
+
+.maha-breadcrumbs__link:hover {
+  color: #00d084;
+}
+
+.maha-breadcrumbs__current {
+  color: #1f2937;
+  font-weight: 600;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.maha-asset-header__title-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.maha-asset-header__title {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.5rem;
+  color: #000000;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.maha-asset-header__desc {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #4b5563;
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1024px) {
+  .maha-asset-header {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+  .maha-asset-header__container {
+    padding: 1.5rem;
+  }
+  .maha-asset-header__leaf {
+    max-width: 35%;
+  }
+}
+
+@media (max-width: 768px) {
+  .maha-asset-header {
+    padding: 1.5rem 1rem 1rem;
+  }
+  .maha-asset-header__container {
+    padding: 1.25rem 1rem;
+    border-radius: 8px;
+  }
+  .maha-breadcrumbs {
+    font-size: 0.875rem;
+  }
+  .maha-asset-header__title {
+    font-size: 1rem;
+  }
+  .maha-asset-header__desc {
+    font-size: 0.8125rem;
+  }
+  .maha-asset-header__leaf {
+    max-width: 30%;
+    opacity: 0.6;
+  }
 }

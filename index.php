@@ -191,9 +191,9 @@ require(CLIENTINC_DIR . 'header.inc.php');
 
         <!-- <div style="display: flex; align-items: center; justify-content: center; gap: 12px; min-width: 300px; margin-top: 2rem; padding-top: 1rem;" class="tgdex_wrapper"> -->
             <!-- <img src="../assets/default/images/logo.png" style="height: 36px;"> -->
-            <!-- <a class="pull-left" id="logo" href="https://dev.catalogue.forest.iudx.io/" title="<?php echo __('Support Center'); ?>">
+            <!-- <a class="pull-left" id="logo" href="<?php echo ROOT_PATH; ?>" title="<?php echo __('Support Center'); ?>">
                             <span class="valign-helper"></span>
-                            <img style="height: 4rem !important;"src="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" class="tg_govt_header" >
+                            <img style="height: 4rem !important;"src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" class="tg_govt_header" >
                         </a> -->
             <!-- <div class="logo_title">
                             <p style="font-weight:700" class="logo_title_name">Forest Stack</p>

@@ -73,7 +73,7 @@ if (($lang = Internationalization::getCurrentLanguage())) {
         <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/rtl.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/select2.min.css">
         <!-- Favicons -->
-        <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" sizes="32x32" />
+        <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" sizes="32x32" />
         <!-- <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>images/tgdex_favicon.png" sizes="16x16" /> -->
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-3.7.0.min.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-ui-1.13.2.custom.min.js"></script>
@@ -123,7 +123,7 @@ if (($lang = Internationalization::getCurrentLanguage())) {
         }
     </script>
 
-    <body>
+    <body<?php echo (basename($_SERVER['SCRIPT_NAME'] ?? '') === 'login.php') ? ' class="page-login"' : ''; ?>>
         <div id="container">
             <?php
             if ($ost->getError())
@@ -177,24 +177,24 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                                 <?php echo __('New Ticket'); ?>
                             </a>
 
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/datasets" target="_blank">
+                            <a href="https://mahaagx.maharashtra.gov.in/about-mahaagx" target="_blank">
+                                <?php echo __('About MahaAgX'); ?>
+                            </a>
+
+                            <a href="https://mahaagx.maharashtra.gov.in/datasets" target="_blank">
                                 <?php echo __('Datasets'); ?>
                             </a>
 
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/models" target="_blank">
+                            <a href="https://mahaagx.maharashtra.gov.in/models" target="_blank">
                                 <?php echo __('Models'); ?>
                             </a>
 
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/usecases" target="_blank">
-                                <?php echo __('Use Cases'); ?>
+                            <a href="https://mahaagx.maharashtra.gov.in/usecases" target="_blank">
+                                <?php echo __('Usecases'); ?>
                             </a>
 
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/innovations" target="_blank">
+                            <a href="https://mahaagx.maharashtra.gov.in/challenges" target="_blank">
                                 <?php echo __('Challenges'); ?>
-                            </a>
-
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/about-us" target="_blank">
-                                <?php echo __('About Us'); ?>
                             </a>
 
                             <?php
@@ -206,9 +206,12 @@ if (($lang = Internationalization::getCurrentLanguage())) {
 
                                 echo '<a class="user_avatar_header">' . Format::htmlchars($initials) . '</a>';
                             } else {
+                                // Logged out state — show MahaAgX-style Login / Register buttons
                                 if ($cfg->getClientRegistrationMode() != 'disabled') {
+                                    $register_url = ROOT_PATH . 'account.php?do=create';
                             ?>
-                                    <a style="background: #65a30d; color: #fff; padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; transition: all 0.3s;" href="<?php echo $signin_url; ?>" class="signin_btn_header" onmouseover="this.style.background='#4d7c0a'" onmouseout="this.style.background='#65a30d'"><?php echo __('Sign In'); ?></a>
+                                    <a href="<?php echo $signin_url; ?>" class="signin_btn_header"><?php echo __('Login'); ?></a>
+                                    <a href="<?php echo $register_url; ?>" class="register_btn_header"><?php echo __('Register'); ?></a>
                                 <?php
                                 }
                             }
@@ -237,14 +240,11 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                         <span class="valign-helper"></span>
                         <img src="../assets/default/images/forest-logo.svg" class="tg_govt_header">
                     </a> -->
-                    <a class="pull-left" id="logo" href="https://forest-stack.digivan.forest.rajasthan.gov.in/" title="<?php echo __('Support Center'); ?>">
+                    <a class="pull-left" id="logo" href="<?php echo ROOT_PATH; ?>" title="<?php echo __('Support Center'); ?>">
                             <span class="valign-helper"></span>
-                            <img src="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" class="tg_govt_header">
+                            <img src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" class="tg_govt_header">
                         </a>
-                        <div class="logo_title">
-                            <p style="font-weight:700" class="logo_title_name">Forest Stack</p>
-                            <p style="font-weight:500" class="logo_title_department">Rajasthan</p>
-                        </div>
+                        <!-- Removed previous Forest Stack Rajasthan text branding -->
                     <!-- <span class="tg_short_logo_header">
                         <a class="pull-left" style="" id="logo" href="https://tgdex.telangana.gov.in/" title="<?php echo __('Support Center'); ?>">
                             <span class="valign-helper"></span>

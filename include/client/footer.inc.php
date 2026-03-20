@@ -31,141 +31,81 @@
 
 <body>
 </div>
-    <!-- TGDeX Footer -->
+    <!-- MahaAgX Footer -->
      <div style="
-  position: relative;left: 50%;right: 50%;margin-left: -50vw;margin-right: -50vw;width: 100vw;background: #f1f1f1;">
-  <img style="width: 100vw;margin-left: calc(-50vw + 50%);overflow: hidden;background:#fff;" src="<?php echo ROOT_PATH ?>assets/default/images/footer-image.png" alt="Footer" />
-    <footer style="background: #1A2E05; padding: 3rem 4rem 1rem; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-        <!-- Row 1: 5 Columns -->
-        <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr 1.2fr; gap: 2.5rem; align-items: start; margin-bottom: 1rem;"> 
+  position: relative;left: 50%;right: 50%;margin-left: -50vw;margin-right: -50vw;width: 100vw;background: #ffffff;">
+  <!-- Flower band on white, like MahaAgX -->
+  <img style="width: 100vw;margin-left: calc(-50vw + 50%);display:block;" src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/footer-flowers.svg" alt="MahaAgX footer pattern" />
+    <footer style="background: linear-gradient(135deg, #0a3d32 0%, #0f4a3d 50%, #0a3d32 100%); padding: 3.5rem 0 2.5rem; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+        <!-- Row 1: 4 Columns (matches MahaAgX footer layout) -->
+        <div style="width: 100%; max-width: 100%; margin: 0; padding: 0 77px; display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; column-gap: 3rem; row-gap: 1.75rem; align-items: flex-start; margin-bottom: 1.75rem;">
 
-            <!-- Column 1: Forest Stack | Rajasthan -->
+            <!-- Column 1: About MahaAgX -->
             <div>
-                <h3 style="color: #a3e635; font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; font-family: 'Caladea', serif;">Forest Stack | Rajasthan</h3>
-                <p style="color: #fff; font-size: 14px; line-height: 1.8; margin-bottom: 0.75rem; font-weight: 400; display: flex; align-items: flex-start; gap: 0.5rem;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="min-width: 16px; margin-top: 3px;">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#a3e635"/>
-                    </svg>
-                    <span>Aranya Bhawan, Mahatma Gandhi Rd, Jhalana Institutional Area, Jhalana Doongri, Jaipur, Rajasthan 302004</span>
+                <h3 style="color: #ffffff; font-size: 1.125rem; font-weight: 700; margin: 0 0 1rem 0; line-height: 1.3;">Maharashtra Agriculture Exchange</h3>
+                <h3 style="color: #ffffff; font-size: 1.125rem; font-weight: 700; margin: 0 0 1rem 0; line-height: 1.3;">(MahaAgX)</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.9375rem; line-height: 1.6; margin: 0 0 1rem 0;">
+                    MahaAgX is a platform that helps revolutionise agriculture through a secure data exchange network for researchers, innovators, and policymakers.
                 </p>
-                <p style="color: #fff; font-size: 14px; line-height: 1.8; margin-bottom: 0.75rem; font-weight: 400; display: flex; align-items: center; gap: 0.5rem;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="min-width: 16px;">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#a3e635"/>
-                    </svg>
-                    <span>forest.rajasthan.gov.in</span>
-                </p>
-                <p style="color: #fff; font-size: 14px; line-height: 1.8; margin-bottom: 2rem; font-weight: 400; display: flex; align-items: center; gap: 0.5rem;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="min-width: 16px;">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#a3e635"/>
-                    </svg>
-                    <span>dcfta.it.forest@rajasthan.gov.in</span>
-                </p>
+                <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.9375rem;">
+                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/global.svg" alt="Website" style="width:20px;height:20px;flex-shrink:0;">
+                    <a href="https://mahaagx.maharashtra.gov.in/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.9); text-decoration:none;">
+                        https://mahaagx.maharashtra.gov.in/
+                    </a>
+                </div>
             </div>
 
             <!-- Column 2: Important links -->
             <div>
-                <h3 style="color: #a3e635; font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; font-family: 'Caladea', serif;">Important links</h3>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Forest Stack Home</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/about-us" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">About Us</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/datasets" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Datasets</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/models" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Models</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/usecases" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Use Cases</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/innovations" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Challenges</a>
-                    </li>
+                <h3 style="color: #ffffff; font-size: 1rem; font-weight: 600; margin: 0 0 1rem 0;">Important links</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9375rem; line-height: 1.6;">
+                    <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/datasets" style="color:rgba(255,255,255,0.9); text-decoration:none;">Datasets catalogue</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/dashboard" style="color:rgba(255,255,255,0.9); text-decoration:none;">Dashboard</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/discussions" style="color:rgba(255,255,255,0.9); text-decoration:none;">Discussion</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/challenges" style="color:rgba(255,255,255,0.9); text-decoration:none;">Challenge</a></li>
+                    <li><a href="https://data-readiness-prod.s3.cyfuture.cloud/user-manual/User%20Manual%20-%20MahaAgX%20v1.0.pdf" style="color:rgba(255,255,255,0.9); text-decoration:none;">User Manual</a></li>
                 </ul>
             </div>
 
-            <!-- Column 3: Control Plane Documentation -->
+            <!-- Column 3: For Developers -->
             <div>
-                <h3 style="color: #a3e635; font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; font-family: 'Caladea', serif;">Control Plane Documentation</h3>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Catalogue AAA API Docs</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #a3e635; text-decoration: none; font-size: 14px; font-weight: 400;">Data Plane Documentation</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Resource Server API Docs</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">File Server API Docs</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">OGC Server API Docs</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Gateway Server API Docs</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Vocabulary Docs</a>
-                    </li>
+                <h3 style="color: #ffffff; font-size: 1rem; font-weight: 600; margin: 0 0 1rem 0;">For Developers</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9375rem; line-height: 1.6;">
+                    <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/controlplane/apis" style="color:rgba(255,255,255,0.9); text-decoration:none;">Control Plane API docs</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/files-connect-api/v1/docs" style="color:rgba(255,255,255,0.9); text-decoration:none;">File Server API docs</a></li>
+                    <li><a href="https://mahaagx.maharashtra.gov.in/dataplane/apis" style="color:rgba(255,255,255,0.9); text-decoration:none;">Resource Server API docs</a></li>
                 </ul>
             </div>
 
-            <!-- Column 4: Help & Support -->
+            <!-- Column 4: Partners -->
             <div>
-                <h3 style="color: #a3e635; font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; font-family: 'Caladea', serif;">Help & Support</h3>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://helpdesk.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">Help & Support</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/faq" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">FAQs</a>
-                    </li>
-                    <li style="margin-bottom: 0.75rem;">
-                        <a href="https://docs.forest-stack.digivan.forest.rajasthan.gov.in/" style="color: #fff; text-decoration: none; font-size: 14px; font-weight: 400;">User Manual</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Column 5: Our Partners -->
-            <div>
-                <h3 style="color: #a3e635; font-size: 18px; font-weight: 700; margin-bottom: 1.5rem; font-family: 'Caladea', serif;">Our Partners</h3>
-                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.5rem; flex-wrap: nowrap;">
-                    <img src="<?php echo ROOT_PATH; ?>assets/default/images/iisc-logo-white.svg" alt="IISc" style="height: 40px;">
-                    <img src="<?php echo ROOT_PATH; ?>assets/default/images/jica-logo.svg" alt="JICA" style="height: 40px;">
-                    <img src="<?php echo ROOT_PATH; ?>assets/default/images/doit-logo.svg" alt="DoIT" style="height: 40px;">
-                </div>
-                <div style="display: flex; gap: 0.75rem; align-items: center;">
-                    <img src="<?php echo ROOT_PATH; ?>assets/default/images/emblem-logo.svg" alt="Rajasthan" style="height: 50px;">
-                    <div>
-                        <p style="color: #fff; font-size: 13px; font-weight: 600; margin: 0; line-height: 1.4;">Government of Rajasthan</p>
-                        <p style="color: #fff; font-size: 12px; font-weight: 400; margin: 0; line-height: 1.4;">Forest Department</p>
+                <h3 style="color: #ffffff; font-size: 1rem; font-weight: 600; margin: 0 0 1rem 0;">Partners</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                        <img src="<?php echo ROOT_PATH; ?>assets/default/images/iisc-logo-white.svg" alt="IISc" style="height: 40px; max-width: 100px; object-fit: contain;">
+                        <img src="<?php echo ROOT_PATH; ?>assets/default/images/jica-logo.svg" alt="JICA" style="height: 40px; max-width: 100px; object-fit: contain;">
+                        <img src="<?php echo ROOT_PATH; ?>assets/default/images/doit-logo.svg" alt="DoIT" style="height: 40px; max-width: 100px; object-fit: contain;">
+                    </div>
+                    <div style="display: flex; gap: 0.75rem; align-items: center;">
+                        <img src="<?php echo ROOT_PATH; ?>assets/default/images/emblem-logo.svg" alt="Government of Maharashtra" style="height: 48px;">
+                        <div>
+                            <p style="color: rgba(255,255,255,0.9); font-size: 0.8125rem; font-weight: 600; margin: 0; line-height: 1.4;">Government of Maharashtra</p>
+                            <p style="color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 400; margin: 0; line-height: 1.4;">Agriculture Department</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Row 2: Footer Bottom -->
-        <div style="max-width: 1400px; margin: 0 auto; padding-top: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <p style="color: #fff; font-size: 14px; margin: 0; margin-bottom: 0.5rem;">
-                    <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/privacy-policy" style="color: #fff; text-decoration: none; margin-right: 1rem;">Privacy Policy</a> | 
-                    <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/terms-of-service" style="color: #fff; text-decoration: none; margin-left: 1rem;">Terms of Service</a>
-                </p>
-                <p style="color: #fff; font-size: 14px; margin: 0;">© 2025 by Forest Stack</p>
-            </div>
-            <div>
-                <h4 style="color: #a3e635; font-size: 16px; font-weight: 600; margin-bottom: 0.75rem;">Connect with us</h4>
-                <div style="display: flex; gap: 1rem;">
-                    <a href="https://x.com/rajforest" target="_blank" style="color: #a3e635; font-size: 24px;">𝕏</a>
-                    <a href="https://facebook.com/rajforest" target="_blank" style="color: #a3e635; font-size: 24px;">f</a>
-                    <a href="https://instagram.com/rajforest" target="_blank" style="color: #a3e635; font-size: 24px;">📷</a>
-                </div>
-            </div>
+        <div style="width: 100%; max-width: 100%; margin: 0; padding: 1.25rem 77px 0; border-top: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.8125rem; margin: 0; line-height: 1.5;">
+                © <?php echo date('Y'); ?> by MahaAgX
+                <span style="margin: 0 0.5rem;">|</span>
+                <a href="https://mahaagx.maharashtra.gov.in/privacy-policy" style="color: rgba(255,255,255,0.9); text-decoration: none;">Privacy Policy</a>
+                <span style="margin: 0 0.5rem;">|</span>
+                <a href="https://mahaagx.maharashtra.gov.in/terms-of-service" style="color: rgba(255,255,255,0.9); text-decoration: none;">Terms of Service</a>
+            </p>
         </div>
 
         <!-- Responsive Design for Mobile -->

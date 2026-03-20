@@ -4594,16 +4594,44 @@ class PhoneNumberWidget extends Widget {
     function render($options=array()) {
         $config = $this->field->getConfiguration();
         list($phone, $ext) = explode("X", $this->value);
+        $showExt = ($ext || $config['ext']);
+        // Registration: one 2×2 grid (phone label | ext label / tel | ext) — matches Email|Name alignment
+        if (!empty($options['maha_register_phone_grid']) && $showExt) {
+            $req = !empty($options['client'])
+                && $this->field->isRequiredForUsers()
+                && ($this->field->isEditableToUsers()
+                    || (!empty($options['mode']) && $options['mode'] == 'create'));
+            ?>
+        <span class="ost-inline-phone-row ost-inline-phone-row--maha-grid">
+            <span class="ost-inline-phone-grid-label"><?php
+            echo Format::htmlchars($this->field->getLocal('label'));
+            if ($req) { ?>
+                <span class="error">*</span>
+            <?php } ?>
+            </span>
+            <span class="ost-inline-phone-grid-label ost-inline-phone-grid-label--ext"><?php echo __('Ext'); ?>:</span>
+            <span class="ost-inline-phone-main"><input id="<?php echo $this->id; ?>" type="tel" name="<?php echo $this->name; ?>" value="<?php
+            echo Format::htmlchars($phone); ?>"/></span>
+            <span class="ost-inline-phone-ext"><input type="text" name="<?php
+            echo $this->name; ?>-ext" value="<?php echo Format::htmlchars($ext);
+                ?>" size="5" aria-label="<?php echo Format::htmlchars(__('Extension')); ?>"/></span>
+        </span>
+            <?php
+            return;
+        }
         ?>
-        <input id="<?php echo $this->id; ?>" type="tel" name="<?php echo $this->name; ?>" value="<?php
-        echo Format::htmlchars($phone); ?>"/><?php
+        <span class="ost-inline-phone-row"><span class="ost-inline-phone-main"><input id="<?php echo $this->id; ?>" type="tel" name="<?php echo $this->name; ?>" value="<?php
+        echo Format::htmlchars($phone); ?>"/></span><?php
         // Allow display of extension field even if disabled if the phone
         // number being edited has an extension
-        if ($ext || $config['ext']) { ?> <?php echo __('Ext'); ?>:
-            <input type="text" name="<?php
+        if ($showExt) { ?>
+            <span class="ost-inline-phone-ext"><span class="ost-inline-phone-ext-label"><?php
+            echo __('Ext'); ?>:</span><input type="text" name="<?php
             echo $this->name; ?>-ext" value="<?php echo Format::htmlchars($ext);
-                ?>" size="5"/>
-        <?php }
+                ?>" size="5"/></span>
+        <?php } ?>
+        </span>
+        <?php
     }
 
     function getValue() {
