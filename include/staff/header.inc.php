@@ -2,8 +2,10 @@
 header("Content-Type: text/html; charset=UTF-8");
 header("Content-Security-Policy: frame-ancestors " . $cfg->getAllowIframes() . "; script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'");
 
-$title = ($ost && ($title = $ost->getPageTitle()))
-    ? $title : ('osTicket :: ' . __('Staff Control Panel'));
+$titleBase = 'Help Desk | MahaAgX';
+$title = ($ost && ($pageTitle = $ost->getPageTitle()) && $pageTitle)
+    ? ($pageTitle . ' | MahaAgX')
+    : $titleBase;
 
 if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -97,20 +99,20 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                                 <a href="<?php echo ROOT_PATH; ?>open.php" class="no-pjax">
                                     <?php echo __('New Ticket'); ?>
                                 </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/datasets" target="_blank">
+                                <a href="https://mahaagx.maharashtra.gov.in/about-mahaagx" target="_blank" rel="noopener">
+                                    <?php echo __('About MahaAgX'); ?>
+                                </a>
+                                <a href="https://mahaagx.maharashtra.gov.in/datasets" target="_blank" rel="noopener">
                                     <?php echo __('Datasets'); ?>
                                 </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/models" target="_blank">
+                                <a href="https://mahaagx.maharashtra.gov.in/models" target="_blank" rel="noopener">
                                     <?php echo __('Models'); ?>
                                 </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/usecases" target="_blank">
-                                    <?php echo __('Use Cases'); ?>
+                                <a href="https://mahaagx.maharashtra.gov.in/usecases" target="_blank" rel="noopener">
+                                    <?php echo __('Usecases'); ?>
                                 </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/innovations" target="_blank">
+                                <a href="https://mahaagx.maharashtra.gov.in/challenges" target="_blank" rel="noopener">
                                     <?php echo __('Challenges'); ?>
-                                </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/about-us" target="_blank">
-                                    <?php echo __('About Us'); ?>
                                 </a>
                             </div>
                         </div>
@@ -143,7 +145,7 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                         if (strpos($h, '<script ') !== false)
                             echo $h;
                     } ?>
-                    <title><?php echo ($ost && ($title = $ost->getPageTitle())) ? $title : 'TGDeX :: ' . __('Staff Control Panel'); ?></title><?php
+                    <title><?php echo Format::htmlchars($title); ?></title><?php
                                                                                                                                             } # endif X_PJAX 
                                                                                                                                                 ?>
                 <ul id="nav">

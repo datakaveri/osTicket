@@ -1,6 +1,9 @@
 <?php
-$title = ($cfg && is_object($cfg) && $cfg->getTitle())
-    ? $cfg->getTitle() : 'osTicket :: ' . __('Support Ticket System');
+$titleBase = 'Help Desk | MahaAgX';
+$pageTitle = ($ost && is_object($ost) && ($pt = $ost->getPageTitle()))
+    ? $pt
+    : null;
+$title = $pageTitle ? ($pageTitle . ' | MahaAgX') : $titleBase;
 
 // Find OAuth2 plugin instance dynamically
 $signin_url = ROOT_PATH . "login.php";

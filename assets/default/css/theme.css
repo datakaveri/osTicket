@@ -66,7 +66,7 @@
         padding-left: 80px;
         position:relative;
         z-index: 10;
-        /* background: url("<?php echo ROOT_PATH ?>assests/images/background.png"); */
+  /* background is applied inline from index.php; we can override it if needed */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -78,10 +78,16 @@
         text-align: left !important;
 
 }
+
+/* Remove decorative background circles/leaf pattern (was set inline in index.php) */
+.banner-content-left-section {
+  background-image: none !important;
+  background: none !important;
+}
 .banner-content-left-section h1{
                 font-size: 48px !important;
                 font-weight:700;
-                font-family: caladea !important;
+                font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
                 line-height:1.2;
         margin-bottom: 0 !important;
             }
@@ -109,6 +115,14 @@
         justify-content: end;
         align-items: start;
         /* padding-right: 80px; */
+}
+
+.banner-content-right-section img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
 }
 html {
   font-size: 100%;
@@ -375,7 +389,7 @@ h2,
 }
 .error {
   color: #f00;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 .error input {
   border: 1px solid #f00;
@@ -428,6 +442,7 @@ h2,
   border: 1px solid #1f2937;
   color: #767676 !important;
     border-color: #767676 !important;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 /* .green.button:hover {
   background-color: #749a02;
@@ -460,6 +475,7 @@ h2,
   color: #fff;
   padding: 10px 20px;
   border: none;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 /* .blue.button:hover {
   background-color: #0299d2;
@@ -916,6 +932,54 @@ button.action-button[data-toggle="dropdown"]:hover {
 .front-page-button {
 }
 
+/* MahaAgX landing page buttons */
+.front-page-button--primary {
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  background-color: #00d084 !important;
+  color: #0a0a0a !important;
+  border-radius: 8px !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.2 !important;
+  min-height: auto !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1.5rem !important;
+}
+.front-page-button--primary:hover {
+  background-color: #00b371 !important;
+  color: #0a0a0a !important;
+  transform: translateY(-1px) !important;
+}
+
+.front-page-button--secondary {
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  background-color: #ffffff !important;
+  color: #00b371 !important;
+  border-radius: 8px !important;
+  border: 2px solid #00d084 !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1.2 !important;
+  min-height: auto !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1.5rem !important;
+}
+.front-page-button--secondary:hover {
+  background-color: #ecfdf5 !important;
+  color: #009960 !important;
+}
+
 .main-content_index {
   width: 565px;
   padding: 4rem 0rem;
@@ -1099,7 +1163,7 @@ button.action-button[data-toggle="dropdown"]:hover {
   color: #555;
 }
 #ticketForm {
-  font-family: Open Sans, Helvetica, Arial, sans-serif;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 .ticke_submit_wrapper_open_ticket {
   text-align: right;
@@ -1358,7 +1422,7 @@ span.required {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 #ticketTable caption {
   padding: 12px 16px;
@@ -1480,6 +1544,7 @@ i.refresh {
   display: inline-block;
   border: 1px solid #aaa;
   cursor: pointer;
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   font-size: 11px;
   overflow: hidden;
   background-color: #dddddd;

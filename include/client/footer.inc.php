@@ -211,6 +211,17 @@ if (($lang = Internationalization::getCurrentLanguage()) && $lang != 'en_US') { 
                                                                                 echo $lang; ?>/js"></script>
 <?php } ?>
 <script type="text/javascript">
+  // Ensure ALL footer links open in a new tab.
+  (function () {
+    var links = document.querySelectorAll('footer a, #footer a');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener noreferrer');
+    }
+  })();
+</script>
+<script type="text/javascript">
     getConfig().resolve(<?php
                         include INCLUDE_DIR . 'ajax.config.php';
                         $api = new ConfigAjaxAPI();

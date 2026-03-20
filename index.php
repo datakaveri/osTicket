@@ -218,12 +218,12 @@ require(CLIENTINC_DIR . 'header.inc.php');
                     
                     <!-- Action Buttons -->
                     <div style="display: flex; gap: 16px; margin-top: 24px;">
-                        <a href="<?php echo ROOT_PATH; ?>open.php" style="display: inline-block; padding: 12px 32px; background-color: #65a30d; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(101, 163, 13, 0.2);" 
+                        <a href="<?php echo ROOT_PATH; ?>open.php" class="front-page-button front-page-button--primary" style="display: inline-block; padding: 12px 32px; background-color: #65a30d; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(101, 163, 13, 0.2);" 
                            onmouseover="this.style.backgroundColor='#4d7a0a'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(101, 163, 13, 0.3)';" 
                            onmouseout="this.style.backgroundColor='#65a30d'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(101, 163, 13, 0.2)';">
                             Open a New Ticket
                         </a>
-                        <a href="<?php echo ROOT_PATH; ?>tickets.php" style="display: inline-block; padding: 12px 32px; background-color: white; color: #65a30d; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px; border: 2px solid #65a30d; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" 
+                        <a href="<?php echo ROOT_PATH; ?>tickets.php" class="front-page-button front-page-button--secondary" style="display: inline-block; padding: 12px 32px; background-color: white; color: #65a30d; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px; border: 2px solid #65a30d; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" 
                            onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.15)';" 
                            onmouseout="this.style.backgroundColor='white'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
                             Check Ticket Status
@@ -232,7 +232,7 @@ require(CLIENTINC_DIR . 'header.inc.php');
 
                 </div>
                 <div class="banner-content-right-section">
-                    <img src="<?php echo ROOT_PATH ?>assets/default/images/banner-image.png" alt="">
+                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/login.png" alt="">
                 </div>
 
             </div>

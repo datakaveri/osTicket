@@ -65,6 +65,17 @@ if(is_object($thisstaff) && $thisstaff->isStaff()) { ?>
         print $api->scp(false);
     ?>);
 </script>
+<script type="text/javascript">
+  // Ensure ALL footer links open in a new tab (staff footer).
+  (function () {
+    var links = document.querySelectorAll('#footer a');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener noreferrer');
+    }
+  })();
+</script>
 <?php
 if ($thisstaff
         && ($lang = $thisstaff->getLanguage())
