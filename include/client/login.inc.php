@@ -1,6 +1,8 @@
 <?php
 if (!defined('OSTCLIENTINC')) die('Access Denied');
 
+require_once INCLUDE_DIR . 'client/mahaagx-keycloak-url.inc.php';
+
 $email = Format::input($_POST['luser'] ?: $_GET['e']);
 $passwd = Format::input($_POST['lpasswd'] ?: $_GET['t']);
 
@@ -361,7 +363,7 @@ if ($content) {
 
         <?php if ($cfg && $cfg->isClientRegistrationEnabled()) { ?>
           <div class="maha-login__footer">
-            <?php echo __('New to MahaAgX?'); ?> <a href="account.php?do=create"><?php echo __('Register'); ?></a>
+            <?php echo __('New to MahaAgX?'); ?> <a href="<?php echo Format::htmlchars(MAHAAGX_KEYCLOAK_REGISTER_URL); ?>"><?php echo __('Register'); ?></a>
           </div>
         <?php } ?>
       </div>
@@ -391,7 +393,7 @@ if ($content) {
 
     <?php if ($cfg && $cfg->isClientRegistrationEnabled()) { ?>
       <div>
-        <?php echo __('Not yet registered?'); ?> <a href="account.php?do=create"><?php echo __('Create an account'); ?></a>
+        <?php echo __('Not yet registered?'); ?> <a href="<?php echo Format::htmlchars(MAHAAGX_KEYCLOAK_REGISTER_URL); ?>"><?php echo __('Create an account'); ?></a>
       </div>
     <?php } ?>
 

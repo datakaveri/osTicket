@@ -225,29 +225,42 @@ if (!$maha_current_sort_label) {
 .tickets-status-tabs {
     display: flex;
     gap: 0.5rem;
-    background: #f3f4f6;
-    padding: 0.375rem;
-    border-radius: 10px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    flex-wrap: wrap;
 }
 
 .status-tab {
-    padding: 0.5rem 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.55rem 1.25rem;
     border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #6b7280;
+    border: 1px solid #00d084;
+    background: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #00b371;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: 150ms ease;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .status-tab:hover {
-    background: #e5e7eb;
-    color: #1a2e05;
+    background: #f0fffa;
+    border-color: #00b371;
+    color: #00b371;
+    transform: translateY(-1px);
 }
 
 .status-tab.active {
-    background: #65a30d;
-    color: #fff;
+    background: #00d084;
+    border-color: #00d084;
+    color: #0a0a0a;
+    box-shadow: 0 10px 24px rgba(0, 208, 132, 0.18);
 }
 
 .search-filter-section {

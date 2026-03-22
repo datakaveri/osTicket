@@ -117,12 +117,18 @@
         /* padding-right: 80px; */
 }
 
-.banner-content-right-section img{
+.banner-content-right-section img,
+.banner-content-right-section video{
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   border-radius: 16px;
+  display: block;
+}
+
+.banner-content-right-section video{
+  background: #022118;
 }
 html {
   font-size: 100%;
@@ -589,14 +595,16 @@ font-weight: 500;
 /* Sign out button */
 .signout_btn_header {
   padding: 10px 20px !important;
-  border: 1px solid #4d7c0f;
+  border: 1px solid #00d084;
   border-radius: 999px;
   font-weight: 600;
   font-size: 14px;
   display: inline-block;
   /* margin: 0rem 1rem; */
-  color: #4d7c0f !important;
+  color: #047857 !important;
+  background: #f0fdf4;
   text-decoration: none;
+  transition: 150ms ease;
 }
 
 /* Sign in button */
@@ -629,17 +637,76 @@ font-weight: 500;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 36px;
-  height: 36px;
-  background-color: #4d7c0f;
-  color: white !important;
-  font-size: 0.85em;
+  width: 40px;
+  height: 40px;
+  background-color: #00d084;
+  color: #0a0a0a !important;
+  font-size: 0.8rem;
   border-radius: 50%;
-  font-weight: 600;
-  margin: 0 5px;
+  font-weight: 700;
+  margin: 0 2px 0 4px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: default;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+/* Logged-in: Tickets (n) | SIGN OUT | initials — Forest Stack–style row */
+.header-user-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-left: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.header_items p a.tickets_count_header {
+  font-weight: 600 !important;
+  color: #047857 !important;
+  white-space: nowrap;
+}
+
+.header_items p a.tickets_count_header:hover {
+  color: #00b371 !important;
+  text-decoration: none;
+}
+
+.header_items p a.signout_btn_header:hover {
+  background: #dcfce7;
+  border-color: #00b371;
+  color: #00b371 !important;
+}
+
+/* Mobile: compact auth next to menu */
+.user_avatar_mob {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 6px;
+  background-color: #00d084;
+  color: #0a0a0a !important;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.tickets_link_header_mob,
+.signout_btn_header_mob {
+  font-size: 12px;
+  font-weight: 600;
+  color: #047857 !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.signout_btn_header_mob {
+  border: 1px solid #00d084;
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: #f0fdf4;
+  color: #047857 !important;
 }
 
 #logo {
@@ -2379,18 +2446,23 @@ img.avatar {
   }
   .show-guest-mob {
     display: inline-flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    width: 36px;
-    height: 36px;
-    background-color: #4d7c0f;
-    color: white;
-    font-size: 0.85em;
-    border-radius: 50%;
-    font-weight: 600;
-    margin: 0 5px;
-    text-transform: uppercase;
-    text-decoration: none;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: 70%;
+    width: auto;
+    height: auto;
+    min-height: 0;
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-transform: none;
     cursor: default;
   }
   #header {
@@ -2867,6 +2939,128 @@ font-weight: 500;
     font-style: italic;
 }
 
+/* MahaAgX toaster - mirrored from ui-dx/apps/MahaAgX shared toaster */
+.toaster--container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2100;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  pointer-events: none;
+}
+
+.toaster--item {
+  pointer-events: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: slideInRight 0.3s ease-out;
+  min-width: 320px;
+  border-left: 4px solid;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toaster--content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+.toaster--icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.toaster--message {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+
+.toaster--close {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  color: #666666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 150ms ease;
+}
+
+.toaster--close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1a1a1a;
+}
+
+.toaster--success {
+  border-left-color: #00b371;
+}
+
+.toaster--success .toaster--icon {
+  color: #00b371;
+}
+
+.toaster--progress {
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.toaster--progress-bar {
+  height: 100%;
+  background: #00b371;
+  animation: progressBar 3.6s linear forwards;
+  transform-origin: left;
+}
+
+@keyframes progressBar {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.toaster--item.removing {
+  animation: slideOutRight 0.3s ease-in forwards;
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 @media (max-width: 768px) {
     .success-message-container {
         margin: 2rem 1rem;
@@ -2879,6 +3073,18 @@ font-weight: 500;
     
     .success-ticket-number {
         font-size: 24px;
+    }
+
+    .toaster--container {
+      bottom: 16px;
+      right: 16px;
+      left: 16px;
+      max-width: none;
+    }
+
+    .toaster--item {
+      min-width: auto;
+      width: 100%;
     }
 }
 
@@ -2957,6 +3163,102 @@ font-weight: 500;
   background: #00b371;
   color: #0a0a0a;
   transform: translateY(-1px);
+}
+
+/* MahaAgX action buttons for client forms */
+.maha-action-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+input.maha-action-btn,
+button.maha-action-btn,
+a.maha-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 8px;
+  font-size: 0.875rem !important;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  border: 1px solid transparent !important;
+  transition: 150ms ease;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+input.maha-action-btn:hover,
+button.maha-action-btn:hover,
+a.maha-action-btn:hover {
+  transform: translateY(-1px);
+}
+
+input.maha-action-btn--primary,
+button.maha-action-btn--primary,
+a.maha-action-btn--primary {
+  background: #00d084 !important;
+  color: #0a0a0a !important;
+  border-color: #00d084 !important;
+}
+
+input.maha-action-btn--primary:hover,
+button.maha-action-btn--primary:hover,
+a.maha-action-btn--primary:hover {
+  background: #00b371 !important;
+  border-color: #00b371 !important;
+  color: #0a0a0a !important;
+}
+
+input.maha-action-btn--secondary,
+button.maha-action-btn--secondary,
+a.maha-action-btn--secondary {
+  background: #ffffff !important;
+  color: #00b371 !important;
+  border-color: #00d084 !important;
+}
+
+input.maha-action-btn--secondary:hover,
+button.maha-action-btn--secondary:hover,
+a.maha-action-btn--secondary:hover {
+  background: #f0fffa !important;
+  color: #00b371 !important;
+  border-color: #00b371 !important;
+}
+
+input.maha-action-btn--danger,
+button.maha-action-btn--danger,
+a.maha-action-btn--danger {
+  background: #fff1f2 !important;
+  color: #ef4444 !important;
+  border-color: #f87171 !important;
+}
+
+input.maha-action-btn--danger:hover,
+button.maha-action-btn--danger:hover,
+a.maha-action-btn--danger:hover {
+  background: #ffe4e6 !important;
+  color: #dc2626 !important;
+  border-color: #ef4444 !important;
+}
+
+.ticket-view-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ticket-view-actions .maha-action-btn {
+  min-height: 36px;
+  padding: 0.45rem 0.85rem !important;
+  font-size: 0.8125rem !important;
 }
 
 /* ===== MahaAgX-style Asset Header (ported from MahaAgX asset-header.component.scss) ===== */

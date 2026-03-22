@@ -15,39 +15,32 @@
 **********************************************************************/
 
 require('client.inc.php');
+require_once INCLUDE_DIR . 'client/iudx-keycloak-config.inc.php';
+
+$flashPath = ROOT_PATH ?: '/';
+setcookie('mahaagx_flash', 'logged_out', time() + 120, $flashPath, '', false, true);
+
+$hadIudxSession = !empty($_SESSION['iudx_keycloak_access_token'])
+    || !empty($_SESSION['iudx_keycloak_refresh_token']);
+$iudxIdToken = $_SESSION['iudx_keycloak_id_token'] ?? null;
+
 //Check token: Make sure the user actually clicked on the link to logout.
 if ($thisclient && $_GET['auth'] && $ost->validateLinkToken($_GET['auth']))
    $thisclient->logOut();
 
+unset(
+    $_SESSION['iudx_keycloak_access_token'],
+    $_SESSION['iudx_keycloak_refresh_token'],
+    $_SESSION['iudx_keycloak_id_token'],
+    $_SESSION['oauth2_access_token'],
+    $_SESSION['oauth2_refresh_token']
+);
+
 osTicketSession::destroyCookie();
 session_destroy();
 
-// Try to get OAuth2 config (for Keycloak)
-$keycloakLogoutUrl = null;
-if (class_exists('OAuth2Plugin')) {
-    foreach (PluginManager::allInstalled() as $path => $plugin) {
-        if ($plugin instanceof OAuth2Plugin && $plugin->isActive()) {
-            $instances = $plugin->getActiveInstances();
-            if ($instances && $instances->count() > 0) {
-                $instance = $instances->first();
-                $config = $instance->getConfig();
-                $authUrl = $config->getAuthorizationUrl();
-                $redirectUri = $config->getRedirectUri();
-
-                // Parse Keycloak base and realm from the auth URL
-                if (preg_match('#^(https://[^/]+/auth/realms/[^/]+)/protocol/openid-connect/auth#', $authUrl, $matches)) {
-                    $base = $matches[1];
-                    // $keycloakLogoutUrl = $base . '/protocol/openid-connect/logout?redirect_uri=' . urlencode($redirectUri ?: osTicket::get_base_url());
-                    $keycloakLogoutUrl = $base . '/protocol/openid-connect/logout';
-                }
-            }
-            break;
-        }
-    }
-}
-
-if ($keycloakLogoutUrl) {
-    header('Location: ' . $keycloakLogoutUrl);
+if ($hadIudxSession) {
+    header('Location: ' . iudx_keycloak_logout_endpoint($cfg->getBaseUrl(), $iudxIdToken));
     exit;
 }
 

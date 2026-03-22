@@ -1,32 +1,44 @@
 <?php
+require_once INCLUDE_DIR . 'client/mahaagx-keycloak-url.inc.php';
+
+if (!function_exists('mahaagx_client_header_initials')) {
+    function mahaagx_client_header_initials($name) {
+        $name = trim((string) $name);
+        if ($name === '') {
+            return '?';
+        }
+        if (function_exists('mb_substr') && function_exists('mb_strlen')) {
+            $parts = preg_split('/\s+/u', $name, -1, PREG_SPLIT_NO_EMPTY);
+            if (count($parts) >= 2) {
+                return strtoupper(mb_substr($parts[0], 0, 1) . mb_substr($parts[count($parts) - 1], 0, 1));
+            }
+            $one = $parts[0];
+            $len = mb_strlen($one);
+            return strtoupper(mb_substr($one, 0, $len >= 2 ? 2 : 1));
+        }
+        $parts = preg_split('/\s+/', $name, -1, PREG_SPLIT_NO_EMPTY);
+        if (count($parts) >= 2) {
+            return strtoupper(substr($parts[0], 0, 1) . substr($parts[count($parts) - 1], 0, 1));
+        }
+        $one = $parts[0];
+        return strtoupper(substr($one, 0, min(2, strlen($one))));
+    }
+}
+
 $titleBase = 'Help Desk | MahaAgX';
 $pageTitle = ($ost && is_object($ost) && ($pt = $ost->getPageTitle()))
     ? $pt
     : null;
 $title = $pageTitle ? ($pageTitle . ' | MahaAgX') : $titleBase;
 
-// Find OAuth2 plugin instance dynamically
-$signin_url = ROOT_PATH . "login.php";
-$oauth2_plugin = null;
+// Login URL: always use IUDX Keycloak for MahaAgX client sign-in.
+$signin_url = MAHAAGX_KEYCLOAK_AUTH_URL;
 
-// Only try to find OAuth2 plugin if the class exists
-if (class_exists('OAuth2Plugin')) {
-    foreach (PluginManager::allInstalled() as $path => $plugin) {
-        if ($plugin instanceof OAuth2Plugin && $plugin->isActive()) {
-            $oauth2_plugin = $plugin;
-            break;
-        }
-    }
-    if ($oauth2_plugin) {
-        // Get the first active instance of the plugin
-        $instances = $oauth2_plugin->getActiveInstances();
-        if ($instances && $instances->count() > 0) {
-            $instance = $instances->first();
-            $signin_url = ROOT_PATH . "login.php?do=ext&bk=oauth2.user.p" . $oauth2_plugin->getId() . "i" . $instance->getId();
-        }
-    }
-}
 $signout_url = ROOT_PATH . "logout.php?auth=" . $ost->getLinkToken();
+$mahaagxFlash = $_COOKIE['mahaagx_flash'] ?? '';
+if ($mahaagxFlash !== '') {
+    setcookie('mahaagx_flash', '', time() - 3600, ROOT_PATH ?: '/', '', false, true);
+}
 
 header("Content-Type: text/html; charset=UTF-8");
 header("Content-Security-Policy: frame-ancestors " . $cfg->getAllowIframes() . "; script-src 'self' 'unsafe-inline'; object-src 'none'");
@@ -127,6 +139,74 @@ if (($lang = Internationalization::getCurrentLanguage())) {
     </script>
 
     <body<?php echo (basename($_SERVER['SCRIPT_NAME'] ?? '') === 'login.php') ? ' class="page-login"' : ''; ?>>
+        <?php /* Keycloak response_mode=fragment: #code= never reaches PHP — forward to callback */ ?>
+        <script>
+        (function () {
+            try {
+                var h = window.location.hash;
+                if (!h || h.indexOf('code=') === -1) return;
+                var q = h.charAt(0) === '#' ? h.substring(1) : h;
+                window.location.replace(<?php echo json_encode(ROOT_PATH . 'keycloak-callback.php?'); ?> + q);
+            } catch (e) {}
+        })();
+        </script>
+        <?php if ($mahaagxFlash === 'logged_out') { ?>
+        <div class="toaster--container" id="mahaToastContainer" aria-live="polite" aria-atomic="true">
+            <div class="toaster--item toaster--success" id="mahaToast" role="status">
+                <div class="toaster--content">
+                    <div class="toaster--icon" aria-hidden="true">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="toaster--message"><?php echo __('You\'ve logged out successfully'); ?></div>
+                    <button class="toaster--close" type="button" aria-label="<?php echo __('Close notification'); ?>" onclick="window.dismissMahaToast && window.dismissMahaToast()">
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="toaster--progress">
+                    <div class="toaster--progress-bar"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+        (function () {
+            var toast = document.getElementById('mahaToast');
+            if (!toast) return;
+            var removeToast = function () {
+                toast.classList.add('removing');
+                window.setTimeout(function () {
+                    if (toast && toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 280);
+            };
+            window.dismissMahaToast = removeToast;
+            window.setTimeout(removeToast, 3600);
+        })();
+        </script>
+        <?php } ?>
         <div id="container">
             <?php
             if ($ost->getError())
@@ -142,10 +222,17 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                         <?php
                         if ($thisclient && is_object($thisclient) && $thisclient->isValid()) {
                             if (!$thisclient->isGuest()) {
-                                // Logged-in user (not guest): show initials
-                                $initials = strtoupper(substr($thisclient->getName(), 0, 1) .
-                                    (strpos($thisclient->getName(), ' ') !== false ? substr($thisclient->getName(), strpos($thisclient->getName(), ' ') + 1, 1) : ''));
-                                echo '<span class="user_avatar_mob">' . Format::htmlchars($initials) . '</span>';
+                                $mobInitials = mahaagx_client_header_initials($thisclient->getName());
+                                $orgMob = $thisclient->canSeeOrgTickets();
+                                $mobTicketTotal = (int) $thisclient->getNumOpenTickets($orgMob)
+                                    + (int) $thisclient->getNumClosedTickets($orgMob);
+                                echo '<a class="tickets_link_header_mob" href="' . ROOT_PATH . 'tickets.php">'
+                                    . __('Tickets') . ' (' . $mobTicketTotal . ')</a> ';
+                                echo '<a class="signout_btn_header_mob" href="' . Format::htmlchars($signout_url) . '">'
+                                    . __('SIGN OUT') . '</a> ';
+                                echo '<span class="user_avatar_mob" title="'
+                                    . Format::htmlchars($thisclient->getName()) . '">'
+                                    . Format::htmlchars($mobInitials) . '</span>';
                             } else {
                                 // Guest user: show sign out
                                 echo '<a href="' . $signout_url . '">' . __('SIGN OUT') . '</a>';
@@ -202,19 +289,29 @@ if (($lang = Internationalization::getCurrentLanguage())) {
 
                             <?php
                             if ($thisclient && is_object($thisclient) && $thisclient->isValid() && !$thisclient->isGuest()) {
-                                echo '<a class="signout_btn_header" href="' . $signout_url . '">' . __('SIGN OUT') . '</a>';
-
-                                $initials = strtoupper(substr($thisclient->getName(), 0, 1) .
-                                    (strpos($thisclient->getName(), ' ') !== false ? substr($thisclient->getName(), strpos($thisclient->getName(), ' ') + 1, 1) : ''));
-
-                                echo '<a class="user_avatar_header">' . Format::htmlchars($initials) . '</a>';
+                                $orgHdr = $thisclient->canSeeOrgTickets();
+                                $hdrTicketTotal = (int) $thisclient->getNumOpenTickets($orgHdr)
+                                    + (int) $thisclient->getNumClosedTickets($orgHdr);
+                                $hdrInitials = mahaagx_client_header_initials($thisclient->getName());
+                                $profileName = $thisclient->getName();
+                                ?>
+                                <span class="header-user-profile" role="group" aria-label="<?php echo Format::htmlchars(__('Your account')); ?>">
+                                    <a href="<?php echo ROOT_PATH; ?>tickets.php"
+                                        class="tickets_count_header <?php echo activeTabClass('tickets.php'); ?>">
+                                        <?php echo __('Tickets'); ?> (<?php echo (int) $hdrTicketTotal; ?>)
+                                    </a>
+                                    <a class="signout_btn_header" href="<?php echo Format::htmlchars($signout_url); ?>"><?php echo __('SIGN OUT'); ?></a>
+                                    <span class="user_avatar_header"
+                                        title="<?php echo Format::htmlchars($profileName); ?>"><?php echo Format::htmlchars($hdrInitials); ?></span>
+                                </span>
+                            <?php
                             } else {
                                 // Logged out state — show MahaAgX-style Login / Register buttons
                                 if ($cfg->getClientRegistrationMode() != 'disabled') {
-                                    $register_url = ROOT_PATH . 'account.php?do=create';
+                                    $register_url = MAHAAGX_KEYCLOAK_REGISTER_URL;
                             ?>
-                                    <a href="<?php echo $signin_url; ?>" class="signin_btn_header"><?php echo __('Login'); ?></a>
-                                    <a href="<?php echo $register_url; ?>" class="register_btn_header"><?php echo __('Register'); ?></a>
+                                    <a href="<?php echo Format::htmlchars($signin_url); ?>" class="signin_btn_header"><?php echo __('Login'); ?></a>
+                                    <a href="<?php echo Format::htmlchars($register_url); ?>" class="register_btn_header"><?php echo __('Register'); ?></a>
                                 <?php
                                 }
                             }
@@ -270,6 +367,11 @@ if (($lang = Internationalization::getCurrentLanguage())) {
 
             <div id="content">
 
+                <?php
+                if (!empty($_GET['sso_error']) && !empty($_GET['msg'])) {
+                    echo '<div id="msg_error">' . Format::htmlchars($_GET['msg']) . '</div>';
+                }
+                ?>
                 <?php if ($errors['err']) { ?>
                     <div id="msg_error"><?php echo $errors['err']; ?></div>
                 <?php } elseif ($msg) { ?>

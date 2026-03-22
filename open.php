@@ -94,22 +94,38 @@ if ($ticket
         background: #f9fafb !important;
     }
     .success-page-wrapper {
-        min-height: 50vh;
+        min-height: 58vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 2rem 1rem;
+        padding: 2.5rem 1rem 4rem;
     }
     .success-message-container {
-        max-width: 600px;
+        width: min(100%, 760px);
         margin: 0 auto;
-        padding: 3rem;
-        background: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 3rem 3.25rem;
+        background:
+            radial-gradient(circle at top left, rgba(236, 253, 245, 0.9), transparent 32%),
+            linear-gradient(180deg, #ffffff 0%, #fcfffd 100%);
+        border: 1px solid rgba(0, 208, 132, 0.12);
+        border-radius: 28px;
+        box-shadow:
+            0 24px 60px rgba(15, 23, 42, 0.08),
+            0 8px 24px rgba(0, 208, 132, 0.08);
         text-align: center;
         font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         animation: fadeInUp 0.6s ease-out;
+        position: relative;
+        overflow: hidden;
+    }
+    .success-message-container::after {
+        content: "";
+        position: absolute;
+        inset: auto -60px -90px auto;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(circle, rgba(0, 208, 132, 0.12) 0%, rgba(0, 208, 132, 0) 72%);
+        pointer-events: none;
     }
     @keyframes fadeInUp {
         from {
@@ -121,77 +137,150 @@ if ($ticket
             transform: translateY(0);
         }
     }
+    .success-status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 1rem;
+        border-radius: 999px;
+        background: #ecfdf5;
+        color: #047857;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        margin-bottom: 1.4rem;
+    }
+    .success-status-pill svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+    }
     .success-title {
-        font-size: 36px;
+        font-size: 2.75rem;
         font-weight: 700;
         color: #1a2e05;
-        margin: 0 0 1.5rem 0;
-        letter-spacing: -0.5px;
-        padding-top: 1rem;
+        margin: 0 0 1rem 0;
+        letter-spacing: -0.04em;
+        line-height: 1.08;
     }
     .success-subtitle {
-        font-size: 17px;
+        max-width: 540px;
+        margin: 0 auto 1.75rem;
+        font-size: 1.08rem;
         color: #6b7280;
-        margin: 0 0 3rem 0;
-        line-height: 1.6;
+        line-height: 1.7;
+    }
+    .success-ticket-chip {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+        min-width: 250px;
+        padding: 1rem 1.25rem;
+        margin: 0 auto;
+        border-radius: 20px;
+        background: #f8fffb;
+        border: 1px solid rgba(0, 208, 132, 0.18);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+    .success-ticket-chip-label {
+        font-size: 0.82rem;
+        color: #6b7280;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .success-ticket-chip-value {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: #047857;
+        letter-spacing: -0.02em;
     }
     .success-actions {
-        margin-top: 2.5rem;
+        margin-top: 2.2rem;
         display: flex;
-        gap: 1rem;
+        gap: 1.25rem;
         justify-content: center;
         flex-wrap: wrap;
     }
     .btn-success-action {
-        background: #65a30d;
-        color: #fff;
-        padding: 14px 36px;
-        border-radius: 30px;
+        background: #00d084;
+        color: #0a0a0a;
+        min-width: 230px;
+        min-height: 56px;
+        padding: 0.95rem 1.75rem;
+        border-radius: 8px;
         text-decoration: none;
-        font-weight: 600;
-        font-size: 15px;
-        transition: all 0.3s;
-        box-shadow: 0 4px 12px rgba(101, 163, 13, 0.3);
+        font-weight: 500;
+        font-size: 0.975rem;
+        transition: all 150ms ease;
+        box-shadow: 0 10px 24px rgba(0, 208, 132, 0.22);
         display: inline-flex;
         align-items: center;
-        gap: 8px;
+        justify-content: center;
+        gap: 0.6rem;
+        line-height: 1;
+        letter-spacing: 0.01em;
+        border: none;
     }
     .btn-success-action:hover {
-        background: #4d7c0a;
-        box-shadow: 0 6px 20px rgba(101, 163, 13, 0.4);
-        transform: translateY(-2px);
-        color: #fff;
+        background: #00b371;
+        box-shadow: 0 14px 28px rgba(0, 208, 132, 0.28);
+        transform: translateY(-1px);
+        color: #0a0a0a;
     }
     .btn-success-secondary {
-        background: #fff;
-        color: #65a30d;
-        padding: 14px 36px;
-        border: 2px solid #65a30d;
-        border-radius: 30px;
+        background: #ffffff;
+        color: #00b371;
+        min-width: 230px;
+        min-height: 56px;
+        padding: 0.95rem 1.75rem;
+        border: 1.5px solid #00d084;
+        border-radius: 8px;
         text-decoration: none;
-        font-weight: 600;
-        font-size: 15px;
-        transition: all 0.3s;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        font-weight: 500;
+        font-size: 0.975rem;
+        transition: all 150ms ease;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
         display: inline-flex;
         align-items: center;
-        gap: 8px;
+        justify-content: center;
+        gap: 0.6rem;
+        line-height: 1;
+        letter-spacing: 0.01em;
     }
     .btn-success-secondary:hover {
-        background: #f0fdf4;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background: #f0fffa;
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
         transform: translateY(-1px);
-        color: #65a30d;
+        color: #00b371;
+    }
+    .btn-success-action svg,
+    .btn-success-secondary svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+    }
+    .success-helper {
+        margin-top: 1.2rem;
+        font-size: 0.95rem;
+        color: #6b7280;
     }
     @media (max-width: 768px) {
         .success-message-container {
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.35rem;
+            border-radius: 22px;
         }
         .success-title { 
-            font-size: 28px; 
+            font-size: 2rem; 
         }
         .success-subtitle {
-            font-size: 16px;
+            font-size: 1rem;
+            margin-bottom: 1.35rem;
+        }
+        .success-ticket-chip {
+            min-width: 0;
+            width: 100%;
         }
         .success-actions {
             flex-direction: column;
@@ -200,6 +289,7 @@ if ($ticket
         .btn-success-action,
         .btn-success-secondary {
             width: 100%;
+            min-width: 0;
             justify-content: center;
         }
     }
@@ -207,8 +297,18 @@ if ($ticket
     
     <div class="success-page-wrapper">
         <div class="success-message-container">
+            <div class="success-status-pill">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Submission Confirmed
+            </div>
             <h1 class="success-title">Ticket Created Successfully!</h1>
             <p class="success-subtitle">Thank you for reaching out. We've received your request and will get back to you shortly.</p>
+            <div class="success-ticket-chip">
+                <span class="success-ticket-chip-label">Reference Number</span>
+                <span class="success-ticket-chip-value"><?php echo Format::htmlchars($ticket->getNumber()); ?></span>
+            </div>
             
             <div class="success-actions">
                 <a href="<?php echo ROOT_PATH; ?>tickets.php?id=<?php echo $ticket->getId(); ?>" class="btn-success-action">
@@ -225,6 +325,7 @@ if ($ticket
                     Go to Home
                 </a>
             </div>
+            <p class="success-helper">You can use this reference number to track updates on your request anytime.</p>
         </div>
     </div>
     <?php

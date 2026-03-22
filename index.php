@@ -13,8 +13,13 @@
     See LICENSE.TXT for details.
 
     vim: expandtab sw=4 ts=4 sts=4:
- **********************************************************************/
+ * *********************************************************************/
 require('client.inc.php');
+
+// Keycloak OIDC: if "Valid redirect URI" is the site root, ?code= lands on index.php
+if (!empty($_GET['code']) && isset($_GET['state'])) {
+    require_once INCLUDE_DIR . 'client/iudx-keycloak-callback.inc.php';
+}
 
 require_once INCLUDE_DIR . 'class.page.php';
 
@@ -232,7 +237,9 @@ require(CLIENTINC_DIR . 'header.inc.php');
 
                 </div>
                 <div class="banner-content-right-section">
-                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/login.png" alt="">
+                    <video autoplay muted loop playsinline preload="auto" poster="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/login.png" aria-hidden="true">
+                        <source src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/login.mp4" type="video/mp4">
+                    </video>
                 </div>
 
             </div>
