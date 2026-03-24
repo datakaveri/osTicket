@@ -40,7 +40,7 @@ osTicketSession::destroyCookie();
 session_destroy();
 
 if ($hadIudxSession) {
-    header('Location: ' . iudx_keycloak_logout_endpoint($cfg->getBaseUrl(), $iudxIdToken));
+    header('Location: ' . iudx_keycloak_logout_endpoint(iudx_keycloak_base_url(), $iudxIdToken));
     exit;
 }
 
