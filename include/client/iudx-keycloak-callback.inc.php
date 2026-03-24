@@ -180,6 +180,6 @@ if (!empty($tokenJson['id_token'])) {
 }
 unset($_SESSION['oauth2_access_token'], $_SESSION['oauth2_refresh_token']);
 
-// Strip OAuth query params if user lands here via fragment→query redirect
-Http::redirect(ROOT_PATH . 'index.php');
+// Send user back to the app base path (e.g. /help-desk/) after login
+Http::redirect(ROOT_PATH);
 exit;

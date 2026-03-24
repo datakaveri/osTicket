@@ -1,8 +1,7 @@
 <?php
 /**
  * MahaAgX Keycloak settings (shared by auth URL builder and token callback).
- * Set IUDX_KEYCLOAK_REDIRECT_URI to the exact URL registered in Keycloak
- * "Valid redirect URIs" for angular-client (must match byte-for-byte).
+ * Redirect URI should be stable in production to avoid callback mismatches.
  */
 if (!defined('IUDX_KEYCLOAK_BASE')) {
     define('IUDX_KEYCLOAK_BASE', 'https://mahaagx.maharashtra.gov.in/auth');
@@ -17,12 +16,44 @@ if (!defined('IUDX_KEYCLOAK_CLIENT_ID')) {
 if (!defined('IUDX_KEYCLOAK_CLIENT_SECRET')) {
     define('IUDX_KEYCLOAK_CLIENT_SECRET', '');
 }
+if (!defined('IUDX_KEYCLOAK_PROD_HOST')) {
+    define('IUDX_KEYCLOAK_PROD_HOST', 'mahaagx.maharashtra.gov.in');
+}
+if (!function_exists('iudx_keycloak_current_origin')) {
+    function iudx_keycloak_current_origin() {
+        $scheme = osTicket::is_https() ? 'https' : 'http';
+        $host = $_SERVER['HTTP_HOST'] ?? '';
+        return $scheme . '://' . $host;
+    }
+}
+if (!function_exists('iudx_keycloak_base_url')) {
+    function iudx_keycloak_base_url() {
+        $host = strtolower($_SERVER['HTTP_HOST'] ?? '');
+        if ($host === IUDX_KEYCLOAK_PROD_HOST) {
+            return 'https://' . IUDX_KEYCLOAK_PROD_HOST
+                . rtrim(ROOT_PATH, '/') . '/';
+        }
+        return rtrim(iudx_keycloak_current_origin(), '/')
+            . rtrim(ROOT_PATH, '/') . '/';
+    }
+}
+if (!function_exists('iudx_keycloak_callback_url')) {
+    function iudx_keycloak_callback_url() {
+        $host = strtolower($_SERVER['HTTP_HOST'] ?? '');
+        if ($host === IUDX_KEYCLOAK_PROD_HOST) {
+            return 'https://' . IUDX_KEYCLOAK_PROD_HOST
+                . rtrim(ROOT_PATH, '/') . '/keycloak-callback.php';
+        }
+        return rtrim(iudx_keycloak_current_origin(), '/')
+            . rtrim(ROOT_PATH, '/') . '/keycloak-callback.php';
+    }
+}
 /**
  * Must match Keycloak client redirect URI. Prefer dedicated callback so PHP receives ?code=
  * (fragments #code= are invisible to the server).
  */
 if (!defined('IUDX_KEYCLOAK_REDIRECT_URI')) {
-    define('IUDX_KEYCLOAK_REDIRECT_URI', 'http://localhost/osticket/keycloak-callback.php');
+    define('IUDX_KEYCLOAK_REDIRECT_URI', iudx_keycloak_callback_url());
 }
 
 if (!function_exists('iudx_keycloak_token_endpoint')) {
