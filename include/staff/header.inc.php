@@ -99,7 +99,7 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                                 <a href="<?php echo ROOT_PATH; ?>open.php" class="no-pjax">
                                     <?php echo __('New Ticket'); ?>
                                 </a>
-                                <a href="https://mahaagx.maharashtra.gov.in/about-mahaagx" target="_blank" rel="noopener">
+                                <a href="https://mahaagx.maharashtra.gov.in/about" target="_blank" rel="noopener">
                                     <?php echo __('About MahaAgX'); ?>
                                 </a>
                                 <a href="https://mahaagx.maharashtra.gov.in/datasets" target="_blank" rel="noopener">

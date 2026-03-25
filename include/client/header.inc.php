@@ -267,7 +267,7 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                                 <?php echo __('New Ticket'); ?>
                             </a>
 
-                            <a href="https://mahaagx.maharashtra.gov.in/about-mahaagx" target="_blank">
+                            <a href="https://mahaagx.maharashtra.gov.in/about" target="_blank">
                                 <?php echo __('About MahaAgX'); ?>
                             </a>
 

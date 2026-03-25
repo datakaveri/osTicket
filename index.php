@@ -25,6 +25,8 @@ require_once INCLUDE_DIR . 'class.page.php';
 
 $section = 'home';
 require(CLIENTINC_DIR . 'header.inc.php');
+
+$mahaCanSeeTickets = $thisclient && is_object($thisclient) && $thisclient->isValid();
 ?>
 
 
@@ -132,7 +134,7 @@ require(CLIENTINC_DIR . 'header.inc.php');
             .banner-content-left-section {
                 /* text-align: center !important; */
 
-                padding: 20px !important;
+                padding: 20px 0 !important;
         width: 100%;
         margin-right: 0;
             }
@@ -162,7 +164,7 @@ require(CLIENTINC_DIR . 'header.inc.php');
         }
     </style>
 
-    <div style="max-width: 100%; display: flex; flex-direction: column; gap: 15px;">
+    <div class="maha-landing-inner" style="width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 15px; box-sizing: border-box;">
 
         <!-- <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;" class="top_icons_wrapper"> -->
 
@@ -205,7 +207,7 @@ require(CLIENTINC_DIR . 'header.inc.php');
                             <p style="font-weight:500" class="logo_title_department">Rajasthan</p>
                         </div> -->
             <!-- <div style="font-size: 48px; color: #1a2e05;font-family: 'Caladea, serif !important';font-weight: 700; margin-left: 5px; padding-bottom: 0.6rem;" class="tgdex_text">Forest Stack | Rajasthan</div> -->
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; min-width: 300px; " class="tgdex_wrapper">
+                    <div style="display: flex; align-items: center; justify-content: flex-start; gap: 12px; min-width: 0; width: 100%; box-sizing: border-box;" class="tgdex_wrapper">
 
             <div class="banner-content">
                 <div class="banner-content-left-section"style="background-image:url(<?php echo ROOT_PATH; ?>assets/default/images/background.png)">
@@ -228,11 +230,21 @@ require(CLIENTINC_DIR . 'header.inc.php');
                            onmouseout="this.style.backgroundColor='#65a30d'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(101, 163, 13, 0.2)';">
                             Open a New Ticket
                         </a>
-                        <a href="<?php echo ROOT_PATH; ?>tickets.php" class="front-page-button front-page-button--secondary" style="display: inline-block; padding: 12px 32px; background-color: white; color: #65a30d; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px; border: 2px solid #65a30d; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" 
-                           onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.15)';" 
+                        <?php
+                        $mahaTicketStatusBtnStyle = 'display: inline-block; padding: 12px 32px; background-color: white; color: #65a30d; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px; border: 2px solid #65a30d; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); cursor: pointer; font-family: inherit;';
+                        if ($mahaCanSeeTickets) { ?>
+                        <a href="<?php echo ROOT_PATH; ?>tickets.php" class="front-page-button front-page-button--secondary" style="<?php echo $mahaTicketStatusBtnStyle; ?>"
+                           onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.15)';"
                            onmouseout="this.style.backgroundColor='white'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
-                            Check Ticket Status
+                            <?php echo __('Check Ticket Status'); ?>
                         </a>
+                        <?php } else { ?>
+                        <button type="button" class="front-page-button front-page-button--secondary maha-ticket-status-trigger" style="<?php echo $mahaTicketStatusBtnStyle; ?>"
+                           onmouseover="this.style.backgroundColor='#f0fdf4'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.15)';"
+                           onmouseout="this.style.backgroundColor='white'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';">
+                            <?php echo __('Check Ticket Status'); ?>
+                        </button>
+                        <?php } ?>
                     </div>
 
                 </div>
@@ -247,6 +259,66 @@ require(CLIENTINC_DIR . 'header.inc.php');
 
     </div>
 </div>
+
+<?php if (!$mahaCanSeeTickets) { ?>
+<div id="mahaTicketStatusModal" class="maha-login-modal" aria-hidden="true" role="dialog" aria-labelledby="mahaTicketStatusModalTitle" aria-modal="true">
+    <div class="maha-login-modal__backdrop" data-maha-modal-close tabindex="-1"></div>
+    <div class="maha-login-modal__dialog" role="document">
+        <button type="button" class="maha-login-modal__close" data-maha-modal-close aria-label="<?php echo __('Close'); ?>">&times;</button>
+        <div class="login-modal-content">
+            <div class="login-modal--leaf-image" aria-hidden="true">
+                <img src="<?php echo ROOT_PATH; ?>assets/default/images/mahaagx/assets-leaf.png" alt="" class="login-modal--leaf" width="200" height="200" />
+            </div>
+            <div class="login-modal--icon-wrapper">
+                <svg class="login-modal--icon" width="64" height="64" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 id="mahaTicketStatusModalTitle" class="login-modal--title"><?php echo __('Please Login to Continue'); ?></h3>
+            <p class="login-modal--message"><?php echo __('You need to be logged in to access this feature. Please login with your account to proceed.'); ?></p>
+            <div class="login-modal--actions">
+                <a href="<?php echo Format::htmlchars(MAHAAGX_KEYCLOAK_AUTH_URL); ?>" class="login-modal--btn login-modal--btn-login">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="10 17 15 12 10 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="15" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span><?php echo __('Login'); ?></span>
+                </a>
+                <button type="button" class="login-modal--btn login-modal--btn-cancel" data-maha-modal-close><?php echo __('Cancel'); ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+(function () {
+    var modal = document.getElementById('mahaTicketStatusModal');
+    if (!modal) return;
+    var openModal = function () {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('maha-modal-open');
+    };
+    var closeModal = function () {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('maha-modal-open');
+    };
+    document.querySelectorAll('.maha-ticket-status-trigger').forEach(function (el) {
+        el.addEventListener('click', openModal);
+    });
+    modal.querySelectorAll('[data-maha-modal-close]').forEach(function (el) {
+        el.addEventListener('click', closeModal);
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+})();
+</script>
+<?php } ?>
 
 <?php
 include CLIENTINC_DIR . 'footer.inc.php';
