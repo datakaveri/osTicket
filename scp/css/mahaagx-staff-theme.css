@@ -1047,3 +1047,314 @@ button[type="submit"]:hover,
   font-family: var(--maha-staff-font) !important;
   color: var(--maha-staff-text-body) !important;
 }
+
+/* ========== Staff login page revamp ========== */
+body#loginBody {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(0, 208, 132, 0.10), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.08), transparent 26%),
+    linear-gradient(135deg, #f8fafc 0%, #f3fbf7 48%, #ffffff 100%);
+  font-family: var(--maha-staff-font);
+  color: var(--maha-staff-text-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body#loginBody #brickwall,
+body#loginBody #blur,
+body#loginBody #background,
+body#loginBody #background-compat {
+  display: none !important;
+}
+
+body#loginBody .maha-staff-login-page {
+  min-height: 100vh;
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+body#loginBody .maha-staff-login-shell {
+  width: min(460px, 100%);
+  margin: 0 auto;
+  display: block;
+  align-items: center;
+}
+
+body#loginBody #loginBox.maha-staff-login-card {
+  border-radius: 28px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+body#loginBody #loginBox.maha-staff-login-card {
+  position: relative;
+  left: auto;
+  top: auto;
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  box-shadow:
+    0 22px 54px rgba(15, 23, 42, 0.08),
+    0 1px 2px rgba(15, 23, 42, 0.05);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  border-radius: 28px;
+  backdrop-filter: blur(10px);
+}
+
+body#loginBody #loginBox.maha-staff-login-card::after {
+  display: none !important;
+}
+
+body#loginBody .maha-staff-login-card__inner {
+  padding: 36px 34px 32px;
+}
+
+body#loginBody .maha-staff-login-card__brand {
+  margin-bottom: 20px;
+}
+
+body#loginBody .maha-staff-login-card__brand img {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+body#loginBody .maha-staff-login-card__eyebrow {
+  margin: 0 0 10px;
+  color: #047857;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+body#loginBody .maha-staff-login-card__title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.9rem;
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+body#loginBody #login-message.maha-staff-login-card__message {
+  margin: 12px 0 0;
+  text-align: left;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+body#loginBody .maha-staff-login-card__banner {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  color: #065f46;
+  text-align: left;
+  line-height: 1.55;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+body#loginBody .maha-staff-login-card__banner small {
+  font-size: 0.9rem;
+}
+
+body#loginBody .maha-staff-login-form {
+  width: 100%;
+  margin: 20px 0 0;
+}
+
+body#loginBody .maha-staff-login-form__fieldset {
+  margin: 0;
+}
+
+body#loginBody .maha-staff-login-form__label {
+  display: block;
+  margin: 0 0 8px;
+  text-align: left;
+  color: #0f172a;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+body#loginBody #login input[type="text"],
+body#loginBody #login input[type="password"] {
+  width: 100%;
+  margin: 0 0 14px;
+  padding: 0 16px;
+  min-height: 50px;
+  border-radius: 14px;
+  border: 1px solid rgba(52, 211, 153, 0.24);
+  background: rgba(248, 250, 252, 0.92);
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+  color: #0f172a;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+body#loginBody #login input[type="text"]:focus,
+body#loginBody #login input[type="password"]:focus {
+  outline: none;
+  background: #ffffff;
+  border-color: var(--maha-staff-accent);
+  box-shadow:
+    0 0 0 4px rgba(0, 208, 132, 0.12),
+    0 10px 22px rgba(15, 23, 42, 0.06);
+}
+
+body#loginBody .maha-staff-login-form__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+body#loginBody .maha-staff-login-form__reset {
+  display: inline-flex;
+  align-self: flex-start;
+  text-decoration: none;
+  color: #047857;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+body#loginBody .maha-staff-login-form__reset:hover {
+  color: #065f46;
+  text-decoration: underline;
+}
+
+body#loginBody .maha-staff-login-form__submit,
+body#loginBody #login button[type="submit"] {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--maha-staff-primary) 0%, var(--maha-staff-accent) 100%);
+  color: #ffffff;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  box-shadow:
+    0 16px 28px rgba(0, 179, 113, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+body#loginBody .maha-staff-login-form__submit:hover,
+body#loginBody #login button[type="submit"]:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, #00c27a 0%, #34d399 100%);
+  box-shadow:
+    0 20px 34px rgba(0, 179, 113, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+body#loginBody .maha-staff-login-card__divider {
+  position: relative;
+  margin: 24px 0 16px;
+  text-align: center;
+}
+
+body#loginBody .maha-staff-login-card__divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+body#loginBody .maha-staff-login-card__divider span {
+  position: relative;
+  display: inline-block;
+  padding: 0 12px;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+body#loginBody .maha-staff-login-card__external {
+  margin-top: 12px;
+}
+
+body#loginBody .maha-staff-login-card__company,
+body#loginBody #company {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+body#loginBody .maha-staff-login-loading {
+  margin: 18px 0 0;
+  padding: 18px 20px;
+}
+
+body#loginBody .maha-staff-powered-by,
+body#loginBody #poweredBy {
+  margin: 18px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+body#loginBody .maha-staff-powered-by a,
+body#loginBody #poweredBy a {
+  display: inline-flex;
+  align-items: center;
+}
+
+body#loginBody .maha-staff-powered-by img,
+body#loginBody #poweredBy img {
+  height: 18px;
+  width: auto;
+  opacity: 0.72;
+}
+
+@media (max-width: 1024px) {
+  body#loginBody #loginBox.maha-staff-login-card {
+    max-width: 460px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  body#loginBody .maha-staff-login-page {
+    padding: 20px 14px 18px;
+  }
+
+  body#loginBody #loginBox.maha-staff-login-card {
+    border-radius: 22px;
+  }
+
+  body#loginBody .maha-staff-login-card__inner {
+    padding: 24px 20px 22px;
+  }
+
+  body#loginBody .maha-staff-login-card__title {
+    font-size: 1.55rem;
+  }
+}
