@@ -7,7 +7,7 @@ header("Content-Security-Policy: frame-ancestors ".$cfg->getAllowIframes()."; sc
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="refresh" content="7200" />
-    <title>osTicket :: <?php echo __('Agent Login'); ?></title>
+    <title>MahaAgX | Admin Help Desk</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">

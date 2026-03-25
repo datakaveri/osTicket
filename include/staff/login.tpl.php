@@ -70,16 +70,6 @@ $staffLoginBody = ($content) ? trim(Format::display($content->getLocalBody())) :
                     } ?>
                 </form>
 
-                <?php
-                if (($bks = StaffAuthenticationBackend::getExternal())) { ?>
-                    <div class="maha-staff-login-card__divider">
-                        <span><?php echo __('Or continue with'); ?></span>
-                    </div><?php
-                    foreach ($bks as $bk) { ?>
-                        <div class="external-auth maha-staff-login-card__external"><?php $bk->renderExternalLink(); ?></div><?php
-                    }
-                } ?>
-
                 <div id="company" class="maha-staff-login-card__company">
                     <div class="content">
                         <?php echo __('Copyright'); ?> &copy; <?php echo Format::htmlchars($ost->company) ?: date('Y'); ?>
