@@ -685,7 +685,7 @@ if (!$maha_current_sort_label) {
 <div class="tickets-page-container">
     <div class="tickets-header">
         <h1 class="tickets-title">
-            <a href="<?php echo Http::refresh_url(); ?>" style="color: #1a2e05; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+            <a href="<?php echo Format::htmlchars($_SERVER['REQUEST_URI'] ?? 'tickets.php'); ?>" style="color: #1a2e05; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
                 <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0113.66-5.66M20 14a8 8 0 01-13.66 5.66" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
