@@ -60,10 +60,9 @@
                 <h3 style="color: #ffffff; font-size: 1rem; font-weight: 600; margin: 0 0 1rem 0;">Important links</h3>
                 <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9375rem; line-height: 1.6;">
                     <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/datasets" style="color:rgba(255,255,255,0.9); text-decoration:none;">Datasets catalogue</a></li>
-                    <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/dashboard" style="color:rgba(255,255,255,0.9); text-decoration:none;">Dashboard</a></li>
                     <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/discussions" style="color:rgba(255,255,255,0.9); text-decoration:none;">Discussion</a></li>
                     <li style="margin-bottom: 0.75rem;"><a href="https://mahaagx.maharashtra.gov.in/challenges" style="color:rgba(255,255,255,0.9); text-decoration:none;">Challenge</a></li>
-                    <li><a href="https://data-readiness-prod.s3.cyfuture.cloud/user-manual/User%20Manual%20-%20MahaAgX%20v1.0.pdf" style="color:rgba(255,255,255,0.9); text-decoration:none;">User Manual</a></li>
+                    <li><a href="https://mahaagx.maharashtra.gov.in/user-manual" style="color:rgba(255,255,255,0.9); text-decoration:none;">User Manual</a></li>
                 </ul>
             </div>
 
