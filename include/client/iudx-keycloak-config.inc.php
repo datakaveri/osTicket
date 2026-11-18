@@ -1,13 +1,21 @@
 <?php
 /**
- * MahaAgX Keycloak settings (shared by auth URL builder and token callback).
- * Redirect URI should be stable in production to avoid callback mismatches.
+ * MahaDeX Keycloak settings (shared by auth URL builder and token callback).
+ * Matches apps/MahaDeX environment.prod.ts:
+ *   url: https://mahadex.iudx.io/auth
+ *   realm: mahadex
+ *   clientId: angular-client
+ *
+ * Add production callback under Keycloak angular-client Valid redirect URIs, e.g.:
+ *   https://mahadex.iudx.io/help-desk/keycloak-callback.php
+ *   https://mahadex.iudx.io/help-desk/*
+ * (adjust path to match ROOT_PATH on the deployed host)
  */
 if (!defined('IUDX_KEYCLOAK_BASE')) {
-    define('IUDX_KEYCLOAK_BASE', 'https://mahaagx.maharashtra.gov.in/auth');
+    define('IUDX_KEYCLOAK_BASE', 'https://mahadex.iudx.io/auth');
 }
 if (!defined('IUDX_KEYCLOAK_REALM')) {
-    define('IUDX_KEYCLOAK_REALM', 'mahaagx-prod');
+    define('IUDX_KEYCLOAK_REALM', 'mahadex');
 }
 if (!defined('IUDX_KEYCLOAK_CLIENT_ID')) {
     define('IUDX_KEYCLOAK_CLIENT_ID', 'angular-client');
@@ -17,7 +25,7 @@ if (!defined('IUDX_KEYCLOAK_CLIENT_SECRET')) {
     define('IUDX_KEYCLOAK_CLIENT_SECRET', '');
 }
 if (!defined('IUDX_KEYCLOAK_PROD_HOST')) {
-    define('IUDX_KEYCLOAK_PROD_HOST', 'mahaagx.maharashtra.gov.in');
+    define('IUDX_KEYCLOAK_PROD_HOST', 'mahadex.iudx.io');
 }
 if (!function_exists('iudx_keycloak_current_origin')) {
     function iudx_keycloak_current_origin() {
