@@ -57,8 +57,10 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
             <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/rtl.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH ?>scp/css/translatable.css" />
             <!-- Favicons -->
-            <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" sizes="32x32" />
-            <!-- <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>images/tgdex_favicon.png" sizes="16x16" /> -->
+            <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahadex-favicon.png" sizes="32x32" />
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
             <?php
             if ($ost && ($headers = $ost->getExtraHeaders())) {
@@ -81,13 +83,13 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                     <div style="display: flex; align-items:center; justify-content: space-between; width: 100%;">
                         <div style="display: flex; align-items: center; flex: 1;">
                             <div class="logo_container_header">
-                                <a class="pull-left" id="logo" href="https://dev.catalogue.forest.iudx.io/" title="<?php echo __('Support Center'); ?>">
+                                <a class="pull-left" id="logo" href="https://v2.dev.iudx.io/" title="<?php echo __('MahaDeX Support Center'); ?>">
                                     <span class="valign-helper"></span>
-                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" class="tg_govt_header">
+                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahadex-logo-mark.svg" class="tg_govt_header" alt="MahaDeX">
                                 </a>
                                 <div class="logo_title">
-                                    <p class="logo_title_name">Forest Stack</p>
-                                    <p class="logo_title_department">Rajasthan</p>
+                                    <p class="logo_title_name" style="color:#3730a3;">MahaDeX</p>
+                                    <p class="logo_title_department">Maharashtra Data Exchange</p>
                                 </div>
                             </div>
 
@@ -99,20 +101,17 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                                 <a href="<?php echo ROOT_PATH; ?>open.php" class="no-pjax">
                                     <?php echo __('New Ticket'); ?>
                                 </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/datasets" target="_blank">
+                                <a href="https://v2.dev.iudx.io/datasets" target="_blank">
                                     <?php echo __('Datasets'); ?>
                                 </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/models" target="_blank">
+                                <a href="https://v2.dev.iudx.io/models" target="_blank">
                                     <?php echo __('Models'); ?>
                                 </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/usecases" target="_blank">
+                                <a href="https://v2.dev.iudx.io/usecases" target="_blank">
                                     <?php echo __('Use Cases'); ?>
                                 </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/innovations" target="_blank">
-                                    <?php echo __('Challenges'); ?>
-                                </a>
-                                <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/about-us" target="_blank">
-                                    <?php echo __('About Us'); ?>
+                                <a href="https://v2.dev.iudx.io/about" target="_blank">
+                                    <?php echo __('About MahaDeX'); ?>
                                 </a>
                             </div>
                         </div>

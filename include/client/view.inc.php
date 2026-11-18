@@ -56,7 +56,7 @@ if (
             <td colspan="2" width="100%">
                 <h1 style="color: black;">
                     <a href="tickets.php?id=<?php echo $ticket->getId(); ?>" title="<?php echo __('Reload'); ?>"><i class="refresh icon-refresh"></i></a>
-                    <b style="font-family: 'Caladea' !important;">
+                    <b style="font-family: 'IBM Plex Sans' !important;">
                         <?php $subject_field = TicketForm::getInstance()->getField('subject');
                         echo $subject_field->display($ticket->getSubject()); ?>
                     </b>

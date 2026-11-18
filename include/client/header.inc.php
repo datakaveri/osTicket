@@ -73,8 +73,7 @@ if (($lang = Internationalization::getCurrentLanguage())) {
         <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/rtl.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/select2.min.css">
         <!-- Favicons -->
-        <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" sizes="32x32" />
-        <!-- <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>images/tgdex_favicon.png" sizes="16x16" /> -->
+        <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahadex-favicon.png" sizes="32x32" />
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-3.7.0.min.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-ui-1.13.2.custom.min.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-ui-timepicker-addon.js"></script>
@@ -85,12 +84,9 @@ if (($lang = Internationalization::getCurrentLanguage())) {
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/redactor-plugins.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/redactor-osticket.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/select2.min.js"></script>
-        <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-</style>
         <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
         <?php
         if ($ost && ($headers = $ost->getExtraHeaders())) {
             echo "\n\t" . implode("\n\t", $headers) . "\n";
@@ -177,24 +173,20 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                                 <?php echo __('New Ticket'); ?>
                             </a>
 
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/datasets" target="_blank">
+                            <a href="https://v2.dev.iudx.io/datasets" target="_blank">
                                 <?php echo __('Datasets'); ?>
                             </a>
 
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/models" target="_blank">
+                            <a href="https://v2.dev.iudx.io/models" target="_blank">
                                 <?php echo __('Models'); ?>
                             </a>
 
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/usecases" target="_blank">
+                            <a href="https://v2.dev.iudx.io/usecases" target="_blank">
                                 <?php echo __('Use Cases'); ?>
                             </a>
 
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/innovations" target="_blank">
-                                <?php echo __('Challenges'); ?>
-                            </a>
-
-                            <a href="https://forest-stack.digivan.forest.rajasthan.gov.in/about-us" target="_blank">
-                                <?php echo __('About Us'); ?>
+                            <a href="https://v2.dev.iudx.io/about" target="_blank">
+                                <?php echo __('About MahaDeX'); ?>
                             </a>
 
                             <?php
@@ -208,7 +200,7 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                             } else {
                                 if ($cfg->getClientRegistrationMode() != 'disabled') {
                             ?>
-                                    <a style="background: #65a30d; color: #fff; padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; transition: all 0.3s;" href="<?php echo $signin_url; ?>" class="signin_btn_header" onmouseover="this.style.background='#4d7c0a'" onmouseout="this.style.background='#65a30d'"><?php echo __('Sign In'); ?></a>
+                                    <a style="background: #3730a3; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; transition: all 0.3s;" href="<?php echo $signin_url; ?>" class="signin_btn_header" onmouseover="this.style.background='#4f46e5'" onmouseout="this.style.background='#3730a3'"><?php echo __('Sign In'); ?></a>
                                 <?php
                                 }
                             }
@@ -233,32 +225,14 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                     </div>
                 </div>
                 <div class="logo_container_header">
-                    <!-- <a class="pull-left" style="" id="logo" href="https://tgdex.telangana.gov.in/" title="<?php echo __('Support Center'); ?>">
+                    <a class="pull-left" id="logo" href="https://v2.dev.iudx.io/" title="<?php echo __('MahaDeX Support Center'); ?>">
                         <span class="valign-helper"></span>
-                        <img src="../assets/default/images/forest-logo.svg" class="tg_govt_header">
-                    </a> -->
-                    <a class="pull-left" id="logo" href="https://forest-stack.digivan.forest.rajasthan.gov.in/" title="<?php echo __('Support Center'); ?>">
-                            <span class="valign-helper"></span>
-                            <img src="<?php echo ROOT_PATH ?>assets/default/images/forest-logo.svg" class="tg_govt_header">
-                        </a>
-                        <div class="logo_title">
-                            <p style="font-weight:700" class="logo_title_name">Forest Stack</p>
-                            <p style="font-weight:500" class="logo_title_department">Rajasthan</p>
-                        </div>
-                    <!-- <span class="tg_short_logo_header">
-                        <a class="pull-left" style="" id="logo" href="https://tgdex.telangana.gov.in/" title="<?php echo __('Support Center'); ?>">
-                            <span class="valign-helper"></span>
-                            <img src="../assets/default/images/tgdex_short_logo_Green.svg">
-                        </a>
-                    </span>
-                    <span class="tg_big_logo_header">
-
-                        <a class="pull-left" id="logo" href="https://tgdex.telangana.gov.in/" title="<?php echo __('Support Center'); ?>">
-                            <span class="valign-helper"></span>
-                            <img src="<?php echo ROOT_PATH; ?>logo.php" border=0 alt="<?php echo $ost->getConfig()->getTitle(); ?>">
-                        </a>
-                    </span> -->
-
+                        <img src="<?php echo ROOT_PATH ?>assets/default/images/mahadex-logo-mark.svg" class="tg_govt_header" alt="MahaDeX">
+                    </a>
+                    <div class="logo_title">
+                        <p style="font-weight:700;color:#3730a3;" class="logo_title_name">MahaDeX</p>
+                        <p style="font-weight:500;color:#0f172a;" class="logo_title_department">Maharashtra Data Exchange</p>
+                    </div>
                 </div>
 
             </div>

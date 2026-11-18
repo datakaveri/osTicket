@@ -163,7 +163,7 @@ $tickets->values(
 .tickets-page-container {
     width: 100%;
     padding: 2rem 4rem;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 60vh;
     margin-bottom: 3rem;
 }
@@ -178,7 +178,7 @@ $tickets->values(
 .tickets-title {
     font-size: 32px;
     font-weight: 700;
-    color: #1a2e05;
+    color: #1e1b4b;
     margin: 0;
     display: flex;
     align-items: center;
@@ -216,11 +216,11 @@ $tickets->values(
 
 .status-tab:hover {
     background: #e5e7eb;
-    color: #1a2e05;
+    color: #1e1b4b;
 }
 
 .status-tab.active {
-    background: #65a30d;
+    background: #3730a3;
     color: #fff;
 }
 
@@ -257,12 +257,12 @@ $tickets->values(
 
 .search-input-group input[type="text"]:focus {
     outline: none;
-    border-color: #65a30d;
+    border-color: #3730a3;
     box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.1);
 }
 
 .search-btn {
-    background: #65a30d;
+    background: #3730a3;
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -273,7 +273,7 @@ $tickets->values(
 }
 
 .search-btn:hover {
-    background: #4d7c0a;
+    background: #4f46e5;
 }
 
 .filter-group {
@@ -285,7 +285,7 @@ $tickets->values(
 .filter-label {
     font-size: 14px;
     font-weight: 600;
-    color: #1a2e05;
+    color: #1e1b4b;
 }
 
 .filter-select {
@@ -300,7 +300,7 @@ $tickets->values(
 
 .filter-select:focus {
     outline: none;
-    border-color: #65a30d;
+    border-color: #3730a3;
 }
 
 .clear-filters-link {
@@ -342,13 +342,13 @@ $tickets->values(
     text-align: left;
     font-size: 12px;
     font-weight: 700;
-    color: #1a2e05;
+    color: #1e1b4b;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .tickets-table th a {
-    color: #1a2e05;
+    color: #1e1b4b;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -356,7 +356,7 @@ $tickets->values(
 }
 
 .tickets-table th a:hover {
-    color: #65a30d;
+    color: #3730a3;
 }
 
 .tickets-table tbody tr {
@@ -380,7 +380,7 @@ $tickets->values(
 }
 
 .ticket-number-link {
-    color: #65a30d;
+    color: #3730a3;
     text-decoration: none;
     font-weight: 600;
     font-family: 'Courier New', monospace;
@@ -392,7 +392,7 @@ $tickets->values(
 }
 
 .ticket-subject-link {
-    color: #1a2e05;
+    color: #1e1b4b;
     text-decoration: none;
     font-weight: 500;
     font-size: 15px;
@@ -404,7 +404,7 @@ $tickets->values(
 }
 
 .ticket-subject-link:hover {
-    color: #65a30d;
+    color: #3730a3;
 }
 
 .ticket-status-badge {
@@ -452,7 +452,7 @@ $tickets->values(
 }
 
 .pagination-wrapper a {
-    color: #65a30d;
+    color: #3730a3;
     text-decoration: none;
     padding: 0.5rem 0.75rem;
     margin: 0 0.25rem;
@@ -494,7 +494,7 @@ $tickets->values(
 <div class="tickets-page-container">
     <div class="tickets-header">
         <h1 class="tickets-title">
-            <a href="<?php echo Http::refresh_url(); ?>" style="color: #1a2e05; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+            <a href="<?php echo Http::refresh_url(); ?>" style="color: #1e1b4b; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
                 <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0113.66-5.66M20 14a8 8 0 01-13.66 5.66" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>

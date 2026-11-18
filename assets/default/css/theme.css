@@ -1,5 +1,19 @@
+:root {
+  --mdx-primary: #3730a3;
+  --mdx-primary-hover: #4f46e5;
+  --mdx-primary-pressed: #312e81;
+  --mdx-accent: #eb834c;
+  --mdx-text-heading: #0f172a;
+  --mdx-text-body: #64748b;
+  --mdx-surface: #ffffff;
+  --mdx-surface-selected: #eef2ff;
+  --mdx-page: #f8fafc;
+  --mdx-footer: #1e1b4b;
+  --mdx-border: #e2e8f0;
+  --mdx-font: 'IBM Plex Sans', sans-serif;
+}
 *{
-  font-family: DM Sans;
+  font-family: var(--mdx-font);
   outline: 0;
     margin: 0;
     line-height: 1.5;
@@ -9,32 +23,32 @@
 
 }
 .dm-sans{
-  font-family: "DM Sans", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
-.caladea-regular {
-  font-family: "Caladea", serif;
+.plex-regular {
+  font-family: "IBM Plex Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.caladea-bold {
-  font-family: "Caladea", serif;
+.plex-bold {
+  font-family: "IBM Plex Sans", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
-.caladea-regular-italic {
-  font-family: "Caladea", serif;
+.plex-regular-italic {
+  font-family: "IBM Plex Sans", sans-serif;
   font-weight: 400;
   font-style: italic;
 }
 
-.caladea-bold-italic {
-  font-family: "Caladea", serif;
+.plex-bold-italic {
+  font-family: "IBM Plex Sans", sans-serif;
   font-weight: 700;
   font-style: italic;
 }
@@ -43,7 +57,7 @@
   position: relative;
     width: 100%;
     height: 812px;
-    color: #1a2e05;
+    color: #1e1b4b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,13 +95,13 @@
 .banner-content-left-section h1{
                 font-size: 48px !important;
                 font-weight:700;
-                font-family: caladea !important;
+                font-family: IBM Plex Sans !important;
                 line-height:1.2;
         margin-bottom: 0 !important;
             }
 .agricultural-text{
-  color: #65a30d;
-    font-family: caladea !important;
+  color: #3730a3;
+    font-family: IBM Plex Sans !important;
     margin-top: -7px !important;
     font-size: 48px;
         margin-bottom: 0 !important;
@@ -97,7 +111,7 @@
   max-width: 500px;
   margin-bottom: 24px !important;
     margin-top: 16px !important;
-    color: #3f6212;
+    color: #334155;
     font-size: 18px !important;
         font-weight: 500;
 }
@@ -123,7 +137,7 @@ body {
   line-height: 1.231;
   /* padding: 1rem 0rem !important; */
   border-radius: 0 !important;
-  font-family: " DM Sans";
+  font-family: "IBM Plex Sans";
   color: #000;
    letter-spacing: 0.25px;
 }
@@ -131,7 +145,7 @@ body {
 input,
 select,
 textarea {
-  font-family: "DM Sans", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   color: #000;
   padding: 0.5rem;
   border-radius: 999px;
@@ -187,8 +201,8 @@ textarea {
   margin: 0;
   vertical-align: baseline;
   vertical-align: middle;
-  color: #3f6212b3 !important;;
-  border: 1px solid #3f6212 !important;
+  color: #334155b3 !important;;
+  border: 1px solid #334155 !important;
   font-size: 15px !important;
   padding: 14px 16px !important;
 }
@@ -401,7 +415,7 @@ h2,
   border: 1px solid rgba(0, 0, 0, 0.25);
   position: relative;
   cursor: pointer;
-  font-family: DM Sans, sans-serif;
+  font-family: IBM Plex Sans, sans-serif;
 }
 .button:hover {
   background-color: #111;
@@ -438,7 +452,7 @@ h2,
 /* blue button is open new ticket */
 
 #gradient-green-title {
-  font-family: caladea;
+  font-family: IBM Plex Sans;
   font-size: 32px;
   font-weight: bold;
   background:#1f2937;
@@ -454,7 +468,7 @@ h2,
 
 .blue.button,
 .blue.button:visited {
-  background-color: #4d7c0f;
+  background-color: #3730a3;
   border-radius: 2rem;
   text-shadow: none;
   color: #fff;
@@ -520,7 +534,7 @@ body {
 }
 .header_items a {
   text-decoration: none;
-  color: #1a2e05b3;
+  color: #1e1b4bb3;
   margin-right: 1rem;
   font-size: 16px;
 }
@@ -538,14 +552,14 @@ body {
 }
 .logo_title_name{
   font-weight: 700;
-    color: #1a2e05;
-    font-family: Caladea !important;
+    color: #3730a3;
+    font-family: 'IBM Plex Sans', sans-serif !important;
     font-size:20px;
 }
 .logo_title_department{
 font-weight: 500;
-    color: #365314;
-    font-size: 16px;
+    color: #0f172a;
+    font-size: 12px;
 }
 
 .logo_container_header {
@@ -557,8 +571,10 @@ font-weight: 500;
 }
 .tg_govt_header {
   width: auto;
-  margin-right: 12px;
-  height: 3rem !important;
+  margin-right: 8px;
+  height: 2.5rem !important;
+  max-width: 48px;
+  object-fit: contain;
 }
 /* .tg_short_logo_header {
   display: none;
@@ -571,21 +587,21 @@ font-weight: 500;
 /* Sign out button */
 .signout_btn_header {
   padding: 10px 20px !important;
-  border: 1px solid #4d7c0f;
+  border: 1px solid #3730a3;
   border-radius: 999px;
   font-weight: 600;
   font-size: 14px;
   display: inline-block;
   /* margin: 0rem 1rem; */
-  color: #4d7c0f !important;
+  color: #3730a3 !important;
   text-decoration: none;
 }
 
 /* Sign in button */
 .signin_btn_header {
   display: inline-block;
-  border: 1px solid #4d7c0f;
-  color: #4d7c0f;
+  border: 1px solid #3730a3;
+  color: #3730a3;
   padding: 10px 20px !important;
   font-size: 14px;
   border-radius: 999px;
@@ -597,7 +613,7 @@ font-weight: 500;
 /* Guest user badge */
 .guest_user_header {
   display: inline-block;
-  background-color: #4d7c0f;
+  background-color: #3730a3;
   color: white;
   padding: 10px 20px;
   font-size: 14px;
@@ -613,7 +629,7 @@ font-weight: 500;
   align-items: center;
   width: 36px;
   height: 36px;
-  background-color: #4d7c0f;
+  background-color: #3730a3;
   color: white !important;
   font-size: 0.85em;
   border-radius: 50%;
@@ -689,13 +705,13 @@ font-weight: 500;
 }
 #nav li a.active {
   background: linear-gradient(to bottom, #f0fdf4 0%, #ffffff 100%);
-  color: #65a30d !important;
-  border-bottom: 3px solid #65a30d;
+  color: #3730a3 !important;
+  border-bottom: 3px solid #3730a3;
   font-weight: 600;
 }
 #nav li a:hover {
   background: #f9fafb;
-  color: #1a2e05 !important;
+  color: #1e1b4b !important;
   border-bottom: 3px solid #d1d5db;
 }
 /* #nav li a.home {
@@ -760,9 +776,9 @@ nav.tickets-nav li a {
 
 nav#sub_nav li a.active,
 nav.tickets-nav li a.active {
-  background: #65a30d;
+  background: #3730a3;
   color: #ffffff;
-  border: 1px solid #65a30d;
+  border: 1px solid #3730a3;
   font-weight: 600;
   box-shadow: 0 2px 4px rgba(101, 163, 13, 0.25);
 }
@@ -770,8 +786,8 @@ nav.tickets-nav li a.active {
 nav#sub_nav li a:hover:not(.active),
 nav.tickets-nav li a:hover:not(.active) {
   background: #f0fdf4;
-  color: #1a2e05;
-  border-color: #a3e635;
+  color: #1e1b4b;
+  border-color: #a5b4fc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   transform: translateY(-1px);
 }
@@ -790,8 +806,8 @@ nav.tickets-nav li a i {
   font-size: 14px !important;
   font-weight: 600 !important;
   line-height: 1.4 !important;
-  background: #65a30d !important;
-  border: 1px solid #65a30d !important;
+  background: #3730a3 !important;
+  border: 1px solid #3730a3 !important;
   color: #ffffff !important;
   transition: all 0.2s ease !important;
   background-image: none !important;
@@ -804,8 +820,8 @@ nav.tickets-nav li a i {
 }
 
 .action-button:hover {
-  background: #4d7c0a !important;
-  border-color: #4d7c0a !important;
+  background: #4f46e5 !important;
+  border-color: #4f46e5 !important;
   color: #ffffff !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   transform: translateY(-1px);
@@ -820,7 +836,7 @@ nav.tickets-nav li a i {
 
 .action-button.secondary:hover {
   background: #f9fafb !important;
-  color: #1a2e05 !important;
+  color: #1e1b4b !important;
   border-color: #d1d5db !important;
 }
 
@@ -837,7 +853,7 @@ button.action-button[data-toggle="dropdown"] {
 button.action-button[data-toggle="dropdown"]:hover {
   background: #f9fafb !important;
   border-color: #d1d5db !important;
-  color: #1a2e05 !important;
+  color: #1e1b4b !important;
 }
 
 #content {
@@ -853,10 +869,10 @@ button.action-button[data-toggle="dropdown"]:hover {
   margin-top: 24px;
 }
 #content > h1 {
-  color: #1a2e05;
+  color: #1e1b4b;
   font-weight: 700;
   text-decoration: none;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 28px;
   margin-bottom: 24px;
   margin-left: 0;
@@ -1107,7 +1123,7 @@ button.action-button[data-toggle="dropdown"]:hover {
   padding-right: 5rem;
 }
 .ticke_submit_open_ticket {
-  background-color: #4d7c0f;
+  background-color: #3730a3;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -1144,8 +1160,8 @@ span.required {
   /* border: 1px solid #aaa; */
   background: #fff;
   display: block;
-  color: #3f6212b3 !important;;
-  border: 1px solid #3f6212 !important;
+  color: #334155b3 !important;;
+  border: 1px solid #334155 !important;
   font-size: 15px !important;
   padding: 14px 16px !important;
 }
@@ -1605,7 +1621,7 @@ img.sign-in-image {
   border: 2px solid #e5e7eb;
   padding: 12px 16px;
   font-size: 14px;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   transition: all 0.2s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
@@ -1613,7 +1629,7 @@ img.sign-in-image {
 .searchbar .search:focus,
 .search-form .search:focus {
   outline: none;
-  border-color: #65a30d;
+  border-color: #3730a3;
   box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.1);
 }
 
@@ -1628,7 +1644,7 @@ input[type="submit"],
 button[type="submit"],
 .button,
 input.button {
-  background: #65a30d;
+  background: #3730a3;
   color: #fff;
   border: none;
   padding: 12px 24px;
@@ -1638,14 +1654,14 @@ input.button {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 4px rgba(101, 163, 13, 0.2);
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 input[type="submit"]:hover,
 button[type="submit"]:hover,
 .button:hover,
 input.button:hover {
-  background: #4d7c0a;
+  background: #4f46e5;
   box-shadow: 0 4px 8px rgba(101, 163, 13, 0.25);
   transform: translateY(-1px);
 }
@@ -1722,7 +1738,7 @@ table[class*="list"] tbody td {
 
 table.list tbody td a,
 table[class*="list"] tbody td a {
-  color: #65a30d;
+  color: #3730a3;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -1730,7 +1746,7 @@ table[class*="list"] tbody td a {
 
 table.list tbody td a:hover,
 table[class*="list"] tbody td a:hover {
-  color: #4d7c0a;
+  color: #4f46e5;
   text-decoration: underline;
 }
 
@@ -1740,7 +1756,7 @@ table[class*="list"] input[type="checkbox"] {
   width: 18px;
   height: 18px;
   cursor: pointer;
-  accent-color: #65a30d;
+  accent-color: #3730a3;
 }
 
 /* Column alignment for better header/body sync */
@@ -1851,16 +1867,16 @@ span.status-active {
 .pagination a:hover,
 .pager a:hover {
   background: #f0fdf4;
-  color: #65a30d;
-  border-color: #65a30d;
+  color: #3730a3;
+  border-color: #3730a3;
 }
 
 .pagination span.active,
 .pagination a.active,
 .pager span.active {
-  background: #65a30d;
+  background: #3730a3;
   color: #ffffff;
-  border-color: #65a30d;
+  border-color: #3730a3;
   font-weight: 600;
 }
 
@@ -2044,14 +2060,14 @@ img.avatar {
 .thread-body > p {
   font-size: large !important;
   line-height: 1.6rem !important;
-  font-family: "DM Sans" !important;
-  color: #3f6212;
+  font-family: "IBM Plex Sans" !important;
+  color: #334155;
 }
 .thread-body > h1 {
-  font-family: "caladea" !important;
+  font-family: "IBM Plex Sans" !important;
   font-size: 32px !important;
   font-weight: 700;
-  background: linear-gradient(to right, #1a2e05, #1a2e05);
+  background: linear-gradient(to right, #1e1b4b, #1e1b4b);
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -2220,7 +2236,7 @@ img.avatar {
 
   #nav li a.active {
     padding: 12px 16px !important;
-    border-bottom: 2px solid #65a30d;
+    border-bottom: 2px solid #3730a3;
   }
 
   #nav li a.active::before {
@@ -2320,7 +2336,7 @@ img.avatar {
     align-items: center;
     width: 36px;
     height: 36px;
-    background-color: #4d7c0f;
+    background-color: #3730a3;
     color: white;
     font-size: 0.85em;
     border-radius: 50%;
@@ -2342,14 +2358,14 @@ img.avatar {
 }
 .logo_title_name{
   font-weight: 700;
-    color: #1a2e05;
-    font-family: Caladea !important;
+    color: #3730a3;
+    font-family: 'IBM Plex Sans', sans-serif !important;
     font-size:20px;
 }
 .logo_title_department{
 font-weight: 500;
-    color: #365314;
-    font-size: 16px;
+    color: #0f172a;
+    font-size: 12px;
 }
 
 
@@ -2570,7 +2586,7 @@ font-weight: 500;
   padding: 14px 16px;
   font-size: 15px;
   border-radius: 999px;
-  background-color: #4d7c0f;
+  background-color: #3730a3;
   color: #fff !important;
   border: none;
   cursor: pointer;
@@ -2579,7 +2595,7 @@ font-weight: 500;
 }
 
 .search.well input[type="submit"]:hover {
-  background-color: #4d7c0f;
+  background-color: #3730a3;
 }
 
 .search.well .pull-right {
@@ -2726,7 +2742,7 @@ font-weight: 500;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .success-icon-wrapper {
@@ -2753,14 +2769,14 @@ font-weight: 500;
 .success-title {
     font-size: 32px;
     font-weight: 700;
-    color: #1a2e05;
+    color: #1e1b4b;
     margin: 0 0 1.5rem 0;
     letter-spacing: -0.5px;
 }
 
 .success-greeting {
     font-size: 18px;
-    color: #4d7c0a;
+    color: #4f46e5;
     font-weight: 600;
     margin: 0 0 1rem 0;
 }
@@ -2774,7 +2790,7 @@ font-weight: 500;
 
 .success-info-box {
     background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border: 2px solid #65a30d;
+    border: 2px solid #3730a3;
     border-radius: 12px;
     padding: 1.5rem;
     margin: 2rem 0;
@@ -2782,7 +2798,7 @@ font-weight: 500;
 
 .success-info-label {
     font-size: 14px;
-    color: #4d7c0a;
+    color: #4f46e5;
     font-weight: 600;
     margin: 0 0 0.5rem 0;
     text-transform: uppercase;
@@ -2792,7 +2808,7 @@ font-weight: 500;
 .success-ticket-number {
     font-size: 28px;
     font-weight: 700;
-    color: #65a30d;
+    color: #3730a3;
     margin: 0;
     font-family: 'Courier New', monospace;
 }

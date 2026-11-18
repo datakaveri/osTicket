@@ -108,7 +108,7 @@ if ($ticket
         border-radius: 20px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         text-align: center;
-        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         animation: fadeInUp 0.6s ease-out;
     }
     @keyframes fadeInUp {
@@ -124,7 +124,7 @@ if ($ticket
     .success-title {
         font-size: 36px;
         font-weight: 700;
-        color: #1a2e05;
+        color: #1e1b4b;
         margin: 0 0 1.5rem 0;
         letter-spacing: -0.5px;
         padding-top: 1rem;
@@ -143,7 +143,7 @@ if ($ticket
         flex-wrap: wrap;
     }
     .btn-success-action {
-        background: #65a30d;
+        background: #3730a3;
         color: #fff;
         padding: 14px 36px;
         border-radius: 30px;
@@ -157,16 +157,16 @@ if ($ticket
         gap: 8px;
     }
     .btn-success-action:hover {
-        background: #4d7c0a;
+        background: #4f46e5;
         box-shadow: 0 6px 20px rgba(101, 163, 13, 0.4);
         transform: translateY(-2px);
         color: #fff;
     }
     .btn-success-secondary {
         background: #fff;
-        color: #65a30d;
+        color: #3730a3;
         padding: 14px 36px;
-        border: 2px solid #65a30d;
+        border: 2px solid #3730a3;
         border-radius: 30px;
         text-decoration: none;
         font-weight: 600;
@@ -181,7 +181,7 @@ if ($ticket
         background: #f0fdf4;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         transform: translateY(-1px);
-        color: #65a30d;
+        color: #3730a3;
     }
     @media (max-width: 768px) {
         .success-message-container {

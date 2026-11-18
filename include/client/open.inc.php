@@ -37,7 +37,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 .new-ticket-container {
     width: 100%;
     padding: 2rem 4rem;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .form-parent-container {
@@ -78,7 +78,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 .new-ticket-header h1 {
     font-size: 36px;
     font-weight: 700;
-    color: #1a2e05;
+    color: #1e1b4b;
     margin-bottom: 1rem;
     letter-spacing: -0.5px;
 }
@@ -109,7 +109,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 .form-section-title {
     font-size: 18px;
     font-weight: 600;
-    color: #1a2e05;
+    color: #1e1b4b;
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
@@ -195,7 +195,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
     display: block;
     font-weight: 600;
     font-size: 14px;
-    color: #1a2e05;
+    color: #1e1b4b;
     margin-bottom: 0.5rem;
 }
 
@@ -231,7 +231,7 @@ input[type="tel"]:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #65a30d;
+    border-color: #3730a3;
     box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.1);
 }
 
@@ -260,7 +260,7 @@ textarea:focus {
 }
 
 .btn-submit {
-    background: #65a30d;
+    background: #3730a3;
     color: #fff;
     padding: 12px 32px;
     border: none;
@@ -276,15 +276,15 @@ textarea:focus {
 }
 
 .btn-submit:hover {
-    background: #4d7c0a;
+    background: #4f46e5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .btn-cancel {
     background: #fff;
-    color: #65a30d;
+    color: #3730a3;
     padding: 12px 32px;
-    border: 2px solid #65a30d;
+    border: 2px solid #3730a3;
     border-radius: 30px;
     font-size: 15px;
     font-weight: 600;
@@ -304,7 +304,7 @@ textarea:focus {
 
 .info-banner {
     background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border-left: 4px solid #65a30d;
+    border-left: 4px solid #3730a3;
     padding: 1.25rem 1.5rem;
     border-radius: 10px;
     margin-bottom: 2rem;
@@ -321,13 +321,13 @@ textarea:focus {
 .info-banner-content h3 {
     font-size: 15px;
     font-weight: 600;
-    color: #1a2e05;
+    color: #1e1b4b;
     margin: 0 0 0.5rem 0;
 }
 
 .info-banner-content p {
     font-size: 14px;
-    color: #4d7c0a;
+    color: #4f46e5;
     margin: 0;
     line-height: 1.6;
 }
@@ -343,7 +343,7 @@ textarea:focus {
     display: block;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #1a2e05;
+    color: #1e1b4b;
 }
 
 .captcha-content {
@@ -407,7 +407,7 @@ textarea:focus {
                 <div class="form-card">
                     <div class="form-section-title">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#1a2e05"/>
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#1e1b4b"/>
                         </svg>
                         <?php echo __('Contact Information'); ?>
                     </div>
@@ -492,7 +492,7 @@ textarea:focus {
                 <div class="form-card" id="request-details-card" style="display: <?php echo ($info['topicId'] ? 'block' : 'none'); ?>;">
                     <div class="form-section-title">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="#1a2e05"/>
+                            <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="#1e1b4b"/>
                         </svg>
                         <?php echo __('Ticket Details'); ?>
                     </div>
