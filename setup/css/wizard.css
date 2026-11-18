@@ -1,5 +1,5 @@
 @import url("../../css/font-awesome.min.css");
-body { background: url('../images/background.jpg?1312906017') top left repeat-x white; font-family: arial, helvetica, sans-serif; font-size: 10pt; color: #000; margin: 0; padding: 0; line-height: 1.3em; }
+body { background: url('../images/background.jpg?1312906017') top left repeat-x white; font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; font-size: 10pt; color: #000; margin: 0; padding: 0; line-height: 1.3em; }
 
 #wizard { background: #fff; width: 800px; margin: 30px auto; padding: 10px; border: 1px solid #2a67ac; border-right: 2px solid #2a67ac; border-bottom: 3px solid #2a67ac; overflow: hidden; margin-bottom:5px;}
 

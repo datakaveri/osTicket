@@ -59,7 +59,7 @@ class Installer extends SetupWizard {
         $f['dbhost']        = array('type'=>'string',   'required'=>1, 'error'=>__('Host name required'));
         $f['dbname']        = array('type'=>'string',   'required'=>1, 'error'=>__('Database name required'));
         $f['dbuser']        = array('type'=>'string',   'required'=>1, 'error'=>__('Username required'));
-        $f['dbpass']        = array('type'=>'string',   'required'=>1, 'error'=>__('Password required'));
+        $f['dbpass']        = array('type'=>'string',   'required'=>0, 'error'=>__('Password required'));
 
         $vars = array_map('trim', $vars);
 

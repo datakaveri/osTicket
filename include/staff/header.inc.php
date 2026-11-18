@@ -2,8 +2,10 @@
 header("Content-Type: text/html; charset=UTF-8");
 header("Content-Security-Policy: frame-ancestors " . $cfg->getAllowIframes() . "; script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'");
 
-$title = ($ost && ($title = $ost->getPageTitle()))
-    ? $title : ('osTicket :: ' . __('Staff Control Panel'));
+$titleBase = 'Help Desk | MahaDeX';
+$title = ($ost && ($pageTitle = $ost->getPageTitle()) && $pageTitle)
+    ? ($pageTitle . ' | MahaDeX')
+    : $titleBase;
 
 if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -29,9 +31,9 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
             <meta http-equiv="pragma" content="no-cache" />
             <meta http-equiv="x-pjax-version" content="<?php echo GIT_VERSION; ?>">
             <title><?php echo Format::htmlchars($title); ?></title>
-            <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-</style>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
             <!--[if IE]>
     <style type="text/css">
@@ -41,6 +43,7 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
             <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-3.7.0.min.js"></script>
             <link rel="stylesheet" href="<?php echo ROOT_PATH ?>css/thread.css" media="all">
             <link rel="stylesheet" href="<?php echo ROOT_PATH ?>scp/css/scp.css" media="all">
+            <link rel="stylesheet" href="<?php echo ROOT_PATH ?>scp/css/mahaagx-staff-theme.css" media="all">
             <link rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/redactor.css" media="screen">
             <link rel="stylesheet" href="<?php echo ROOT_PATH ?>css/typeahead.css" media="screen">
             <link type="text/css" href="<?php echo ROOT_PATH; ?>css/ui-lightness/jquery-ui-1.13.2.custom.min.css"
@@ -57,10 +60,7 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
             <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/rtl.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH ?>scp/css/translatable.css" />
             <!-- Favicons -->
-            <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahadex-favicon.png" sizes="32x32" />
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+            <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahadex/mahadex-favicon.png" sizes="32x32" />
 
             <?php
             if ($ost && ($headers = $ost->getExtraHeaders())) {
@@ -83,13 +83,13 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                     <div style="display: flex; align-items:center; justify-content: space-between; width: 100%;">
                         <div style="display: flex; align-items: center; flex: 1;">
                             <div class="logo_container_header">
-                                <a class="pull-left" id="logo" href="https://v2.dev.iudx.io/" title="<?php echo __('MahaDeX Support Center'); ?>">
+                                <a class="pull-left" id="logo" href="https://mahadex.iudx.io/" target="_blank" rel="noopener noreferrer" title="MahaDeX">
                                     <span class="valign-helper"></span>
-                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahadex-logo-mark.svg" class="tg_govt_header" alt="MahaDeX">
+                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahadex/mahadex-logo-mark.svg" class="tg_govt_header" alt="MahaDeX">
                                 </a>
                                 <div class="logo_title">
-                                    <p class="logo_title_name" style="color:#3730a3;">MahaDeX</p>
-                                    <p class="logo_title_department">Maharashtra Data Exchange</p>
+                                    <p class="logo_title_name" style="color:#3730a3;margin:0;">MahaDeX</p>
+                                    <p class="logo_title_department" style="margin:0;font-size:12px;">Maharashtra Data Exchange</p>
                                 </div>
                             </div>
 
@@ -101,17 +101,17 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                                 <a href="<?php echo ROOT_PATH; ?>open.php" class="no-pjax">
                                     <?php echo __('New Ticket'); ?>
                                 </a>
-                                <a href="https://v2.dev.iudx.io/datasets" target="_blank">
+                                <a href="https://mahadex.iudx.io/about" target="_blank" rel="noopener">
+                                    <?php echo __('About MahaDeX'); ?>
+                                </a>
+                                <a href="https://mahadex.iudx.io/datasets" target="_blank" rel="noopener">
                                     <?php echo __('Datasets'); ?>
                                 </a>
-                                <a href="https://v2.dev.iudx.io/models" target="_blank">
+                                <a href="https://mahadex.iudx.io/models" target="_blank" rel="noopener">
                                     <?php echo __('Models'); ?>
                                 </a>
-                                <a href="https://v2.dev.iudx.io/usecases" target="_blank">
-                                    <?php echo __('Use Cases'); ?>
-                                </a>
-                                <a href="https://v2.dev.iudx.io/about" target="_blank">
-                                    <?php echo __('About MahaDeX'); ?>
+                                <a href="https://mahadex.iudx.io/usecases" target="_blank" rel="noopener">
+                                    <?php echo __('Usecases'); ?>
                                 </a>
                             </div>
                         </div>
@@ -144,7 +144,7 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                         if (strpos($h, '<script ') !== false)
                             echo $h;
                     } ?>
-                    <title><?php echo ($ost && ($title = $ost->getPageTitle())) ? $title : 'TGDeX :: ' . __('Staff Control Panel'); ?></title><?php
+                    <title><?php echo Format::htmlchars($title); ?></title><?php
                                                                                                                                             } # endif X_PJAX 
                                                                                                                                                 ?>
                 <ul id="nav">

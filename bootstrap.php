@@ -339,10 +339,20 @@ class Bootstrap {
 
     static function croak($message) {
         $msg = $message."\n\n".THISPAGE;
-        osTicket\Mail\Mailer::sendmail(ADMIN_EMAIL, 'osTicket Fatal Error', $msg,
-            sprintf('"osTicket Alerts" <%s>', ADMIN_EMAIL));
-        //Display generic error to the user
-        Http::response(500, "<b>Fatal Error:</b> Contact system administrator.");
+        // Attempt to email the fatal error to the admin, but ignore failures
+        try {
+            osTicket\Mail\Mailer::sendmail(ADMIN_EMAIL, 'osTicket Fatal Error', $msg,
+                sprintf('"osTicket Alerts" <%s>', ADMIN_EMAIL));
+        } catch (\Throwable $ex) {
+            // Swallow mail errors during fatal handling
+        }
+
+        // Also log to the PHP error log for easier debugging
+        error_log("osTicket Fatal Error: ".$msg);
+
+        // Display detailed error in the browser in this development environment
+        $safe = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+        Http::response(500, "<b>Fatal Error:</b><br/><pre>{$safe}</pre>");
     }
 }
 
@@ -387,6 +397,9 @@ require(INCLUDE_DIR.'class.validator.php');
 
 // Determine the path in the URI used as the base of the osTicket
 // installation
+// Allow ROOT_PATH override via environment variable (useful for reverse proxy / subpath deployments)
+if (!defined('ROOT_PATH') && ($envRoot = getenv('OSTICKET_ROOT_PATH')))
+    define('ROOT_PATH', $envRoot);
 if (!defined('ROOT_PATH') && ($rp = osTicket::get_root_path(dirname(__file__))))
     define('ROOT_PATH', rtrim($rp, '/').'/');
 

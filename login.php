@@ -151,6 +151,14 @@ if (!$nav) {
     $nav->setActiveNav('status');
 }
 
+// Bare login.php: always use IUDX Keycloak for MahaAgX.
+// Preserves: access link UI, POST, do=ext, ?local=1
+if ($inc === 'login.inc.php' && !$_POST && !isset($_GET['do']) && !isset($_GET['local'])) {
+    require_once INCLUDE_DIR . 'client/mahaagx-keycloak-url.inc.php';
+    Http::redirect(MAHAAGX_KEYCLOAK_AUTH_URL);
+    exit;
+}
+
 require CLIENTINC_DIR.'header.inc.php';
 require CLIENTINC_DIR.$inc;
 require CLIENTINC_DIR.'footer.inc.php';

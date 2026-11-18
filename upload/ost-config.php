@@ -41,10 +41,14 @@ define('ADMIN_EMAIL','%ADMIN-EMAIL');
 #
 define('DBTYPE','mysql');
 #  DBHOST can have comma separated hosts (e.g db1:6033,db2:6033)
-define('DBHOST','%CONFIG-DBHOST');
-define('DBNAME','%CONFIG-DBNAME');
-define('DBUSER','%CONFIG-DBUSER');
-define('DBPASS','%CONFIG-DBPASS');
+// define('DBHOST','%CONFIG-DBHOST');
+// define('DBNAME','%CONFIG-DBNAME');
+// define('DBUSER','%CONFIG-DBUSER');
+// define('DBPASS','%CONFIG-DBPASS');
+define('DBHOST','localhost');
+define('DBNAME','osticket_db');   // or your actual DB name
+define('DBUSER','root');
+define('DBPASS','');    
 
 # Database TCP/IP Connect Timeout (default: 3 seconds)
 # Timeout is important when DBHOST has multiple proxies to try

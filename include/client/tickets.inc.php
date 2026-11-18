@@ -158,11 +158,37 @@ $tickets->values(
     'user_id'
 );
 
+/* MahaAgX-style sort URLs (dataset catalogue pattern) */
+$maha_sort_choices = array(
+    array('sort' => 'subject', 'order' => 'ASC', 'label' => __('A-Z')),
+    array('sort' => 'subject', 'order' => 'DESC', 'label' => __('Z-A')),
+    array('sort' => 'date', 'order' => 'ASC', 'label' => __('Old to New')),
+    array('sort' => 'date', 'order' => 'DESC', 'label' => __('New to Old')),
+);
+$req_order_upper = strtoupper($_REQUEST['order'] ?: 'DESC');
+$maha_current_sort_label = null;
+foreach ($maha_sort_choices as $_msc) {
+    if (strtolower($sort) === $_msc['sort'] && $req_order_upper === $_msc['order']) {
+        $maha_current_sort_label = $_msc['label'];
+        break;
+    }
+}
+if (!$maha_current_sort_label) {
+    $_sl = array(
+        'id' => __('Ticket'),
+        'date' => __('Created'),
+        'status' => __('Status'),
+        'subject' => __('Subject'),
+        'dept' => __('Department'),
+    );
+    $maha_current_sort_label = isset($_sl[$sort]) ? $_sl[$sort] : __('Custom');
+}
+
 ?>
 <style>
 .tickets-page-container {
     width: 100%;
-    padding: 2rem 4rem;
+    padding: 2rem 1.5rem;
     font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 60vh;
     margin-bottom: 3rem;
@@ -178,11 +204,19 @@ $tickets->values(
 .tickets-title {
     font-size: 32px;
     font-weight: 700;
-    color: #1e1b4b;
+    color: #0f172a;
     margin: 0;
     display: flex;
     align-items: center;
     gap: 0.75rem;
+}
+
+.tickets-title .tickets-refresh-link {
+    color: #0f172a;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
 }
 
 .tickets-title .refresh-icon {
@@ -199,35 +233,50 @@ $tickets->values(
 .tickets-status-tabs {
     display: flex;
     gap: 0.5rem;
-    background: #f3f4f6;
-    padding: 0.375rem;
-    border-radius: 10px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    flex-wrap: wrap;
 }
 
 .status-tab {
-    padding: 0.5rem 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0.4rem 0.9rem;
     border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #6b7280;
+    border: 1px solid #c7d2fe;
+    background: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4f46e5;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: 150ms ease;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: none;
 }
 
 .status-tab:hover {
-    background: #e5e7eb;
-    color: #1e1b4b;
+    background: #eef2ff;
+    border-color: #a5b4fc;
+    color: #3730a3;
+    transform: none;
 }
 
 .status-tab.active {
-    background: #3730a3;
-    color: #fff;
+    background: #ffffff;
+    border-color: #3730a3;
+    color: #3730a3;
+    box-shadow: none;
+    font-weight: 600;
 }
 
 .search-filter-section {
     background: #ffffff;
     border-radius: 16px;
-    padding: 1.5rem 2rem;
+    padding: 1.25rem 1.25rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     margin-bottom: 2rem;
 }
@@ -285,7 +334,7 @@ $tickets->values(
 .filter-label {
     font-size: 14px;
     font-weight: 600;
-    color: #1e1b4b;
+    color: #0f172a;
 }
 
 .filter-select {
@@ -301,6 +350,158 @@ $tickets->values(
 .filter-select:focus {
     outline: none;
     border-color: #3730a3;
+}
+
+/* MahaAgX-style selects (reference: dataset catalogue sort + filters) */
+.filter-select.maha-filter-select {
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: 12rem;
+    padding: 0.65rem 2.75rem 0.65rem 1rem;
+    border: 1px solid #4f46e5;
+    border-radius: 10px;
+    background-color: #eef2ff;
+    color: #3730a3;
+    font-weight: 600;
+    font-size: 0.875rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2300b371' stroke-width='2'%3E%3Cpath d='M8 9l4-4 4 4M8 15l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.65rem center;
+    background-size: 16px 16px;
+}
+
+.filter-select.maha-filter-select:focus {
+    border-color: #3730a3;
+    box-shadow: 0 0 0 3px rgba(0, 208, 132, 0.15);
+}
+
+.maha-sort-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.maha-sort__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.65rem 2.75rem 0.65rem 1rem;
+    border: 1px solid #4f46e5;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #3730a3;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+}
+
+.maha-sort__trigger:hover {
+    border-color: #3730a3;
+}
+
+.maha-sort__trigger:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 208, 132, 0.15);
+}
+
+.maha-sort__trigger-label {
+    color: #3730a3;
+}
+
+.maha-sort__trigger-value {
+    color: #3730a3;
+}
+
+.maha-sort__chevron {
+    position: absolute;
+    right: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #4f46e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    line-height: 0;
+}
+
+.maha-sort__trigger {
+    position: relative;
+    padding-right: 2.5rem;
+}
+
+.maha-sort__dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    width: max-content;
+    min-width: 220px;
+    padding: 0.5rem;
+    margin: 0;
+    list-style: none;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    z-index: 50;
+}
+
+.maha-sort__dropdown.is-open {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.maha-sort__option {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.55rem 0.65rem;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #1e293b;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.maha-sort__option:hover {
+    background: #f8fafc;
+}
+
+.maha-sort__option.is-selected {
+    background: #eef2ff;
+    color: #3730a3;
+}
+
+.maha-sort__cb {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.maha-sort__option.is-selected .maha-sort__cb {
+    background: #3730a3;
+    border-color: #4f46e5;
+}
+
+.maha-sort__option.is-selected .maha-sort__cb::after {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4L19 7'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .clear-filters-link {
@@ -338,17 +539,22 @@ $tickets->values(
 }
 
 .tickets-table th {
-    padding: 1rem 1.5rem;
+    padding: 0.85rem 0.75rem;
     text-align: left;
     font-size: 12px;
     font-weight: 700;
-    color: #1e1b4b;
+    color: #0f172a;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
+.tickets-table th:first-child,
+.tickets-table td:first-child {
+    padding-left: 1rem;
+}
+
 .tickets-table th a {
-    color: #1e1b4b;
+    color: #0f172a;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -373,7 +579,7 @@ $tickets->values(
 }
 
 .tickets-table td {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 0.75rem;
     font-size: 15px;
     color: #374151;
     line-height: 1.6;
@@ -392,7 +598,7 @@ $tickets->values(
 }
 
 .ticket-subject-link {
-    color: #1e1b4b;
+    color: #0f172a;
     text-decoration: none;
     font-weight: 500;
     font-size: 15px;
@@ -410,15 +616,16 @@ $tickets->values(
 .ticket-status-badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.375rem 0.875rem;
-    border-radius: 20px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 .ticket-status-open {
-    background: #dcfce7;
-    color: #166534;
+    background: #e0e7ff;
+    color: #312e81;
 }
 
 .ticket-status-closed {
@@ -461,7 +668,7 @@ $tickets->values(
 }
 
 .pagination-wrapper a:hover {
-    background: #f0fdf4;
+    background: #eef2ff;
 }
 
 @media (max-width: 768px) {
@@ -490,16 +697,25 @@ $tickets->values(
     }
 }
 </style>
-
+<?php
+// Use app path + query string — REQUEST_URI can be "/" behind proxies and would send users to the site root (e.g. portal home).
+$tickets_refresh_url = ROOT_PATH . 'tickets.php';
+if (!empty($_GET)) {
+    $tickets_refresh_url .= '?' . http_build_query($_GET);
+}
+?>
 <div class="tickets-page-container">
     <div class="tickets-header">
         <h1 class="tickets-title">
-            <a href="<?php echo Http::refresh_url(); ?>" style="color: #1e1b4b; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
-                <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="<?php echo Format::htmlchars($tickets_refresh_url); ?>"
+               class="tickets-refresh-link"
+               title="<?php echo __('Refresh'); ?>"
+               aria-label="<?php echo __('Refresh'); ?>">
+                <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0113.66-5.66M20 14a8 8 0 01-13.66 5.66" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <?php echo __('Tickets'); ?>
             </a>
+            <span class="tickets-heading-label"><?php echo __('Tickets'); ?></span>
         </h1>
 
         <div class="tickets-status-tabs">
@@ -532,9 +748,44 @@ $tickets->values(
                     <button type="submit" class="search-btn"><?php echo __('Search'); ?></button>
                 </div>
                 
+                <div class="maha-sort-wrap" data-maha-sort>
+                    <button type="button" class="maha-sort__trigger" id="client-maha-sort-btn"
+                            aria-haspopup="listbox" aria-expanded="false"
+                            aria-controls="client-maha-sort-menu">
+                        <span class="maha-sort__trigger-label"><?php echo __('Sort'); ?>:</span>
+                        <span class="maha-sort__trigger-value"><?php echo Format::htmlchars($maha_current_sort_label); ?></span>
+                        <span class="maha-sort__chevron" aria-hidden="true">
+                            <svg width="12" height="5" viewBox="0 0 24 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 8L12 2L18 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <svg width="12" height="5" viewBox="0 0 24 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2L12 8L6 2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="maha-sort__dropdown" id="client-maha-sort-menu" role="listbox"
+                         aria-labelledby="client-maha-sort-btn">
+                        <?php foreach ($maha_sort_choices as $_ch) {
+                            $_sel = (strtolower($sort) === $_ch['sort'] && $req_order_upper === $_ch['order']);
+                            $_q = $_GET;
+                            $_q['sort'] = $_ch['sort'];
+                            $_q['order'] = $_ch['order'];
+                            unset($_q['p']);
+                            $_href = 'tickets.php?' . http_build_query($_q);
+                            ?>
+                        <a class="maha-sort__option<?php if ($_sel) echo ' is-selected'; ?>" role="option"
+                           aria-selected="<?php echo $_sel ? 'true' : 'false'; ?>"
+                           href="<?php echo Format::htmlchars($_href); ?>">
+                            <span class="maha-sort__cb" aria-hidden="true"></span>
+                            <span><?php echo Format::htmlchars($_ch['label']); ?></span>
+                        </a>
+                        <?php } ?>
+                    </div>
+                </div>
+
                 <div class="filter-group">
                     <label class="filter-label"><?php echo __('Help Topic'); ?>:</label>
-                    <select name="topic_id" class="filter-select" onchange="this.form.submit();">
+                    <select name="topic_id" class="filter-select maha-filter-select" onchange="this.form.submit();">
                         <option value=""><?php echo __('All Topics'); ?></option>
                         <?php
                         foreach (Topic::getHelpTopics(true) as $id => $name) {
@@ -671,5 +922,27 @@ $tickets->values(
         echo '<div class="pagination-wrapper">' . __('Page') . ': ' . $pageNav->getPageLinks() . '</div>';
     }
     ?>
+<script type="text/javascript">
+$(function () {
+    var $root = $('[data-maha-sort]');
+    if (!$root.length) return;
+    var $btn = $root.find('.maha-sort__trigger');
+    var $menu = $root.find('.maha-sort__dropdown');
+    $btn.on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var open = !$menu.hasClass('is-open');
+        $menu.toggleClass('is-open', open);
+        $btn.attr('aria-expanded', open ? 'true' : 'false');
+    });
+    $(document).on('click', function () {
+        $menu.removeClass('is-open');
+        $btn.attr('aria-expanded', 'false');
+    });
+    $root.on('click', function (e) {
+        e.stopPropagation();
+    });
+});
+</script>
 </div>
 <?php

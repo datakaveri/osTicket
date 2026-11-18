@@ -16,6 +16,7 @@ COPY . .
 
 # Setup OAuth2 plugin
 RUN git clone --depth 1 https://github.com/osTicket/osTicket-plugins.git /tmp/plugins \
+ && mkdir -p include/plugins \
  && mv /tmp/plugins/* include/plugins \
  && cd include/plugins \
  && php make.php hydrate
