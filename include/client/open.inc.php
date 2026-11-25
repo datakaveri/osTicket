@@ -36,7 +36,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 <style>
 .new-ticket-container {
     width: 100%;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .form-parent-container {
@@ -90,7 +90,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 .new-ticket-header h1 {
     font-size: 36px;
     font-weight: 700;
-    color: #1a2e05;
+    color: #0f172a;
     margin-bottom: 1rem;
     letter-spacing: -0.5px;
 }
@@ -144,7 +144,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
     width: 4px;
     height: 24px;
     border-radius: 999px;
-    background: #00d084;
+    background: #3730a3;
 }
 
 .form-section-title--lined::after {
@@ -153,7 +153,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
     height: 2px;
     margin-left: 12px;
     border-radius: 999px;
-    background: rgba(0, 208, 132, 0.55);
+    background: rgba(55, 48, 163, 0.55);
 }
 
 .form-row-title {
@@ -274,8 +274,8 @@ input[type="tel"]:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #00d084;
-    box-shadow: 0 0 0 4px rgba(0, 208, 132, 0.14);
+    border-color: #3730a3;
+    box-shadow: 0 0 0 4px rgba(55, 48, 163, 0.14);
 }
 
 .form-input::placeholder {
@@ -304,7 +304,7 @@ textarea:focus {
 .new-ticket-container #ticketForm input[type="tel"],
 .new-ticket-container #ticketForm select,
 .new-ticket-container #ticketForm textarea {
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     color: #111827 !important;
     border: 1px solid #e5e7eb !important;
     border-radius: 10px !important;
@@ -320,12 +320,12 @@ textarea:focus {
 .new-ticket-container #ticketForm input[type="tel"]:focus,
 .new-ticket-container #ticketForm select:focus,
 .new-ticket-container #ticketForm textarea:focus {
-    border-color: #00d084 !important;
-    box-shadow: 0 0 0 4px rgba(0, 208, 132, 0.14) !important;
+    border-color: #3730a3 !important;
+    box-shadow: 0 0 0 4px rgba(55, 48, 163, 0.14) !important;
 }
 
 .new-ticket-container #ticketForm .form-label {
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-size: 0.95rem;
 }
 
@@ -380,9 +380,9 @@ textarea:focus {
 }
 
 .new-ticket-container .btn-submit {
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #00d084 !important;
-    color: #0a0a0a !important;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #3730a3 !important;
+    color: #ffffff !important;
     padding: 0.75rem 1.5rem;
     border: none !important;
     border-radius: 8px;
@@ -397,17 +397,17 @@ textarea:focus {
 }
 
 .new-ticket-container .btn-submit:hover {
-    background: #00b371 !important;
+    background: #4f46e5 !important;
     transform: translateY(-1px);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
 .new-ticket-container .btn-cancel {
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: transparent !important;
-    color: #00d084 !important;
+    color: #3730a3 !important;
     padding: 0.75rem 1.5rem;
-    border: 1px solid rgba(0, 208, 132, 0.55) !important;
+    border: 1px solid rgba(55, 48, 163, 0.55) !important;
     border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 600;
@@ -421,21 +421,21 @@ textarea:focus {
 }
 
 .new-ticket-container .btn-cancel:hover {
-    background: rgba(0, 208, 132, 0.08) !important;
-    border-color: #00b371 !important;
-    color: #00b371 !important;
+    background: rgba(55, 48, 163, 0.08) !important;
+    border-color: #4f46e5 !important;
+    color: #4f46e5 !important;
     transform: translateY(-1px);
 }
 
 .new-ticket-container .btn-submit:focus-visible,
 .new-ticket-container .btn-cancel:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 4px rgba(0, 208, 132, 0.14);
+    box-shadow: 0 0 0 4px rgba(55, 48, 163, 0.14);
 }
 
 .info-banner {
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border-left: 4px solid #65a30d;
+    background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+    border-left: 4px solid #3730a3;
     padding: 1.25rem 1.5rem;
     border-radius: 10px;
     margin-bottom: 2rem;
@@ -452,13 +452,13 @@ textarea:focus {
 .info-banner-content h3 {
     font-size: 15px;
     font-weight: 600;
-    color: #1a2e05;
+    color: #0f172a;
     margin: 0 0 0.5rem 0;
 }
 
 .info-banner-content p {
     font-size: 14px;
-    color: #4d7c0a;
+    color: #4f46e5;
     margin: 0;
     line-height: 1.6;
 }
@@ -474,7 +474,7 @@ textarea:focus {
     display: block;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #1a2e05;
+    color: #0f172a;
 }
 
 .captcha-content {
@@ -559,7 +559,7 @@ textarea:focus {
         <div class="form-parent-container">
             <div class="form-section-title form-section-title--lined form-row-title">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#00d084"/>
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#3730a3"/>
                 </svg>
                 <?php echo __('Contact Information'); ?>
             </div>
@@ -657,7 +657,7 @@ textarea:focus {
                     <div class="ticket-details-form" style="display: <?php echo ($info['topicId'] ? 'block' : 'none'); ?>;">
                         <div class="form-section-title">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="#1a2e05"/>
+                                <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="#0f172a"/>
                             </svg>
                             <?php echo __('Ticket Details'); ?>
                         </div>

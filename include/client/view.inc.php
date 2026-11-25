@@ -40,7 +40,7 @@ if (
         width: min(100%, 1200px);
         margin: 0 auto 3rem;
         padding: 0.5rem 0 2rem;
-        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         color: #1f2937;
     }
 
@@ -75,16 +75,16 @@ if (
         align-items: center;
         justify-content: center;
         border-radius: 12px;
-        background: #ecfdf5;
-        color: #047857;
+        background: #eef2ff;
+        color: #3730a3;
         text-decoration: none;
         flex-shrink: 0;
         transition: 150ms ease;
     }
 
     .maha-ticket-refresh:hover {
-        background: #d1fae5;
-        color: #059669;
+        background: #eef2ff;
+        color: #3730a3;
         transform: translateY(-1px);
     }
 
@@ -93,8 +93,8 @@ if (
         align-items: center;
         padding: 0.42rem 0.8rem;
         border-radius: 999px;
-        background: #ecfdf5;
-        color: #047857;
+        background: #eef2ff;
+        color: #3730a3;
         font-size: 0.8rem;
         font-weight: 700;
         letter-spacing: 0.06em;
@@ -107,7 +107,7 @@ if (
         font-family: 'Caladea', Georgia, serif;
         font-size: 2rem;
         line-height: 1.08;
-        color: #1a2e05;
+        color: #0f172a;
         letter-spacing: -0.03em;
         word-break: break-word;
     }
@@ -117,7 +117,7 @@ if (
         margin-top: 0.6rem;
         font-size: 0.98rem;
         font-weight: 700;
-        color: #047857;
+        color: #3730a3;
     }
 
     .maha-ticket-actions {
@@ -145,11 +145,11 @@ if (
 
     .maha-ticket-card__head {
         padding: 1rem 1.25rem;
-        background: #f8fffb;
+        background: #eef2ff;
         border-bottom: 1px solid #dff7eb;
         font-size: 0.95rem;
         font-weight: 700;
-        color: #1a2e05;
+        color: #0f172a;
     }
 
     .maha-ticket-meta {
@@ -179,8 +179,8 @@ if (
         justify-content: center;
         padding: 0.3rem 0.7rem;
         border-radius: 999px;
-        background: #ecfdf5;
-        color: #047857;
+        background: #eef2ff;
+        color: #3730a3;
         font-size: 0.78rem;
         font-weight: 700;
         letter-spacing: 0.02em;
@@ -204,11 +204,11 @@ if (
 
     .maha-custom-grid .custom-data .headline {
         padding: 1rem 1.25rem;
-        background: #f8fffb;
+        background: #eef2ff;
         border-bottom: 1px solid #dff7eb;
         font-size: 0.95rem;
         font-weight: 700;
-        color: #1a2e05;
+        color: #0f172a;
     }
 
     .maha-custom-grid .custom-data th,
@@ -260,7 +260,7 @@ if (
 
     #ticketThread .thread-entry .header {
         padding: 0.95rem 1.1rem;
-        background: #f8fffb;
+        background: #eef2ff;
         border-bottom: 1px solid #dff7eb;
         color: #374151;
         font-size: 0.9rem;
@@ -275,7 +275,7 @@ if (
     #ticketThread .thread-entry .attachments {
         margin-top: 0.85rem;
         padding-top: 0.75rem;
-        border-top: 1px dashed #d1fae5;
+        border-top: 1px dashed #eef2ff;
     }
 
     .maha-reply-card {
@@ -286,7 +286,7 @@ if (
         margin: 0 0 0.65rem;
         font-family: 'Caladea', Georgia, serif;
         font-size: 1.7rem;
-        color: #1a2e05;
+        color: #0f172a;
     }
 
     .maha-reply-card .reply-help {
@@ -297,13 +297,13 @@ if (
 
     .maha-reply-card textarea {
         border-radius: 18px !important;
-        border: 1px solid #d1fae5 !important;
+        border: 1px solid #eef2ff !important;
         background: #fcfffd !important;
         box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
     }
 
     .maha-reply-card textarea:focus {
-        border-color: #00d084 !important;
+        border-color: #3730a3 !important;
         box-shadow: 0 0 0 3px rgba(0, 208, 132, 0.12) !important;
     }
 

@@ -41,7 +41,7 @@ if ($content) {
 }
 
 .maha-login {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   width: 100%;
   max-width: 920px;
   margin: 0 auto;
@@ -63,7 +63,7 @@ if ($content) {
 }
 
 .maha-login__title-accent {
-  color: #059669;
+  color: #3730a3;
 }
 
 .maha-login__subtitle {
@@ -173,7 +173,7 @@ if ($content) {
 }
 
 .maha-login__input:focus {
-  border-color: #059669;
+  border-color: #3730a3;
   box-shadow: 0 0 0 3px rgba(0, 208, 132, 0.12);
   background: #ffffff;
 }
@@ -185,7 +185,7 @@ if ($content) {
 }
 
 .maha-login__link {
-  color: #059669;
+  color: #3730a3;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
@@ -193,7 +193,7 @@ if ($content) {
 }
 
 .maha-login__link:hover {
-  color: #00b371;
+  color: #4f46e5;
   text-decoration: underline;
 }
 
@@ -202,7 +202,7 @@ if ($content) {
   padding: 1rem 1.5rem;
   border: none;
   border-radius: 12px;
-  background: #059669;
+  background: #3730a3;
   color: #0a0a0a;
   font-size: 1rem;
   font-weight: 700;
@@ -211,7 +211,7 @@ if ($content) {
 }
 
 .maha-login__btn:hover {
-  background: #00b371;
+  background: #4f46e5;
   transform: translateY(-1px);
 }
 
@@ -228,7 +228,7 @@ if ($content) {
 }
 
 .maha-login__footer a {
-  color: #059669;
+  color: #3730a3;
   font-weight: 600;
   text-decoration: none;
 }
@@ -248,7 +248,7 @@ if ($content) {
 }
 
 .maha-login__extras a {
-  color: #059669;
+  color: #3730a3;
   font-weight: 600;
   text-decoration: none;
 }
@@ -277,7 +277,7 @@ if ($content) {
 }
 
 .maha-login__hint a {
-  color: #059669;
+  color: #3730a3;
   font-weight: 600;
   text-decoration: none;
 }

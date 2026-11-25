@@ -111,9 +111,9 @@ if ($ticket
         border-radius: 28px;
         box-shadow:
             0 24px 60px rgba(15, 23, 42, 0.08),
-            0 8px 24px rgba(0, 208, 132, 0.08);
+            0 8px 24px rgba(55, 48, 163, 0.08);
         text-align: center;
-        font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         animation: fadeInUp 0.6s ease-out;
         position: relative;
         overflow: hidden;
@@ -143,8 +143,8 @@ if ($ticket
         gap: 0.5rem;
         padding: 0.55rem 1rem;
         border-radius: 999px;
-        background: #ecfdf5;
-        color: #047857;
+        background: #eef2ff;
+        color: #3730a3;
         font-size: 0.9rem;
         font-weight: 700;
         letter-spacing: 0.01em;
@@ -158,7 +158,7 @@ if ($ticket
     .success-title {
         font-size: 2.75rem;
         font-weight: 700;
-        color: #1a2e05;
+        color: #0f172a;
         margin: 0 0 1rem 0;
         letter-spacing: -0.04em;
         line-height: 1.08;
@@ -179,8 +179,8 @@ if ($ticket
         padding: 1rem 1.25rem;
         margin: 0 auto;
         border-radius: 20px;
-        background: #f8fffb;
-        border: 1px solid rgba(0, 208, 132, 0.18);
+        background: #eef2ff;
+        border: 1px solid rgba(55, 48, 163, 0.18);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
     }
     .success-ticket-chip-label {
@@ -193,72 +193,70 @@ if ($ticket
     .success-ticket-chip-value {
         font-size: 1.45rem;
         font-weight: 700;
-        color: #047857;
+        color: #3730a3;
         letter-spacing: -0.02em;
     }
     .success-actions {
         margin-top: 2.2rem;
         display: flex;
-        gap: 1.25rem;
+        gap: 0.5rem;
         justify-content: center;
         flex-wrap: wrap;
+        align-items: center;
     }
     .btn-success-action {
-        background: #00d084;
-        color: #0a0a0a;
-        min-width: 230px;
-        min-height: 56px;
-        padding: 0.95rem 1.75rem;
+        background: #3730a3;
+        color: #ffffff;
+        min-width: 0;
+        min-height: 0;
+        padding: 0.5rem 1.5rem;
         border-radius: 8px;
         text-decoration: none;
         font-weight: 500;
-        font-size: 0.975rem;
+        font-size: 0.875rem;
         transition: all 150ms ease;
-        box-shadow: 0 10px 24px rgba(0, 208, 132, 0.22);
+        box-shadow: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.6rem;
+        gap: 0.5rem;
         line-height: 1;
         letter-spacing: 0.01em;
         border: none;
     }
     .btn-success-action:hover {
-        background: #00b371;
-        box-shadow: 0 14px 28px rgba(0, 208, 132, 0.28);
-        transform: translateY(-1px);
-        color: #0a0a0a;
+        background: #4f46e5;
+        color: #ffffff;
     }
     .btn-success-secondary {
         background: #ffffff;
-        color: #00b371;
-        min-width: 230px;
-        min-height: 56px;
-        padding: 0.95rem 1.75rem;
-        border: 1.5px solid #00d084;
+        color: #3730a3;
+        min-width: 0;
+        min-height: 0;
+        padding: 0.5rem 1.5rem;
+        border: 1px solid #3730a3;
         border-radius: 8px;
         text-decoration: none;
         font-weight: 500;
-        font-size: 0.975rem;
+        font-size: 0.875rem;
         transition: all 150ms ease;
-        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+        box-shadow: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.6rem;
+        gap: 0.5rem;
         line-height: 1;
         letter-spacing: 0.01em;
     }
     .btn-success-secondary:hover {
-        background: #f0fffa;
-        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
-        transform: translateY(-1px);
-        color: #00b371;
+        background: #eef2ff;
+        color: #4f46e5;
+        border-color: #4f46e5;
     }
     .btn-success-action svg,
     .btn-success-secondary svg {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
         flex-shrink: 0;
     }
     .success-helper {

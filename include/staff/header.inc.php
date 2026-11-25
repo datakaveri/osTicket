@@ -2,9 +2,9 @@
 header("Content-Type: text/html; charset=UTF-8");
 header("Content-Security-Policy: frame-ancestors " . $cfg->getAllowIframes() . "; script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'");
 
-$titleBase = 'Help Desk | MahaAgX';
+$titleBase = 'Help Desk | MahaDeX';
 $title = ($ost && ($pageTitle = $ost->getPageTitle()) && $pageTitle)
-    ? ($pageTitle . ' | MahaAgX')
+    ? ($pageTitle . ' | MahaDeX')
     : $titleBase;
 
 if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
@@ -31,9 +31,9 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
             <meta http-equiv="pragma" content="no-cache" />
             <meta http-equiv="x-pjax-version" content="<?php echo GIT_VERSION; ?>">
             <title><?php echo Format::htmlchars($title); ?></title>
-            <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-</style>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
             <!--[if IE]>
     <style type="text/css">
@@ -60,8 +60,7 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
             <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/rtl.css" />
             <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH ?>scp/css/translatable.css" />
             <!-- Favicons -->
-            <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" sizes="32x32" />
-            <!-- <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>images/tgdex_favicon.png" sizes="16x16" /> -->
+            <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahadex/mahadex-favicon.png" sizes="32x32" />
 
             <?php
             if ($ost && ($headers = $ost->getExtraHeaders())) {
@@ -84,11 +83,14 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                     <div style="display: flex; align-items:center; justify-content: space-between; width: 100%;">
                         <div style="display: flex; align-items: center; flex: 1;">
                             <div class="logo_container_header">
-                                <a class="pull-left" id="logo" href="<?php echo ROOT_PATH; ?>" title="<?php echo __('Support Center'); ?>">
+                                <a class="pull-left" id="logo" href="https://mahadex.iudx.io/" target="_blank" rel="noopener noreferrer" title="MahaDeX">
                                     <span class="valign-helper"></span>
-                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" class="tg_govt_header">
+                                    <img src="<?php echo ROOT_PATH ?>assets/default/images/mahadex/mahadex-logo-mark.svg" class="tg_govt_header" alt="MahaDeX">
                                 </a>
-                                <!-- Removed previous Forest Stack Rajasthan text branding -->
+                                <div class="logo_title">
+                                    <p class="logo_title_name" style="color:#3730a3;margin:0;">MahaDeX</p>
+                                    <p class="logo_title_department" style="margin:0;font-size:12px;">Maharashtra Data Exchange</p>
+                                </div>
                             </div>
 
                             <!-- Client Navigation Menu -->
@@ -99,20 +101,17 @@ if (!isset($_SERVER['HTTP_X_PJAX'])) { ?>
                                 <a href="<?php echo ROOT_PATH; ?>open.php" class="no-pjax">
                                     <?php echo __('New Ticket'); ?>
                                 </a>
-                                <a href="https://mahaagx.maharashtra.gov.in/about" target="_blank" rel="noopener">
-                                    <?php echo __('About MahaAgX'); ?>
+                                <a href="https://mahadex.iudx.io/about" target="_blank" rel="noopener">
+                                    <?php echo __('About MahaDeX'); ?>
                                 </a>
-                                <a href="https://mahaagx.maharashtra.gov.in/datasets" target="_blank" rel="noopener">
+                                <a href="https://mahadex.iudx.io/datasets" target="_blank" rel="noopener">
                                     <?php echo __('Datasets'); ?>
                                 </a>
-                                <a href="https://mahaagx.maharashtra.gov.in/models" target="_blank" rel="noopener">
+                                <a href="https://mahadex.iudx.io/models" target="_blank" rel="noopener">
                                     <?php echo __('Models'); ?>
                                 </a>
-                                <a href="https://mahaagx.maharashtra.gov.in/usecases" target="_blank" rel="noopener">
+                                <a href="https://mahadex.iudx.io/usecases" target="_blank" rel="noopener">
                                     <?php echo __('Usecases'); ?>
-                                </a>
-                                <a href="https://mahaagx.maharashtra.gov.in/challenges" target="_blank" rel="noopener">
-                                    <?php echo __('Challenges'); ?>
                                 </a>
                             </div>
                         </div>

@@ -149,8 +149,8 @@
 }
 .select2-container--default .select2-selection--single {
   background-color: #fff;
-  color: #3f6212b3;
-  border: 1px solid #3f6212;
+  color: #334155b3;
+  border: 1px solid #334155;
   border-radius: 999px;
   padding: 14px 16px;
   height:auto;
@@ -171,7 +171,7 @@
 .select2-container--default
   .select2-selection--single
   .select2-selection__placeholder {
-  color: #3f6212b3;;
+  color: #334155b3;;
 }
 .select2-container--default
   .select2-selection--single

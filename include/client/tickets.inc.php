@@ -188,8 +188,8 @@ if (!$maha_current_sort_label) {
 <style>
 .tickets-page-container {
     width: 100%;
-    padding: 2rem 4rem;
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 2rem 1.5rem;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 60vh;
     margin-bottom: 3rem;
 }
@@ -204,11 +204,19 @@ if (!$maha_current_sort_label) {
 .tickets-title {
     font-size: 32px;
     font-weight: 700;
-    color: #1a2e05;
+    color: #0f172a;
     margin: 0;
     display: flex;
     align-items: center;
     gap: 0.75rem;
+}
+
+.tickets-title .tickets-refresh-link {
+    color: #0f172a;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
 }
 
 .tickets-title .refresh-icon {
@@ -235,38 +243,40 @@ if (!$maha_current_sort_label) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 40px;
-    padding: 0.55rem 1.25rem;
+    min-height: 36px;
+    padding: 0.4rem 0.9rem;
     border-radius: 8px;
-    border: 1px solid #00d084;
+    border: 1px solid #c7d2fe;
     background: #ffffff;
     font-size: 0.875rem;
     font-weight: 500;
-    color: #00b371;
+    color: #4f46e5;
     text-decoration: none;
     transition: 150ms ease;
     line-height: 1;
     white-space: nowrap;
+    box-shadow: none;
 }
 
 .status-tab:hover {
-    background: #f0fffa;
-    border-color: #00b371;
-    color: #00b371;
-    transform: translateY(-1px);
+    background: #eef2ff;
+    border-color: #a5b4fc;
+    color: #3730a3;
+    transform: none;
 }
 
 .status-tab.active {
-    background: #00d084;
-    border-color: #00d084;
-    color: #0a0a0a;
-    box-shadow: 0 10px 24px rgba(0, 208, 132, 0.18);
+    background: #ffffff;
+    border-color: #3730a3;
+    color: #3730a3;
+    box-shadow: none;
+    font-weight: 600;
 }
 
 .search-filter-section {
     background: #ffffff;
     border-radius: 16px;
-    padding: 1.5rem 2rem;
+    padding: 1.25rem 1.25rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     margin-bottom: 2rem;
 }
@@ -296,12 +306,12 @@ if (!$maha_current_sort_label) {
 
 .search-input-group input[type="text"]:focus {
     outline: none;
-    border-color: #65a30d;
+    border-color: #3730a3;
     box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.1);
 }
 
 .search-btn {
-    background: #65a30d;
+    background: #3730a3;
     color: #fff;
     padding: 12px 24px;
     border: none;
@@ -312,7 +322,7 @@ if (!$maha_current_sort_label) {
 }
 
 .search-btn:hover {
-    background: #4d7c0a;
+    background: #4f46e5;
 }
 
 .filter-group {
@@ -324,7 +334,7 @@ if (!$maha_current_sort_label) {
 .filter-label {
     font-size: 14px;
     font-weight: 600;
-    color: #1a2e05;
+    color: #0f172a;
 }
 
 .filter-select {
@@ -339,7 +349,7 @@ if (!$maha_current_sort_label) {
 
 .filter-select:focus {
     outline: none;
-    border-color: #65a30d;
+    border-color: #3730a3;
 }
 
 /* MahaAgX-style selects (reference: dataset catalogue sort + filters) */
@@ -348,10 +358,10 @@ if (!$maha_current_sort_label) {
     -webkit-appearance: none;
     min-width: 12rem;
     padding: 0.65rem 2.75rem 0.65rem 1rem;
-    border: 1px solid #00b371;
+    border: 1px solid #4f46e5;
     border-radius: 10px;
-    background-color: #ecfdf5;
-    color: #047857;
+    background-color: #eef2ff;
+    color: #3730a3;
     font-weight: 600;
     font-size: 0.875rem;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2300b371' stroke-width='2'%3E%3Cpath d='M8 9l4-4 4 4M8 15l4 4 4-4'/%3E%3C/svg%3E");
@@ -361,7 +371,7 @@ if (!$maha_current_sort_label) {
 }
 
 .filter-select.maha-filter-select:focus {
-    border-color: #00d084;
+    border-color: #3730a3;
     box-shadow: 0 0 0 3px rgba(0, 208, 132, 0.15);
 }
 
@@ -375,10 +385,10 @@ if (!$maha_current_sort_label) {
     align-items: center;
     gap: 0.35rem;
     padding: 0.65rem 2.75rem 0.65rem 1rem;
-    border: 1px solid #00b371;
+    border: 1px solid #4f46e5;
     border-radius: 10px;
-    background: #ecfdf5;
-    color: #047857;
+    background: #eef2ff;
+    color: #3730a3;
     font-family: inherit;
     font-size: 0.875rem;
     font-weight: 600;
@@ -388,7 +398,7 @@ if (!$maha_current_sort_label) {
 }
 
 .maha-sort__trigger:hover {
-    border-color: #00d084;
+    border-color: #3730a3;
 }
 
 .maha-sort__trigger:focus {
@@ -397,11 +407,11 @@ if (!$maha_current_sort_label) {
 }
 
 .maha-sort__trigger-label {
-    color: #047857;
+    color: #3730a3;
 }
 
 .maha-sort__trigger-value {
-    color: #059669;
+    color: #3730a3;
 }
 
 .maha-sort__chevron {
@@ -410,7 +420,7 @@ if (!$maha_current_sort_label) {
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #00b371;
+    color: #4f46e5;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -464,8 +474,8 @@ if (!$maha_current_sort_label) {
 }
 
 .maha-sort__option.is-selected {
-    background: #d1fae5;
-    color: #047857;
+    background: #eef2ff;
+    color: #3730a3;
 }
 
 .maha-sort__cb {
@@ -480,8 +490,8 @@ if (!$maha_current_sort_label) {
 }
 
 .maha-sort__option.is-selected .maha-sort__cb {
-    background: #00d084;
-    border-color: #00b371;
+    background: #3730a3;
+    border-color: #4f46e5;
 }
 
 .maha-sort__option.is-selected .maha-sort__cb::after {
@@ -529,17 +539,22 @@ if (!$maha_current_sort_label) {
 }
 
 .tickets-table th {
-    padding: 1rem 1.5rem;
+    padding: 0.85rem 0.75rem;
     text-align: left;
     font-size: 12px;
     font-weight: 700;
-    color: #1a2e05;
+    color: #0f172a;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
+.tickets-table th:first-child,
+.tickets-table td:first-child {
+    padding-left: 1rem;
+}
+
 .tickets-table th a {
-    color: #1a2e05;
+    color: #0f172a;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -547,7 +562,7 @@ if (!$maha_current_sort_label) {
 }
 
 .tickets-table th a:hover {
-    color: #65a30d;
+    color: #3730a3;
 }
 
 .tickets-table tbody tr {
@@ -564,14 +579,14 @@ if (!$maha_current_sort_label) {
 }
 
 .tickets-table td {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 0.75rem;
     font-size: 15px;
     color: #374151;
     line-height: 1.6;
 }
 
 .ticket-number-link {
-    color: #65a30d;
+    color: #3730a3;
     text-decoration: none;
     font-weight: 600;
     font-family: 'Courier New', monospace;
@@ -583,7 +598,7 @@ if (!$maha_current_sort_label) {
 }
 
 .ticket-subject-link {
-    color: #1a2e05;
+    color: #0f172a;
     text-decoration: none;
     font-weight: 500;
     font-size: 15px;
@@ -595,21 +610,22 @@ if (!$maha_current_sort_label) {
 }
 
 .ticket-subject-link:hover {
-    color: #65a30d;
+    color: #3730a3;
 }
 
 .ticket-status-badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.375rem 0.875rem;
-    border-radius: 20px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 .ticket-status-open {
-    background: #dcfce7;
-    color: #166534;
+    background: #e0e7ff;
+    color: #312e81;
 }
 
 .ticket-status-closed {
@@ -643,7 +659,7 @@ if (!$maha_current_sort_label) {
 }
 
 .pagination-wrapper a {
-    color: #65a30d;
+    color: #3730a3;
     text-decoration: none;
     padding: 0.5rem 0.75rem;
     margin: 0 0.25rem;
@@ -652,7 +668,7 @@ if (!$maha_current_sort_label) {
 }
 
 .pagination-wrapper a:hover {
-    background: #f0fdf4;
+    background: #eef2ff;
 }
 
 @media (max-width: 768px) {
@@ -681,16 +697,25 @@ if (!$maha_current_sort_label) {
     }
 }
 </style>
-
+<?php
+// Use app path + query string — REQUEST_URI can be "/" behind proxies and would send users to the site root (e.g. portal home).
+$tickets_refresh_url = ROOT_PATH . 'tickets.php';
+if (!empty($_GET)) {
+    $tickets_refresh_url .= '?' . http_build_query($_GET);
+}
+?>
 <div class="tickets-page-container">
     <div class="tickets-header">
         <h1 class="tickets-title">
-            <a href="<?php echo Format::htmlchars($_SERVER['REQUEST_URI'] ?? 'tickets.php'); ?>" style="color: #1a2e05; text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
-                <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="<?php echo Format::htmlchars($tickets_refresh_url); ?>"
+               class="tickets-refresh-link"
+               title="<?php echo __('Refresh'); ?>"
+               aria-label="<?php echo __('Refresh'); ?>">
+                <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0113.66-5.66M20 14a8 8 0 01-13.66 5.66" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <?php echo __('Tickets'); ?>
             </a>
+            <span class="tickets-heading-label"><?php echo __('Tickets'); ?></span>
         </h1>
 
         <div class="tickets-status-tabs">

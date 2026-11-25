@@ -10,7 +10,7 @@
     margin-bottom: 1.25rem;
     font-weight: 600;
     font-size: 1.5rem;
-    color: #1a2e05;
+    color: #0f172a;
     position: relative;
     padding-left: 14px;
   }
@@ -24,7 +24,7 @@
     width: 4px;
     height: 22px;
     border-radius: 999px;
-    background: #00d084;
+    background: #3730a3;
   }
 
   .maha-account-registration-title::after {
@@ -33,13 +33,13 @@
     height: 2px;
     margin-left: 12px;
     border-radius: 999px;
-    background: rgba(0, 208, 132, 0.55);
+    background: rgba(55, 48, 163, 0.55);
   }
 
   .maha-account-registration-title svg {
     width: 20px;
     height: 20px;
-    color: #1a2e05;
+    color: #0f172a;
     flex-shrink: 0;
   }
 </style>

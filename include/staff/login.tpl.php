@@ -12,8 +12,12 @@ $staffLoginBody = ($content) ? trim(Format::display($content->getLocalBody())) :
         <section id="loginBox" class="maha-staff-login-card">
             <div class="maha-staff-login-card__inner">
                 <div class="maha-staff-login-card__brand">
-                    <img src="<?php echo ROOT_PATH; ?>assets/default/images/mahaagx/mahaagx-logo.svg"
-                        alt="<?php echo __('MahaAgX'); ?>" />
+                    <img src="<?php echo ROOT_PATH; ?>assets/default/images/mahadex/mahadex-logo-mark.svg"
+                        alt="" />
+                    <div class="maha-staff-login-card__brand-text">
+                        <span class="maha-staff-login-card__brand-name">MahaDeX</span>
+                        <span class="maha-staff-login-card__brand-sub">Maharashtra Data Exchange</span>
+                    </div>
                 </div>
                 <p class="maha-staff-login-card__eyebrow"><?php echo __('Secure Staff Access'); ?></p>
                 <h2 class="maha-staff-login-card__title"><?php echo __('Sign in to continue'); ?></h2>

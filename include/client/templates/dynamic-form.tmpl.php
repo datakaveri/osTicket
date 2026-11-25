@@ -42,13 +42,7 @@ foreach ($form->getFields() as $field) {
                 <label for="<?php echo $field->getFormName(); ?>"><span class="<?php
                                                                                 if ($field->isRequiredForUsers()) echo 'required'; ?>">
                         <?php echo Format::htmlchars($field->getLocal('label')); ?>
-                        <?php if (
-                            $field->isRequiredForUsers() &&
-                            ($field->isEditableToUsers() || $isCreate)
-                        ) { ?>
-                            <span class="error">*</span>
-                        <?php }
-                        ?></span><?php
+                        </span><?php
                                     if ($field->get('hint')) { ?>
                         <br /><em style="color:gray;display:inline-block"><?php
                                                                             echo Format::viewableImages($field->getLocal('hint')); ?></em>

@@ -17,7 +17,7 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
 <style>
   /* Full width of #content — same horizontal inset as header (77px) / footer (77px) */
   .maha-register {
-    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     max-width: none;
     width: 100%;
     margin: 0;
@@ -41,7 +41,7 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
     margin-bottom: 0.75rem;
     font-weight: 700;
     font-size: 1.5rem;
-    color: #1a2e05;
+    color: #0f172a;
     position: relative;
     padding-left: 14px;
   }
@@ -55,7 +55,7 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
     width: 4px;
     height: 26px;
     border-radius: 999px;
-    background: #00d084;
+    background: #3730a3;
   }
 
   .maha-account-registration-title::after {
@@ -64,13 +64,13 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
     height: 2px;
     margin-left: 12px;
     border-radius: 999px;
-    background: rgba(0, 208, 132, 0.55);
+    background: rgba(55, 48, 163, 0.55);
   }
 
   .maha-account-registration-title svg {
     width: 22px;
     height: 22px;
-    color: #1a2e05;
+    color: #0f172a;
     flex-shrink: 0;
   }
 
@@ -376,7 +376,7 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
   .maha-register__section-title {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #1a2e05;
+    color: #0f172a;
     margin: 0;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #e2e8f0;
@@ -435,8 +435,8 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
     gap: 0.35rem;
     margin-left: 0.75rem;
     vertical-align: middle !important;
-    background: #00d084 !important;
-    color: #0a0a0a !important;
+    background: #3730a3 !important;
+    color: #ffffff !important;
     border: none !important;
     border-radius: 8px !important;
     padding: 0.65rem 1.1rem !important;
@@ -448,7 +448,7 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
   }
 
   .maha-register .action-button:hover {
-    background: #00b371 !important;
+    background: #4f46e5 !important;
   }
 
   .maha-register .error {
@@ -473,7 +473,7 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
     padding: 0.75rem 2rem;
     border: none;
     border-radius: 8px;
-    background: #00d084;
+    background: #3730a3;
     color: #0a0a0a;
     font-size: 1rem;
     font-weight: 700;
@@ -482,17 +482,17 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
   }
 
   .maha-register__btn-primary:hover {
-    background: #00b371;
+    background: #4f46e5;
     transform: translateY(-1px);
   }
 
   .maha-register__btn-secondary {
     font-family: inherit;
     padding: 0.75rem 2rem;
-    border: 1px solid rgba(0, 208, 132, 0.55);
+    border: 1px solid rgba(55, 48, 163, 0.55);
     border-radius: 8px;
     background: transparent;
-    color: #00d084;
+    color: #3730a3;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -500,8 +500,8 @@ $info = Format::htmlchars(($errors && $_POST)?$_POST:$info);
   }
 
   .maha-register__btn-secondary:hover {
-    background: rgba(0, 208, 132, 0.08);
-    color: #00b371;
+    background: rgba(55, 48, 163, 0.08);
+    color: #4f46e5;
   }
 
   @media (max-width: 640px) {

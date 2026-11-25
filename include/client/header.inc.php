@@ -25,11 +25,11 @@ if (!function_exists('mahaagx_client_header_initials')) {
     }
 }
 
-$titleBase = 'Help Desk | MahaAgX';
+$titleBase = 'Help Desk | MahaDeX';
 $pageTitle = ($ost && is_object($ost) && ($pt = $ost->getPageTitle()))
     ? $pt
     : null;
-$title = $pageTitle ? ($pageTitle . ' | MahaAgX') : $titleBase;
+$title = $pageTitle ? ($pageTitle . ' | MahaDeX') : $titleBase;
 
 // Login URL: always use IUDX Keycloak for MahaAgX client sign-in.
 $signin_url = MAHAAGX_KEYCLOAK_AUTH_URL;
@@ -88,8 +88,7 @@ if (($lang = Internationalization::getCurrentLanguage())) {
         <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/rtl.css" />
         <link type="text/css" rel="stylesheet" href="<?php echo ROOT_PATH; ?>css/select2.min.css">
         <!-- Favicons -->
-        <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" sizes="32x32" />
-        <!-- <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>images/tgdex_favicon.png" sizes="16x16" /> -->
+        <link rel="icon" type="image/png" href="<?php echo ROOT_PATH ?>assets/default/images/mahadex/mahadex-favicon.png" sizes="32x32" />
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-3.7.0.min.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-ui-1.13.2.custom.min.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/jquery-ui-timepicker-addon.js"></script>
@@ -100,12 +99,9 @@ if (($lang = Internationalization::getCurrentLanguage())) {
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/redactor-plugins.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/redactor-osticket.js"></script>
         <script type="text/javascript" src="<?php echo ROOT_PATH; ?>js/select2.min.js"></script>
-        <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-</style>
         <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
         <?php
         if ($ost && ($headers = $ost->getExtraHeaders())) {
             echo "\n\t" . implode("\n\t", $headers) . "\n";
@@ -267,24 +263,24 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                                 <?php echo __('New Ticket'); ?>
                             </a>
 
-                            <a href="https://mahaagx.maharashtra.gov.in/about" target="_blank">
-                                <?php echo __('About MahaAgX'); ?>
+                            <a href="https://mahadex.iudx.io/about" target="_blank">
+                                <?php echo __('About MahaDeX'); ?>
                             </a>
 
-                            <a href="https://mahaagx.maharashtra.gov.in/datasets" target="_blank">
+                            <a href="https://mahadex.iudx.io/datasets" target="_blank">
                                 <?php echo __('Datasets'); ?>
                             </a>
 
-                            <a href="https://mahaagx.maharashtra.gov.in/models" target="_blank">
+                            <a href="https://mahadex.iudx.io/models" target="_blank">
                                 <?php echo __('Models'); ?>
                             </a>
 
-                            <a href="https://mahaagx.maharashtra.gov.in/usecases" target="_blank">
+                            <a href="https://mahadex.iudx.io/usecases" target="_blank">
                                 <?php echo __('Usecases'); ?>
                             </a>
 
-                            <a href="https://mahaagx.maharashtra.gov.in/challenges" target="_blank">
-                                <?php echo __('Challenges'); ?>
+                            <a href="https://mahadex.iudx.io/leaderboard" target="_blank">
+                                <?php echo __('Leaderboard'); ?>
                             </a>
 
                             <?php
@@ -336,29 +332,14 @@ if (($lang = Internationalization::getCurrentLanguage())) {
                     </div>
                 </div>
                 <div class="logo_container_header">
-                    <!-- <a class="pull-left" style="" id="logo" href="https://tgdex.telangana.gov.in/" title="<?php echo __('Support Center'); ?>">
+                    <a class="pull-left" id="logo" href="https://mahadex.iudx.io/" target="_blank" rel="noopener noreferrer" title="MahaDeX">
                         <span class="valign-helper"></span>
-                        <img src="../assets/default/images/forest-logo.svg" class="tg_govt_header">
-                    </a> -->
-                    <a class="pull-left" id="logo" href="<?php echo ROOT_PATH; ?>" title="<?php echo __('Support Center'); ?>">
-                            <span class="valign-helper"></span>
-                            <img src="<?php echo ROOT_PATH ?>assets/default/images/mahaagx/mahaagx-logo.svg" class="tg_govt_header">
-                        </a>
-                        <!-- Removed previous Forest Stack Rajasthan text branding -->
-                    <!-- <span class="tg_short_logo_header">
-                        <a class="pull-left" style="" id="logo" href="https://tgdex.telangana.gov.in/" title="<?php echo __('Support Center'); ?>">
-                            <span class="valign-helper"></span>
-                            <img src="../assets/default/images/tgdex_short_logo_Green.svg">
-                        </a>
-                    </span>
-                    <span class="tg_big_logo_header">
-
-                        <a class="pull-left" id="logo" href="https://tgdex.telangana.gov.in/" title="<?php echo __('Support Center'); ?>">
-                            <span class="valign-helper"></span>
-                            <img src="<?php echo ROOT_PATH; ?>logo.php" border=0 alt="<?php echo $ost->getConfig()->getTitle(); ?>">
-                        </a>
-                    </span> -->
-
+                        <img src="<?php echo ROOT_PATH ?>assets/default/images/mahadex/mahadex-logo-mark.svg" class="tg_govt_header" alt="MahaDeX">
+                    </a>
+                    <div class="logo_title">
+                        <p class="logo_title_name" style="font-weight:700;color:#3730a3;margin:0;line-height:1.2;">MahaDeX</p>
+                        <p class="logo_title_department" style="font-weight:500;color:#0f172a;margin:0;font-size:12px;line-height:1.2;">Maharashtra Data Exchange</p>
+                    </div>
                 </div>
 
             </div>
